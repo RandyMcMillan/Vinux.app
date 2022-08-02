@@ -11,7 +11,9 @@ struct ReplyQuoteView: View {
     let privkey: String?
     let quoter: NostrEvent
     let event_id: String
+#if !os(macOS)
     let image_cache: ImageCache
+#endif
     let profiles: Profiles
     
     @EnvironmentObject var thread: ThreadModel
@@ -25,7 +27,11 @@ struct ReplyQuoteView: View {
             
             VStack(alignment: .leading) {
                 HStack(alignment: .top) {
+#if !os(macOS)
                     ProfilePicView(pubkey: event.pubkey, size: 16, highlight: .reply, image_cache: image_cache, profiles: profiles)
+#else
+                    ProfilePicView(pubkey: event.pubkey, size: 16, highlight: .reply, profiles: profiles)
+#endif
                     Text(Profile.displayName(profile: profiles.lookup(id: event.pubkey), pubkey: event.pubkey))
                         .foregroundColor(.accentColor)
                     Text("\(format_relative_time(event.created_at))")
@@ -65,7 +71,13 @@ struct ReplyQuoteView_Previews: PreviewProvider {
     static var previews: some View {
         let s = test_damus_state()
         let quoter = NostrEvent(content: "a\nb\nc", pubkey: "pubkey")
+        #if !os(macOS)
         ReplyQuoteView(privkey: s.keypair.privkey, quoter: quoter, event_id: "pubkey2", image_cache: s.image_cache, profiles: s.profiles)
             .environmentObject(ThreadModel(event: quoter, pool: s.pool, privkey: s.keypair.privkey))
+        #else
+        ReplyQuoteView(privkey: s.keypair.privkey, quoter: quoter, event_id: "pubkey2", profiles: s.profiles)
+            .environmentObject(ThreadModel(event: quoter, pool: s.pool, privkey: s.keypair.privkey))
+        #endif
+
     }
 }

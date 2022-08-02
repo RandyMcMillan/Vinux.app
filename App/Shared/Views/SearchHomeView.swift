@@ -18,7 +18,9 @@ struct SearchHomeView: View {
             TextField("", text: $search)
                 .padding(5)
                 .padding(.leading, 35)
+                #if !os(macOS)
                 .textInputAutocapitalization(.never)
+                #endif
                 .disableAutocorrection(true)
             Label("", systemImage: "magnifyingglass")
                 .padding(.leading, 10)

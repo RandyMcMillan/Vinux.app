@@ -19,11 +19,15 @@ struct ThreadView: View {
         Group {
             if is_chatroom {
                 ChatroomView(damus: damus)
+                    #if !os(macOS)
                     .navigationBarTitle("Chat")
+                    #endif
                     .environmentObject(thread)
             } else {
                 EventDetailView(damus: damus, thread: thread)
+                    #if !os(macOS)
                     .navigationBarTitle("Thread")
+                    #endif
                     .environmentObject(thread)
             }
             

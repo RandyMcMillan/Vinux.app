@@ -77,8 +77,10 @@ struct SetupView: View {
             }
             .padding(.top, -80)
         }
+        #if !os(macOS)
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(StackNavigationViewStyle())
+        #endif
     }
 }
 

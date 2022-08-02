@@ -91,8 +91,10 @@ struct LoginView: View {
             }
             .padding()
         }
+        #if !os(macOS)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
+        #endif
     }
 }
 
@@ -169,6 +171,7 @@ struct KeyInput: View {
     }
     
     var body: some View {
+        #if !os(macOS)
         TextField("", text: key)
             .placeholder(when: key.wrappedValue.isEmpty) {
                 Text(title).foregroundColor(.white.opacity(0.6))
@@ -180,6 +183,18 @@ struct KeyInput: View {
             .autocapitalization(.none)
             .foregroundColor(.white)
             .font(.body.monospaced())
+        #else
+        TextField("", text: key)
+            .placeholder(when: key.wrappedValue.isEmpty) {
+                Text(title).foregroundColor(.white.opacity(0.6))
+            }
+            .padding()
+            .background {
+                RoundedRectangle(cornerRadius: 4.0).opacity(0.2)
+            }
+            .foregroundColor(.white)
+            .font(.body.monospaced())
+        #endif
     }
 }
 

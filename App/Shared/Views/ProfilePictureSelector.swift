@@ -19,7 +19,14 @@ struct ProfilePictureSelector: View {
                 .foregroundColor(.white)
              */
             
-            ProfilePicView(pubkey: pubkey, size: 80.0, highlight: highlight, image_cache: ImageCache(), profiles: Profiles())
+            #if !os(macOS)
+            ProfilePicView(pubkey: pubkey,
+                           size: 80.0,
+                           highlight: highlight,
+                           image_cache: ImageCache(),
+                           profiles: Profiles()
+            )
+            #endif
         }
     }
 }

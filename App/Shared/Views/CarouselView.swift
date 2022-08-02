@@ -34,7 +34,9 @@ struct CarouselView: View {
                     }
             }
         }
+        #if !os(macOS)
         .tabViewStyle(PageTabViewStyle())
+        #endif
     }
 }
 

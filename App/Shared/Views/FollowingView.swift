@@ -18,7 +18,10 @@ struct FollowUserView: View {
             let pv = ProfileView(damus_state: damus_state, profile: pmodel, followers: followers)
             
             NavigationLink(destination: pv) {
+                
+                #if !os(macOS)
                 ProfilePicView(pubkey: target.pubkey, size: PFP_SIZE, highlight: .none, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
+                #endif
             
                 VStack(alignment: .leading) {
                     let profile = damus_state.profiles.lookup(id: target.pubkey)
@@ -52,7 +55,11 @@ struct FollowersView: View {
                 }
             }
         }
+        #if !os(macOS)
         .navigationBarTitle("\(Profile.displayName(profile: profile, pubkey: whos))'s Followers")
+        #else
+        .navigationTitle("\(Profile.displayName(profile: profile, pubkey: whos))'s Followers")
+        #endif
     }
     
 }
@@ -79,7 +86,11 @@ struct FollowingView: View {
         .onDisappear {
             following.unsubscribe()
         }
+        #if !os(macOS)
         .navigationBarTitle("\(who) following")
+        #else
+        .navigationTitle("\(who) following")
+        #endif
     }
 }
 

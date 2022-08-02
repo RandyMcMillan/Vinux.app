@@ -45,7 +45,7 @@ struct ChatView: View {
     }
     
     func prev_reply_is_same() -> String? {
-        return Vinux_app.prev_reply_is_same(event: event, prev_ev: prev_ev, replies: thread.replies)
+        return Vinux.prev_reply_is_same(event: event, prev_ev: prev_ev, replies: thread.replies)
     }
     
     func reply_is_new() -> String? {
@@ -74,7 +74,11 @@ struct ChatView: View {
         HStack {
             VStack {
                 if is_active || just_started {
+                    #if !os(macOS)
                     ProfilePicView(pubkey: event.pubkey, size: 32, highlight: is_active ? .main : .none, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
+                    #else
+                    ProfilePicView(pubkey: event.pubkey, size: 32, highlight: is_active ? .main : .none, profiles: damus_state.profiles)
+                    #endif
                 }
 
                 Spacer()
@@ -95,8 +99,12 @@ struct ChatView: View {
                 
                     if let ref_id = thread.replies.lookup(event.id) {
                         if !is_reply_to_prev() {
+                            #if !os(macOS)
                             ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
                                 .environmentObject(thread)
+                            #else
+                            ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, profiles: damus_state.profiles)
+                            #endif
                             ReplyDescription
                         }
                     }

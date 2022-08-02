@@ -99,7 +99,9 @@ struct EventDetailView: View {
                 }
             }
         }
+        #if !os(macOS)
         .navigationBarTitle("Thread")
+        #endif
 
     }
 

@@ -35,7 +35,9 @@ struct ProfilePicView: View {
     let pubkey: String
     let size: CGFloat
     let highlight: Highlight
+    #if !os(macOS)
     let image_cache: ImageCache
+    #endif
     let profiles: Profiles
     
     @State var picture: String? = nil
@@ -54,7 +56,9 @@ struct ProfilePicView: View {
     }
     
     func ProfilePic(_ url: URL) -> some View {
+        #if !os(macOS)
         let pub = load_image(cache: image_cache, from: url)
+        #endif
         return Group {
             if let img = self.img {
                 img
@@ -67,11 +71,13 @@ struct ProfilePicView: View {
                 Placeholder
             }
         }
+        #if !os(macOS)
         .onReceive(pub) { mimg in
             if let img = mimg {
                 self.img = Image(uiImage: img)
             }
         }
+        #endif
     }
     
     var MainContent: some View {
@@ -111,7 +117,7 @@ func make_preview_profiles(_ pubkey: String) -> Profiles {
 
 struct ProfilePicView_Previews: PreviewProvider {
     static let pubkey = "ca48854ac6555fed8e439ebb4fa2d928410e0eef13fa41164ec45aaaa132d846"
-    
+#if !os(macOS)
     static var previews: some View {
         ProfilePicView(
             pubkey: pubkey,
@@ -120,6 +126,15 @@ struct ProfilePicView_Previews: PreviewProvider {
             image_cache: ImageCache(),
             profiles: make_preview_profiles(pubkey))
     }
+#else
+    static var previews: some View {
+        ProfilePicView(
+            pubkey: pubkey,
+            size: 100,
+            highlight: .none,
+            profiles: make_preview_profiles(pubkey))
+    }
+#endif
 }
 
 func hex_to_rgb(_ hex: String) -> Color {

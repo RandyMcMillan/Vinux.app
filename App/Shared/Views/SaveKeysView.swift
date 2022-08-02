@@ -75,8 +75,10 @@ struct SaveKeysView: View {
             }
             .padding(20)
         }
+        #if !os(macOS)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
+        #endif
     }
     
     func complete_account_creation(_ account: CreateAccountModel) {
@@ -133,7 +135,13 @@ struct SaveKeyView: View {
     @Binding var is_copied: Bool
     
     func copy_text() {
+        #if !os(macOS)
         UIPasteboard.general.string = text
+        #else
+        NSPasteboard.general.declareTypes([.string], owner: nil)
+        NSPasteboard.general.clearContents()
+        NSPasteboard.general.setString(text, forType: .string)
+        #endif
         is_copied = true
     }
     

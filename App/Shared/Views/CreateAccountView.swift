@@ -47,14 +47,16 @@ struct CreateAccountView: View {
                                     .padding(.leading, -25.0)
                                 
                                 FormTextInput("satoshi", text: $account.nick_name)
+                                #if !os(macOS)
                                     .textInputAutocapitalization(.never)
-                                
+                                #endif
                             }
                             
                             FormLabel("Display Name", optional: true)
                             FormTextInput("Satoshi Nakamoto", text: $account.real_name)
+                                #if !os(macOS)
                                 .textInputAutocapitalization(.words)
-                            
+                                #endif
                             FormLabel("About", optional: true)
                             FormTextInput("Creator(s) of Bitcoin. Absolute legend.", text: $account.about)
                             
@@ -83,9 +85,12 @@ struct CreateAccountView: View {
             .padding(.trailing, 20.0)
             
         }
+        #if !os(macOS)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
+        #endif
+
     }
 }
 

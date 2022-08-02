@@ -103,11 +103,15 @@ struct EventView: View {
             VStack {
                 let pmodel = ProfileModel(pubkey: pubkey, damus: damus)
                 let pv = ProfileView(damus_state: damus, profile: pmodel, followers: FollowersModel(damus_state: damus, target: pubkey))
-
+                #if !os(macOS)
                 NavigationLink(destination: pv) {
                     ProfilePicView(pubkey: pubkey, size: PFP_SIZE, highlight: highlight, image_cache: damus.image_cache, profiles: damus.profiles)
                 }
-
+                #else
+                NavigationLink(destination: pv) {
+                    ProfilePicView(pubkey: pubkey, size: PFP_SIZE, highlight: highlight, profiles: damus.profiles)
+                }
+                #endif
                 Spacer()
             }
 
@@ -148,28 +152,62 @@ struct EventView: View {
 }
 
 extension View {
+
     func event_context_menu(_ event: NostrEvent, privkey: String?) -> some View {
         return self.contextMenu {
+            
+// #if os(macOS)
+//     NSPasteboard.general.declareTypes([.string], owner: nil)
+// #endi
+        
+// #if !os(macOS)
+// UIPasteboard.general.string = text
+// #else
+// NSPasteboard.general.declareTypes([.string], owner: nil)
+// NSPasteboard.general.clearContents()
+// NSPasteboard.general.setString(text, forType: .string)
+// #endif
+
             Button {
+                #if !os(macOS)
                 UIPasteboard.general.string = event.get_content(privkey)
+                #else
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString(event.get_content(privkey), forType: .string)
+                #endif
             } label: {
                 Label("Copy Text", systemImage: "doc.on.doc")
             }
 
             Button {
+                #if !os(macOS)
                 UIPasteboard.general.string = "@" + event.pubkey
+                #else
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString("@" + event.pubkey, forType: .string)
+                #endif
             } label: {
                 Label("Copy User ID", systemImage: "tag")
             }
 
             Button {
-                UIPasteboard.general.string = "&" + event.id
+                #if !os(macOS)
+                UIPasteboard.general.string = "&" + event.pubkey
+                #else
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString("&" + event.pubkey, forType: .string)
+                #endif
             } label: {
                 Label("Copy Note ID", systemImage: "tag")
             }
 
             Button {
+                #if !os(macOS)
                 UIPasteboard.general.string = event_to_json(ev: event)
+                #else
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString(event_to_json(ev: event), forType: .string)
+                #endif
             } label: {
                 Label("Copy Note", systemImage: "note")
             }

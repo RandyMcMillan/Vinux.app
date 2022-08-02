@@ -52,8 +52,13 @@ struct ConfigView: View {
                     Text(state.keypair.pubkey_bech32)
                         .textSelection(.enabled)
                         .onTapGesture {
+                            #if !os(macOS)
                             UIPasteboard.general.string = state.keypair.pubkey_bech32
                             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                            #else
+                            NSPasteboard.general.clearContents()
+                            NSPasteboard.general.setString(state.keypair.pubkey_bech32, forType: .string)
+                            #endif
                         }
                 }
                     
@@ -62,8 +67,13 @@ struct ConfigView: View {
                         Text(sec)
                             .textSelection(.enabled)
                             .onTapGesture {
+                                #if !os(macOS)
                                 UIPasteboard.general.string = sec
                                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                                #else
+                                NSPasteboard.general.clearContents()
+                                NSPasteboard.general.setString(sec, forType: .string)
+                                #endif
                             }
                     }
                 }
@@ -90,7 +100,9 @@ struct ConfigView: View {
             }
         }
         .navigationTitle("Settings")
+        #if !os(macOS)
         .navigationBarTitleDisplayMode(.large)
+        #endif
         .alert("Logout", isPresented: $confirm_logout) {
             Button("Logout") {
                 notify(.logout, ())

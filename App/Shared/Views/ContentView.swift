@@ -10,7 +10,7 @@ import Starscream
 
 let BOOTSTRAP_RELAYS = [
     "wss://relay.damus.io",
-    "wss://nostr-pub.wellorder.net",
+    // "wss://nostr-pub.wellorder.net",
 ]
 
 struct TimestampedProfile {
@@ -134,7 +134,11 @@ struct ContentView: View {
                 EmptyView()
             }
         }
-        // .navigationBarTitle("Damus", displayMode: .inline)
+        #if !os(macOS)
+        .navigationBarTitle("Damus", displayMode: .inline)
+        #else
+        .navigationTitle("Damus")
+        #endif
     }
 
     var MaybeSearchView: some View {
@@ -179,7 +183,12 @@ struct ContentView: View {
                             LoadingContainer
                         }
                 }
+                #if !os(macOS)
                 .navigationViewStyle(.stack)
+                #else
+                // .navigationViewStyle(.columns)
+                .navigationViewStyle(.automatic)
+                #endif
             }
 
             TabBar2(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
@@ -371,7 +380,7 @@ struct ContentView: View {
         }
 
         pool.register_handler(sub_id: sub_id, handler: home.handle_event)
-
+#if !os(macOS)
         self.damus_state = DamusState(
                                 pool: pool,
                                 keypair: keypair,
@@ -383,6 +392,18 @@ struct ContentView: View {
                                 profiles: Profiles(),
                                 dms: home.dms
         )
+#else
+        self.damus_state = DamusState(
+                                pool: pool,
+                                keypair: keypair,
+                                likes: EventCounter(our_pubkey: pubkey),
+                                boosts: EventCounter(our_pubkey: pubkey),
+                                contacts: Contacts(),
+                                tips: TipCounter(our_pubkey: pubkey),
+                                profiles: Profiles(),
+                                dms: home.dms
+        )
+#endif
         home.damus_state = self.damus_state!
 
         pool.connect()
@@ -436,6 +457,7 @@ func is_notification(ev: NostrEvent, pubkey: String) -> Bool {
     return ev.references(id: pubkey, key: "p")
 }
 
+#if !os(macOS)
 extension UINavigationController: UIGestureRecognizerDelegate {
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -446,6 +468,7 @@ extension UINavigationController: UIGestureRecognizerDelegate {
         return viewControllers.count > 1
     }
 }
+#endif
 
 struct LastNotification {
     let id: String
@@ -510,6 +533,7 @@ func update_filters_with_since(last_of_kind: [Int: NostrEvent], filters: [NostrF
 
 func setup_notifications() {
 
+    #if !os(macOS)
     UIApplication.shared.registerForRemoteNotifications()
     let center = UNUserNotificationCenter.current()
 
@@ -522,4 +546,10 @@ func setup_notifications() {
             return
         }
     }
+    #else
+    DispatchQueue.main.async {
+         // print(NSApplication.shared.dockTile.badgeLabel)
+         NSApplication.shared.dockTile.badgeLabel = "1"
+  }
+    #endif
 }
