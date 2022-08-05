@@ -10,7 +10,16 @@ import Starscream
 
 let BOOTSTRAP_RELAYS = [
     "wss://relay.damus.io",
-    // "wss://nostr-pub.wellorder.net",
+    "wss://moonbreeze.richardbondi.net/ws",
+    "wss://nostr.delo.software",
+    "wss://nostr.drss.io",
+    "wss://nostr.oxtr.dev",
+    "wss://freedom-relay.herokuapp.com/ws",
+    "wss://nostr-relay.wlvs.space",
+    "wss://nostr.bitcoiner.social",
+    "wss://nostr-relay.bigsun.xyz/ws",
+    "wss://nostr.onsats.org",
+    "wss://nostr.semisol.dev",
 ]
 
 struct TimestampedProfile {
@@ -183,12 +192,11 @@ struct ContentView: View {
                             LoadingContainer
                         }
                 }
-                #if !os(macOS)
-                .navigationViewStyle(.stack)
-                #else
-                // .navigationViewStyle(.columns)
+                // #if !os(macOS)
+                // .navigationViewStyle(.stack)
+                // #else
                 .navigationViewStyle(.automatic)
-                #endif
+                // #endif
             }
 
             TabBar2(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
