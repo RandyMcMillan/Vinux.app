@@ -10,6 +10,9 @@ import SwiftUI
 #if canImport(Cocoa)
 import Cocoa
 #endif
+//#if canImport(UIKit)
+//import UIKit
+//#endif
 import Combine
 
 #if !os(macOS)
@@ -34,8 +37,9 @@ extension UIImage {
 }
 #else
 extension NSImage {
+    
     func decodedImage(_ size: Int) -> NSImage {
-        // guard let cgImage = cgImage else { return self }
+        guard let cgImage = cgImage as! NSImage? else { return self }
         // print("UIImage_____________________",UIScreen.main.scale)
         let scale = CGFloat((NSScreen.main?.frame.width)!)
         let pix_size = CGFloat(size) * scale
@@ -49,7 +53,7 @@ extension NSImage {
         //UIGraphicsEndImageContext()
 
         guard let decodedImage = context?.makeImage() else { return self }
-        return NSImage(cgImage: decodedImage, size: CGSize())
+        return NSImage(cgImage: NSBitmapImageRep(cgImage: decodedImage) as! CGImage, size: CGSize())
         //NSSize(from: 16 as! Decoder)
     }
 }
