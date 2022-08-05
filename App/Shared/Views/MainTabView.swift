@@ -12,7 +12,7 @@ enum Timeline: String, CustomStringConvertible {
     case notifications
     case search
     case dms
-    
+
     var description: String {
         return self.rawValue
     }
@@ -27,20 +27,20 @@ func timeline_bit(_ timeline: Timeline) -> Int {
     }
 }
 
-    
+
 struct TabButton: View {
     let timeline: Timeline
     let img: String
-    
+
     @Binding var selected: Timeline?
     @Binding var new_events: NewEventsBits
-    
+
     let action: (Timeline) -> ()
-    
+
     var body: some View {
         ZStack(alignment: .center) {
             Tab
-            
+
             if new_events.is_set(timeline) {
                 Circle()
                     .size(CGSize(width: 8, height: 8))
@@ -51,7 +51,7 @@ struct TabButton: View {
             }
         }
     }
-    
+
     var Tab: some View {
         Button(action: {
             action(timeline)
@@ -64,15 +64,15 @@ struct TabButton: View {
         .foregroundColor(selected != timeline ? .gray : .primary)
     }
 }
-    
+
     // MARK: - GUI Nav Entrypint
 
 struct TabBar2: View {
     @Binding var new_events: NewEventsBits
     @Binding var selected: Timeline?
-    
+
     let action: (Timeline) -> ()
-    
+
     var body: some View {
         VStack {
             Divider()
