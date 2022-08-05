@@ -90,7 +90,11 @@ struct ProfileView: View {
             let data = damus_state.profiles.lookup(id: profile.pubkey)
             #if !os(macOS)
             HStack(alignment: .center) {
-                ProfilePicView(pubkey: profile.pubkey, size: PFP_SIZE, highlight: .custom(Color.black, 2), image_cache: damus_state.image_cache, profiles: damus_state.profiles)
+                ProfilePicView(pubkey: profile.pubkey,
+                               size: PFP_SIZE,
+                               highlight: .custom(Color.black, 2),
+                               image_cache: damus_state.image_cache,
+                               profiles: damus_state.profiles)
         
                 ProfileNameView(pubkey: profile.pubkey, profile: data)
                 Spacer()
@@ -162,6 +166,8 @@ struct ProfileView: View {
         .frame(maxWidth: .infinity, alignment: .topLeading)
         #if !os(macOS)
         .navigationBarTitle("Profile")
+        #else
+        .navigationTitle("Profile")
         #endif
         .onAppear() {
             profile.subscribe()
@@ -194,7 +200,7 @@ func test_damus_state() -> DamusState {
     let tsprof = TimestampedProfile(profile: prof, timestamp: 0)
     damus.profiles.add(id: pubkey, profile: tsprof)
     #else
-    let damus = DamusState(pool: RelayPool(), keypair: Keypair(pubkey: pubkey, privkey: "privkey"), likes: EventCounter(our_pubkey: pubkey), boosts: EventCounter(our_pubkey: pubkey), contacts: Contacts(), tips: TipCounter(our_pubkey: pubkey), profiles: Profiles(), dms: DirectMessagesModel())
+    let damus = DamusState(pool: RelayPool(), keypair: Keypair(pubkey: pubkey, privkey: "privkey"), likes: EventCounter(our_pubkey: pubkey), boosts: EventCounter(our_pubkey: pubkey), contacts: Contacts(), tips: TipCounter(our_pubkey: pubkey), image_cache: ImageCache(), profiles: Profiles(), dms: DirectMessagesModel())
     
     let prof = Profile(name: "damus", display_name: "Damus", about: "iOS app!", picture: "https://damus.io/img/logo.png")
     let tsprof = TimestampedProfile(profile: prof, timestamp: 0)
