@@ -63,10 +63,20 @@ struct ProfilePicView: View {
             if let img = self.img {
                 img
                     .resizable()
-                    .frame(width: size, height: size)
+                        #if !os(macOS)
+                    .frame(
+                        width: UIScreen.main.bounds.width*0.10,
+                        height:  UIScreen.main.bounds.height*0.10
+                    )
+                        #else
+                    .frame(
+                        width: 100,
+                        height: 100
+                        )
+                        #endif
                     .clipShape(Circle())
                     .overlay(Circle().stroke(highlight_color(highlight), lineWidth: pfp_line_width(highlight)))
-                    .padding(2)
+                    .padding(0)
             } else {
                 Placeholder
             }
