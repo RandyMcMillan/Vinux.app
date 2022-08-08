@@ -120,18 +120,18 @@ class NostrEvent: Codable, Identifiable, CustomStringConvertible {
         guard let key = privkey else {
             return nil
         }
-        
+
         guard let our_pubkey = privkey_to_pubkey(privkey: key) else {
             return nil
         }
-        
+
         var pubkey = self.pubkey
         // This is our DM, we need to use the pubkey of the person we're talking to instead
         if our_pubkey == pubkey {
             guard let refkey = self.referenced_pubkeys.first else {
                 return nil
             }
-            
+
             pubkey = refkey.ref_id
         }
 
