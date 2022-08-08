@@ -22,8 +22,7 @@ struct MainView: View {
     var body: some View {
         Group {
             if let kp = keypair, !needs_setup {
-                // Text("Sidebar")
-                // Text("Group Content")
+                Text("MainView.swift @ViewBulder body")
                 ContentView(keypair: kp)
                    // .frame(minWidth: 600, minHeight: 600)
 

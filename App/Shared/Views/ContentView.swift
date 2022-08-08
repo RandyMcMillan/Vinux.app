@@ -184,6 +184,7 @@ struct ContentView: View {
     }
 
     var body: some View {
+        Text("ContentView.swift @ViewBulder body")
         VStack(alignment: .leading, spacing: 0) {
             if let damus = self.damus_state {
                 NavigationView {
@@ -200,6 +201,7 @@ struct ContentView: View {
             }
 
             TabBar2(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
+            // TabBar()
         }
         .onAppear() {
             self.connect()
@@ -538,6 +540,8 @@ func update_filters_with_since(last_of_kind: [Int: NostrEvent], filters: [NostrF
         return filter
     }
 }
+
+    // Mark: UIApplication.shared.registerForRemoteNotifications()
 
 func setup_notifications() {
 
