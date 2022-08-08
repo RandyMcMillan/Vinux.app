@@ -16,7 +16,7 @@
         ],
         dependencies: [
             .package(url: "https://github.com/daltoniam/Starscream.git", branch: "df8d82047f6654d8e4b655d1b1525c64e1059d21"),
-            .package(url: "https://github.com/jb55/secp256k1.swift.git", branch: "main"),
+            .package(url: "https://github.com/jb55/secp256k1.swift.git", branch: "40b4b38b3b1c83f7088c76189a742870e0ca06a9"),
         ],
         targets: [
             // Targets are the basic building blocks of a package. A target can define a module or a test suite.
