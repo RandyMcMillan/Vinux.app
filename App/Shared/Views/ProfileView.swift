@@ -156,11 +156,16 @@ struct ProfileView: View {
     var body: some View {
         VStack(alignment: .leading) {
             ScrollView {
+                // Divider()
+                // Divider()
+                // Divider()
+                // Divider()
+
                 TopSection
             
-                Divider()
                 
                 InnerTimelineView(events: $profile.events, damus: damus_state)
+
             }
             .frame(maxHeight: .infinity, alignment: .topLeading)
         }
