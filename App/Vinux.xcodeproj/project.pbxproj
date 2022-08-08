@@ -306,8 +306,8 @@
 		4B4CC2A728938437001F6FB4 /* CarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		4B4CC3A82893915B001F6FB4 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4B7D77A928935E5B007486E7 /* Universal App (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Universal App (iOS).entitlements"; sourceTree = "<group>"; };
+		4BDBFF0D28A199D800DDA935 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		4BE04AB528985B0900E710CF /* Vinux.app (iOS)Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Vinux.app (iOS)Release.entitlements"; sourceTree = "<group>"; };
-		4BE04B0F289869A900E710CF /* CustomNSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNSViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -383,10 +383,10 @@
 		3AE3322A2582A02900FBDB3E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				4B4CC23D28938396001F6FB4 /* Nostr */,
-				4B4CC1EB28938338001F6FB4 /* Components */,
+				4BDBFF0D28A199D800DDA935 /* AppInfo.swift */,
+				4B496C2B28A0F15100EAD8A2 /* Nostr */,
+				4B496BD928A0F0FC00EAD8A2 /* Models */,
 				3A030AC8258401580012228D /* Utilities */,
-				3AE3327F2582AF1500FBDB3E /* Models */,
 				3A030B0925841B860012228D /* Screens */,
 				3AE332732582AE1500FBDB3E /* Views */,
 				3A030ACE258401860012228D /* Support */,
@@ -467,65 +467,56 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		3AE3327F2582AF1500FBDB3E /* Models */ = {
+		4B496BD928A0F0FC00EAD8A2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				4B4CC1FE28938379001F6FB4 /* ActionBarModel.swift */,
-				4B4CC20428938379001F6FB4 /* Contacts.swift */,
-				4B4CC2072893837A001F6FB4 /* CreateAccountModel.swift */,
-				4B4CC20028938379001F6FB4 /* DamusState.swift */,
-				4B4CC1F328938379001F6FB4 /* DirectMessageModel.swift */,
-				4B4CC1F928938379001F6FB4 /* DirectMessagesModel.swift */,
-				4B4CC1F528938379001F6FB4 /* EventRef.swift */,
-				4B4CC1FA28938379001F6FB4 /* EventsModel.swift */,
-				4B4CC20228938379001F6FB4 /* FollowersModel.swift */,
-				4B4CC1FC28938379001F6FB4 /* FollowingModel.swift */,
-				4B4CC1F128938379001F6FB4 /* FollowTarget.swift */,
-				4B4CC1EF28938379001F6FB4 /* HomeModel.swift */,
-				4B4CC2082893837A001F6FB4 /* LikeCounter.swift */,
-				4B4CC1F028938379001F6FB4 /* Liked.swift */,
-				4B4CC2052893837A001F6FB4 /* LocalUserConfig.swift */,
-				4B4CC20328938379001F6FB4 /* Mentions.swift */,
-				4B4CC1FD28938379001F6FB4 /* Post.swift */,
-				4B4CC1F228938379001F6FB4 /* PostBlock.swift */,
-				4B4CC1FF28938379001F6FB4 /* ProfileModel.swift */,
-				4B4CC20128938379001F6FB4 /* ProfileUpdate.swift */,
-				4B4CC1F428938379001F6FB4 /* Reply.swift */,
-				4B4CC2062893837A001F6FB4 /* ReplyMap.swift */,
-				4B4CC1F728938379001F6FB4 /* SearchHomeModel.swift */,
-				4B4CC1F628938379001F6FB4 /* SearchModel.swift */,
-				4B4CC1F828938379001F6FB4 /* SignalModel.swift */,
-				4B4CC1FB28938379001F6FB4 /* ThreadModel.swift */,
-				3AE332802582AF2300FBDB3E /* Article.swift */,
+				4B496BDA28A0F0FC00EAD8A2 /* PostBlock.swift */,
+				4B496BDB28A0F0FC00EAD8A2 /* DirectMessagesModel.swift */,
+				4B496BDC28A0F0FC00EAD8A2 /* LikeCounter.swift */,
+				4B496BDD28A0F0FC00EAD8A2 /* FollowTarget.swift */,
+				4B496BDE28A0F0FC00EAD8A2 /* Reply.swift */,
+				4B496BDF28A0F0FC00EAD8A2 /* Contacts.swift */,
+				4B496BE028A0F0FC00EAD8A2 /* Liked.swift */,
+				4B496BE128A0F0FC00EAD8A2 /* SignalModel.swift */,
+				4B496BE228A0F0FC00EAD8A2 /* EventsModel.swift */,
+				4B496BE328A0F0FC00EAD8A2 /* ActionBarModel.swift */,
+				4B496BE428A0F0FC00EAD8A2 /* FollowingModel.swift */,
+				4B496BE528A0F0FC00EAD8A2 /* SearchModel.swift */,
+				4B496BE628A0F0FC00EAD8A2 /* EventRef.swift */,
+				4B496BE728A0F0FC00EAD8A2 /* Post.swift */,
+				4B496BE828A0F0FC00EAD8A2 /* ReplyMap.swift */,
+				4B496BE928A0F0FC00EAD8A2 /* Mentions.swift */,
+				4B496BEA28A0F0FC00EAD8A2 /* SearchHomeModel.swift */,
+				4B496BEB28A0F0FC00EAD8A2 /* Article.swift */,
+				4B496BEC28A0F0FC00EAD8A2 /* FollowersModel.swift */,
+				4B496BED28A0F0FC00EAD8A2 /* HomeModel.swift */,
+				4B496BEE28A0F0FC00EAD8A2 /* DamusState.swift */,
+				4B496BEF28A0F0FC00EAD8A2 /* LocalUserConfig.swift */,
+				4B496BF028A0F0FC00EAD8A2 /* DirectMessageModel.swift */,
+				4B496BF128A0F0FC00EAD8A2 /* ProfileUpdate.swift */,
+				4B496BF228A0F0FC00EAD8A2 /* CreateAccountModel.swift */,
+				4B496BF328A0F0FC00EAD8A2 /* ProfileModel.swift */,
+				4B496BF428A0F0FC00EAD8A2 /* ThreadModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4B4CC1EB28938338001F6FB4 /* Components */ = {
+		4B496C2B28A0F15100EAD8A2 /* Nostr */ = {
 			isa = PBXGroup;
 			children = (
-				4B4CC1EC28938338001F6FB4 /* TextFieldAlert.swift */,
-				4BE04B0F289869A900E710CF /* CustomNSViewController.swift */,
-			);
-			path = Components;
-			sourceTree = "<group>";
-		};
-		4B4CC23D28938396001F6FB4 /* Nostr */ = {
-			isa = PBXGroup;
-			children = (
-				4B4CC23E28938396001F6FB4 /* NostrResponse.swift */,
-				4B4CC23F28938396001F6FB4 /* Nostr.swift */,
-				4B4CC24028938396001F6FB4 /* NostrRequest.swift */,
-				4B4CC24128938396001F6FB4 /* NostrLink.swift */,
-				4B4CC24228938396001F6FB4 /* NostrFilter.swift */,
-				4B4CC24328938396001F6FB4 /* RelayPool.swift */,
-				4B4CC24428938396001F6FB4 /* RelayConnection.swift */,
-				4B4CC24528938396001F6FB4 /* ProofOfWork.swift */,
-				4B4CC24628938396001F6FB4 /* NostrKind.swift */,
-				4B4CC24728938396001F6FB4 /* NostrEvent.swift */,
-				4B4CC24828938396001F6FB4 /* NostrMetadata.swift */,
-				4B4CC24928938396001F6FB4 /* Profiles.swift */,
-				4B4CC24A28938396001F6FB4 /* Relay.swift */,
+				4B496C2C28A0F15100EAD8A2 /* NostrResponse.swift */,
+				4B496C2D28A0F15100EAD8A2 /* Nostr.swift */,
+				4B496C2E28A0F15100EAD8A2 /* NostrRequest.swift */,
+				4B496C2F28A0F15100EAD8A2 /* NostrLink.swift */,
+				4B496C3028A0F15100EAD8A2 /* NostrFilter.swift */,
+				4B496C3128A0F15100EAD8A2 /* RelayPool.swift */,
+				4B496C3228A0F15100EAD8A2 /* RelayConnection.swift */,
+				4B496C3328A0F15100EAD8A2 /* ProofOfWork.swift */,
+				4B496C3428A0F15100EAD8A2 /* NostrKind.swift */,
+				4B496C3528A0F15100EAD8A2 /* NostrEvent.swift */,
+				4B496C3628A0F15100EAD8A2 /* NostrMetadata.swift */,
+				4B496C3728A0F15100EAD8A2 /* Profiles.swift */,
+				4B496C3828A0F15100EAD8A2 /* Relay.swift */,
 			);
 			path = Nostr;
 			sourceTree = "<group>";
@@ -544,6 +535,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AE332462582A02B00FBDB3E /* Build configuration list for PBXNativeTarget "Vinux (iOS)" */;
 			buildPhases = (
+				4BDBFF1628A1AB1A00DDA935 /* ShellScript */,
 				3AE3322E2582A02B00FBDB3E /* Sources */,
 				3AE3322F2582A02B00FBDB3E /* Frameworks */,
 				3AE332302582A02B00FBDB3E /* Resources */,
@@ -565,6 +557,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AE332492582A02B00FBDB3E /* Build configuration list for PBXNativeTarget "Vinux (macOS)" */;
 			buildPhases = (
+				4BDBFF1528A1AAFC00DDA935 /* ShellScript */,
 				3AE332362582A02B00FBDB3E /* Sources */,
 				3AE332372582A02B00FBDB3E /* Frameworks */,
 				3AE332382582A02B00FBDB3E /* Resources */,
@@ -644,104 +637,141 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BDBFF1528A1AAFC00DDA935 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\n\necho \"$fileContent\" > /Users/Shared/Vinux.app/App/Shared/AppInfo.swift\n";
+		};
+		4BDBFF1628A1AB1A00DDA935 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\n\necho \"$fileContent\" > /Users/Shared/Vinux.app/App/Shared/AppInfo.swift\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3AE3322E2582A02B00FBDB3E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B4CC3772893904A001F6FB4 /* TextFieldAlert.swift in Sources */,
-				4B4CC35A2893903A001F6FB4 /* LikeCounter.swift in Sources */,
-				4B4CC3552893903A001F6FB4 /* Mentions.swift in Sources */,
+				4BDBFF1328A19ED100DDA935 /* AppInfo.swift in Sources */,
 				4B4CC31728939029001F6FB4 /* SearchView.swift in Sources */,
 				4B4CC33828939029001F6FB4 /* ProfileName.swift in Sources */,
 				4B4CC32028939029001F6FB4 /* CreateAccountView.swift in Sources */,
+				4B496C3928A0F15100EAD8A2 /* NostrResponse.swift in Sources */,
 				4B4CC32828939029001F6FB4 /* MainTabView.swift in Sources */,
+				4B496C0F28A0F0FC00EAD8A2 /* Post.swift in Sources */,
+				4B496C0928A0F0FC00EAD8A2 /* FollowingModel.swift in Sources */,
+				4B496C2528A0F0FC00EAD8A2 /* CreateAccountModel.swift in Sources */,
 				4B4CC31F28939029001F6FB4 /* ReplyView.swift in Sources */,
+				4B496C3B28A0F15100EAD8A2 /* Nostr.swift in Sources */,
+				4B496BFD28A0F0FC00EAD8A2 /* Reply.swift in Sources */,
 				3A85D10C2582B9A600636BA4 /* TabBar.swift in Sources */,
-				4B4CC3602893903A001F6FB4 /* DirectMessagesModel.swift in Sources */,
-				4B4CC3642893903A001F6FB4 /* Contacts.swift in Sources */,
-				4B4CC3572893903A001F6FB4 /* FollowTarget.swift in Sources */,
 				4B4CC31228938E87001F6FB4 /* MainView.swift in Sources */,
 				4B4CC31A28939029001F6FB4 /* NoteContentView.swift in Sources */,
 				4B4CC33428939029001F6FB4 /* PubkeyView.swift in Sources */,
 				4B4CC32528939029001F6FB4 /* LoginView.swift in Sources */,
 				4B4CC31E28939029001F6FB4 /* DMView.swift in Sources */,
-				4B4CC37B2893904F001F6FB4 /* NostrMetadata.swift in Sources */,
-				4B4CC3592893903A001F6FB4 /* SignalModel.swift in Sources */,
+				4B496C1D28A0F0FC00EAD8A2 /* DamusState.swift in Sources */,
 				4B4CC37228939046001F6FB4 /* Parser.swift in Sources */,
 				4B4CC32C28939029001F6FB4 /* FollowButtonView.swift in Sources */,
-				4B4CC35F2893903A001F6FB4 /* EventRef.swift in Sources */,
 				4B4CC32E28939029001F6FB4 /* PostView.swift in Sources */,
+				4B496C2128A0F0FC00EAD8A2 /* DirectMessageModel.swift in Sources */,
+				4B496C1128A0F0FC00EAD8A2 /* ReplyMap.swift in Sources */,
+				4B496BFB28A0F0FC00EAD8A2 /* FollowTarget.swift in Sources */,
+				4B496C4128A0F15100EAD8A2 /* NostrFilter.swift in Sources */,
+				4B496C4F28A0F15100EAD8A2 /* Profiles.swift in Sources */,
 				4B4CC32B28939029001F6FB4 /* EventView.swift in Sources */,
-				4B4CC3792893904F001F6FB4 /* NostrResponse.swift in Sources */,
-				4B4CC36A2893903A001F6FB4 /* CreateAccountModel.swift in Sources */,
-				4B4CC3812893904F001F6FB4 /* NostrLink.swift in Sources */,
-				4B4CC35B2893903A001F6FB4 /* Reply.swift in Sources */,
+				4B496BF928A0F0FC00EAD8A2 /* LikeCounter.swift in Sources */,
+				4B496BF728A0F0FC00EAD8A2 /* DirectMessagesModel.swift in Sources */,
 				4B4CC37328939046001F6FB4 /* TipCounter.swift in Sources */,
 				4B4CC33528939029001F6FB4 /* PostButton.swift in Sources */,
-				4B4CC3562893903A001F6FB4 /* SearchModel.swift in Sources */,
 				4B4CC33028939029001F6FB4 /* FollowingView.swift in Sources */,
 				4B4CC33128939029001F6FB4 /* PowView.swift in Sources */,
+				4B496C2928A0F0FC00EAD8A2 /* ThreadModel.swift in Sources */,
+				4B496C4728A0F15100EAD8A2 /* ProofOfWork.swift in Sources */,
 				4B4CC33628939029001F6FB4 /* SaveKeysView.swift in Sources */,
 				4B4CC32628939029001F6FB4 /* SetupView.swift in Sources */,
 				4B4CC37628939046001F6FB4 /* Universal_App.swift in Sources */,
+				4B496C0D28A0F0FC00EAD8A2 /* EventRef.swift in Sources */,
+				4B496C3D28A0F15100EAD8A2 /* NostrRequest.swift in Sources */,
 				4B4CC36D28939046001F6FB4 /* InsertSort.swift in Sources */,
-				4B4CC3612893903A001F6FB4 /* LocalUserConfig.swift in Sources */,
 				4B4CC33928939029001F6FB4 /* EventDetailView.swift in Sources */,
 				4B4CC33328939029001F6FB4 /* ProfilePicView.swift in Sources */,
 				4B4CC32128939029001F6FB4 /* BlocksView.swift in Sources */,
-				4B4CC3672893903A001F6FB4 /* ProfileUpdate.swift in Sources */,
 				4B4CC31B28939029001F6FB4 /* MentionView.swift in Sources */,
-				4B4CC3622893903A001F6FB4 /* ProfileModel.swift in Sources */,
 				4B4CC37428939046001F6FB4 /* Bech32.swift in Sources */,
+				4B496C1328A0F0FC00EAD8A2 /* Mentions.swift in Sources */,
+				4B496C1B28A0F0FC00EAD8A2 /* HomeModel.swift in Sources */,
+				4B496C0B28A0F0FC00EAD8A2 /* SearchModel.swift in Sources */,
 				4B4CC32428939029001F6FB4 /* EventActionBar.swift in Sources */,
-				4B4CC2FC28938B57001F6FB4 /* Profiles.swift in Sources */,
-				4B4CC37F2893904F001F6FB4 /* NostrFilter.swift in Sources */,
-				4B4CC3662893903A001F6FB4 /* Liked.swift in Sources */,
-				4B4CC3542893903A001F6FB4 /* PostBlock.swift in Sources */,
-				4B4CC31528938FD2001F6FB4 /* HomeModel.swift in Sources */,
-				4B4CC3822893904F001F6FB4 /* Nostr.swift in Sources */,
-				4B4CC35C2893903A001F6FB4 /* ThreadModel.swift in Sources */,
 				4B4CC31828939029001F6FB4 /* ProfilePictureSelector.swift in Sources */,
-				4B4CC30928938D84001F6FB4 /* Article.swift in Sources */,
 				4B4CC31C28939029001F6FB4 /* CarouselView.swift in Sources */,
 				4B4CC36F28939046001F6FB4 /* Notifications.swift in Sources */,
-				4B4CC3802893904F001F6FB4 /* NostrKind.swift in Sources */,
+				4B496BFF28A0F0FC00EAD8A2 /* Contacts.swift in Sources */,
 				4B4CC32D28939029001F6FB4 /* SearchResultsView.swift in Sources */,
-				4B4CC3652893903A001F6FB4 /* FollowingModel.swift in Sources */,
-				4B4CC36C2893903A001F6FB4 /* SearchHomeModel.swift in Sources */,
-				4B4CC3782893904F001F6FB4 /* RelayPool.swift in Sources */,
 				4B4CC31928939029001F6FB4 /* ReplyQuoteView.swift in Sources */,
-				4B4CC3692893903A001F6FB4 /* ActionBarModel.swift in Sources */,
-				4B4CC35E2893903A001F6FB4 /* DamusState.swift in Sources */,
+				4B496C0128A0F0FC00EAD8A2 /* Liked.swift in Sources */,
 				4B4CC30E28938E6F001F6FB4 /* ArticleView.swift in Sources */,
+				4B496C1F28A0F0FC00EAD8A2 /* LocalUserConfig.swift in Sources */,
+				4B496C3F28A0F15100EAD8A2 /* NostrLink.swift in Sources */,
+				4B496C4B28A0F15100EAD8A2 /* NostrEvent.swift in Sources */,
 				4B4CC3162893900E001F6FB4 /* TimelineView.swift in Sources */,
-				4B4CC36B2893903A001F6FB4 /* EventsModel.swift in Sources */,
 				4B4CC31D28939029001F6FB4 /* ThreadView.swift in Sources */,
-				4B4CC3632893903A001F6FB4 /* FollowersModel.swift in Sources */,
 				4B4CC37028939046001F6FB4 /* ImageCache.swift in Sources */,
-				4B4CC37A2893904F001F6FB4 /* ProofOfWork.swift in Sources */,
+				4B496C1528A0F0FC00EAD8A2 /* SearchHomeModel.swift in Sources */,
 				4B4CC33228939029001F6FB4 /* AddRelayView.swift in Sources */,
 				4B4CC32328939029001F6FB4 /* SearchHomeView.swift in Sources */,
-				4B4CC37C2893904F001F6FB4 /* NostrEvent.swift in Sources */,
-				4B4CC3582893903A001F6FB4 /* ReplyMap.swift in Sources */,
+				4B496C1928A0F0FC00EAD8A2 /* FollowersModel.swift in Sources */,
+				4B496C0728A0F0FC00EAD8A2 /* ActionBarModel.swift in Sources */,
 				4B4CC32928939029001F6FB4 /* ConfigView.swift in Sources */,
 				4B4CC32728939029001F6FB4 /* DirectMessagesView.swift in Sources */,
-				4B4CC3682893903A001F6FB4 /* DirectMessageModel.swift in Sources */,
 				4B4CC32228939029001F6FB4 /* ProfileView.swift in Sources */,
+				4B496C4D28A0F15100EAD8A2 /* NostrMetadata.swift in Sources */,
+				4B496C0528A0F0FC00EAD8A2 /* EventsModel.swift in Sources */,
 				4B4CC32A28939029001F6FB4 /* DMChatView.swift in Sources */,
-				4B4CC37D2893904F001F6FB4 /* RelayConnection.swift in Sources */,
 				4B4CC3AF28939587001F6FB4 /* ChatView.swift in Sources */,
 				4B4CC36E28939046001F6FB4 /* InputDismissKeyboard.swift in Sources */,
-				4B4CC35D2893903A001F6FB4 /* Post.swift in Sources */,
+				4B496C2728A0F0FC00EAD8A2 /* ProfileModel.swift in Sources */,
+				4B496BF528A0F0FC00EAD8A2 /* PostBlock.swift in Sources */,
+				4B496C1728A0F0FC00EAD8A2 /* Article.swift in Sources */,
 				4B59C79C289483430063304F /* SideBar.swift in Sources */,
+				4B496C4928A0F15100EAD8A2 /* NostrKind.swift in Sources */,
 				4B4CC37528939046001F6FB4 /* TimeAgo.swift in Sources */,
+				4B496C4328A0F15100EAD8A2 /* RelayPool.swift in Sources */,
+				4B496C4528A0F15100EAD8A2 /* RelayConnection.swift in Sources */,
 				4B4CC3A92893915B001F6FB4 /* ContentView.swift in Sources */,
-				4B4CC3832893904F001F6FB4 /* Relay.swift in Sources */,
 				4B4CC37128939046001F6FB4 /* Keys.swift in Sources */,
+				4B496C5128A0F15100EAD8A2 /* Relay.swift in Sources */,
+				4B496C2328A0F0FC00EAD8A2 /* ProfileUpdate.swift in Sources */,
 				4B4CC31028938E74001F6FB4 /* ArticlesListView.swift in Sources */,
-				4B4CC37E2893904F001F6FB4 /* NostrRequest.swift in Sources */,
 				4B4CC33728939029001F6FB4 /* ChatroomView.swift in Sources */,
+				4B496C0328A0F0FC00EAD8A2 /* SignalModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,30 +779,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4BDBFF1428A19ED900DDA935 /* AppInfo.swift in Sources */,
 				4BE04B0E28985C0600E710CF /* TabBar.swift in Sources */,
 				4BE04B0528985BF200E710CF /* Bech32.swift in Sources */,
 				4BE04B0628985BF200E710CF /* ImageCache.swift in Sources */,
+				4B496C3A28A0F15100EAD8A2 /* NostrResponse.swift in Sources */,
 				4BE04B0728985BF200E710CF /* InputDismissKeyboard.swift in Sources */,
+				4B496C1028A0F0FC00EAD8A2 /* Post.swift in Sources */,
+				4B496C0A28A0F0FC00EAD8A2 /* FollowingModel.swift in Sources */,
+				4B496C2628A0F0FC00EAD8A2 /* CreateAccountModel.swift in Sources */,
 				4BE04B0828985BF200E710CF /* InsertSort.swift in Sources */,
+				4B496C3C28A0F15100EAD8A2 /* Nostr.swift in Sources */,
+				4B496BFE28A0F0FC00EAD8A2 /* Reply.swift in Sources */,
 				4BE04B0928985BF200E710CF /* Keys.swift in Sources */,
 				4BE04B0A28985BF200E710CF /* Notifications.swift in Sources */,
 				4BE04B0B28985BF200E710CF /* Parser.swift in Sources */,
 				4BE04B0C28985BF200E710CF /* TimeAgo.swift in Sources */,
 				4BE04B0D28985BF200E710CF /* TipCounter.swift in Sources */,
 				4BE04AE028985BD800E710CF /* ContentView.swift in Sources */,
+				4B496C1E28A0F0FC00EAD8A2 /* DamusState.swift in Sources */,
 				4BE04AE128985BD800E710CF /* AddRelayView.swift in Sources */,
-				4BE04B10289869A900E710CF /* CustomNSViewController.swift in Sources */,
 				4BE04AE228985BD800E710CF /* BlocksView.swift in Sources */,
 				4BE04AE328985BD800E710CF /* CarouselView.swift in Sources */,
+				4B496C2228A0F0FC00EAD8A2 /* DirectMessageModel.swift in Sources */,
+				4B496C1228A0F0FC00EAD8A2 /* ReplyMap.swift in Sources */,
+				4B496BFC28A0F0FC00EAD8A2 /* FollowTarget.swift in Sources */,
+				4B496C4228A0F15100EAD8A2 /* NostrFilter.swift in Sources */,
+				4B496C5028A0F15100EAD8A2 /* Profiles.swift in Sources */,
 				4BE04AE428985BD800E710CF /* ChatroomView.swift in Sources */,
+				4B496BFA28A0F0FC00EAD8A2 /* LikeCounter.swift in Sources */,
 				4BE04AE528985BD800E710CF /* ChatView.swift in Sources */,
+				4B496BF828A0F0FC00EAD8A2 /* DirectMessagesModel.swift in Sources */,
 				4BE04AE628985BD800E710CF /* ConfigView.swift in Sources */,
 				4BE04AE728985BD800E710CF /* CreateAccountView.swift in Sources */,
 				4BE04AE828985BD800E710CF /* DirectMessagesView.swift in Sources */,
 				4BE04AE928985BD800E710CF /* DMChatView.swift in Sources */,
+				4B496C4828A0F15100EAD8A2 /* ProofOfWork.swift in Sources */,
 				4BE04AEA28985BD800E710CF /* DMView.swift in Sources */,
+				4B496C2A28A0F0FC00EAD8A2 /* ThreadModel.swift in Sources */,
 				4BE04AEB28985BD800E710CF /* EventActionBar.swift in Sources */,
 				4BE04AEC28985BD800E710CF /* EventDetailView.swift in Sources */,
+				4B496C3E28A0F15100EAD8A2 /* NostrRequest.swift in Sources */,
+				4B496C0E28A0F0FC00EAD8A2 /* EventRef.swift in Sources */,
 				4BE04AED28985BD800E710CF /* EventView.swift in Sources */,
 				4BE04AEE28985BD800E710CF /* FollowButtonView.swift in Sources */,
 				4BE04AEF28985BD800E710CF /* FollowingView.swift in Sources */,
@@ -780,69 +828,50 @@
 				4BE04AF128985BD800E710CF /* MainTabView.swift in Sources */,
 				4BE04AF228985BD800E710CF /* MentionView.swift in Sources */,
 				4BE04AF328985BD800E710CF /* NoteContentView.swift in Sources */,
+				4B496C1428A0F0FC00EAD8A2 /* Mentions.swift in Sources */,
+				4B496C1C28A0F0FC00EAD8A2 /* HomeModel.swift in Sources */,
+				4B496C0C28A0F0FC00EAD8A2 /* SearchModel.swift in Sources */,
 				4BE04AF428985BD800E710CF /* PostButton.swift in Sources */,
 				4BE04AF528985BD800E710CF /* PostView.swift in Sources */,
 				4BE04AF628985BD800E710CF /* PowView.swift in Sources */,
+				4B496C0028A0F0FC00EAD8A2 /* Contacts.swift in Sources */,
 				4BE04AF728985BD800E710CF /* ProfileName.swift in Sources */,
 				4BE04AF828985BD800E710CF /* ProfilePictureSelector.swift in Sources */,
 				4BE04AF928985BD800E710CF /* ProfilePicView.swift in Sources */,
+				4B496C0228A0F0FC00EAD8A2 /* Liked.swift in Sources */,
+				4B496C4028A0F15100EAD8A2 /* NostrLink.swift in Sources */,
+				4B496C4C28A0F15100EAD8A2 /* NostrEvent.swift in Sources */,
 				4BE04AFA28985BD800E710CF /* ProfileView.swift in Sources */,
+				4B496C2028A0F0FC00EAD8A2 /* LocalUserConfig.swift in Sources */,
 				4BE04AFB28985BD800E710CF /* PubkeyView.swift in Sources */,
 				4BE04AFC28985BD800E710CF /* ReplyQuoteView.swift in Sources */,
 				4BE04AFD28985BD800E710CF /* ReplyView.swift in Sources */,
+				4B496C1628A0F0FC00EAD8A2 /* SearchHomeModel.swift in Sources */,
 				4BE04AFE28985BD800E710CF /* SaveKeysView.swift in Sources */,
 				4BE04AFF28985BD800E710CF /* SearchHomeView.swift in Sources */,
+				4B496C1A28A0F0FC00EAD8A2 /* FollowersModel.swift in Sources */,
 				4BE04B0028985BD800E710CF /* SearchResultsView.swift in Sources */,
+				4B496C0828A0F0FC00EAD8A2 /* ActionBarModel.swift in Sources */,
+				4B496C4E28A0F15100EAD8A2 /* NostrMetadata.swift in Sources */,
 				4BE04B0128985BD800E710CF /* SearchView.swift in Sources */,
 				4BE04B0228985BD800E710CF /* SetupView.swift in Sources */,
 				4BE04B0328985BD800E710CF /* ThreadView.swift in Sources */,
+				4B496C0628A0F0FC00EAD8A2 /* EventsModel.swift in Sources */,
 				4BE04B0428985BD800E710CF /* TimelineView.swift in Sources */,
 				4BE04ADF28985BCF00E710CF /* MainView.swift in Sources */,
-				4BE04AD228985BC800E710CF /* NostrResponse.swift in Sources */,
-				4BE04AD328985BC800E710CF /* Nostr.swift in Sources */,
-				4BE04AD428985BC800E710CF /* NostrRequest.swift in Sources */,
-				4BE04AD528985BC800E710CF /* NostrLink.swift in Sources */,
-				4BE04AD628985BC800E710CF /* NostrFilter.swift in Sources */,
-				4BE04AD728985BC800E710CF /* RelayPool.swift in Sources */,
-				4BE04AD828985BC800E710CF /* RelayConnection.swift in Sources */,
-				4BE04AD928985BC800E710CF /* ProofOfWork.swift in Sources */,
-				4BE04ADA28985BC800E710CF /* NostrKind.swift in Sources */,
-				4BE04ADB28985BC800E710CF /* NostrEvent.swift in Sources */,
-				4BE04ADC28985BC800E710CF /* NostrMetadata.swift in Sources */,
-				4BE04ADD28985BC800E710CF /* Profiles.swift in Sources */,
-				4BE04ADE28985BC800E710CF /* Relay.swift in Sources */,
 				4BE04AD128985BC100E710CF /* Universal_App.swift in Sources */,
-				4BE04AB728985BB400E710CF /* ActionBarModel.swift in Sources */,
-				4BE04AB828985BB400E710CF /* Contacts.swift in Sources */,
-				4BE04AB928985BB400E710CF /* CreateAccountModel.swift in Sources */,
-				4BE04ABA28985BB400E710CF /* DamusState.swift in Sources */,
-				4BE04ABB28985BB400E710CF /* DirectMessageModel.swift in Sources */,
-				4BE04ABC28985BB400E710CF /* DirectMessagesModel.swift in Sources */,
-				4BE04ABD28985BB400E710CF /* EventRef.swift in Sources */,
-				4BE04ABE28985BB400E710CF /* EventsModel.swift in Sources */,
-				4BE04ABF28985BB400E710CF /* FollowersModel.swift in Sources */,
-				4BE04AC028985BB400E710CF /* FollowingModel.swift in Sources */,
-				4BE04AC128985BB400E710CF /* FollowTarget.swift in Sources */,
-				4BE04AC228985BB400E710CF /* HomeModel.swift in Sources */,
-				4BE04AC328985BB400E710CF /* LikeCounter.swift in Sources */,
-				4BE04AC428985BB400E710CF /* Liked.swift in Sources */,
-				4BE04AC528985BB400E710CF /* LocalUserConfig.swift in Sources */,
-				4BE04AC628985BB400E710CF /* Mentions.swift in Sources */,
-				4BE04AC728985BB400E710CF /* Post.swift in Sources */,
-				4BE04AC828985BB400E710CF /* PostBlock.swift in Sources */,
-				4BE04AC928985BB400E710CF /* ProfileModel.swift in Sources */,
-				4BE04ACA28985BB400E710CF /* ProfileUpdate.swift in Sources */,
-				4BE04ACB28985BB400E710CF /* Reply.swift in Sources */,
-				4BE04ACC28985BB400E710CF /* ReplyMap.swift in Sources */,
-				4BE04ACD28985BB400E710CF /* SearchHomeModel.swift in Sources */,
-				4BE04ACE28985BB400E710CF /* SearchModel.swift in Sources */,
-				4BE04ACF28985BB400E710CF /* SignalModel.swift in Sources */,
-				4BE04AD028985BB400E710CF /* ThreadModel.swift in Sources */,
-				4BE04AB628985B9C00E710CF /* TextFieldAlert.swift in Sources */,
-				4B59C79F289484EA0063304F /* Article.swift in Sources */,
+				4B496C2828A0F0FC00EAD8A2 /* ProfileModel.swift in Sources */,
+				4B496C4A28A0F15100EAD8A2 /* NostrKind.swift in Sources */,
+				4B496BF628A0F0FC00EAD8A2 /* PostBlock.swift in Sources */,
+				4B496C4428A0F15100EAD8A2 /* RelayPool.swift in Sources */,
+				4B496C4628A0F15100EAD8A2 /* RelayConnection.swift in Sources */,
+				4B496C1828A0F0FC00EAD8A2 /* Article.swift in Sources */,
 				4B4CC30728938D61001F6FB4 /* SideBar.swift in Sources */,
+				4B496C5228A0F15100EAD8A2 /* Relay.swift in Sources */,
+				4B496C2428A0F0FC00EAD8A2 /* ProfileUpdate.swift in Sources */,
 				4B59C79E289484CE0063304F /* ArticleView.swift in Sources */,
 				4B59C79D2894849A0063304F /* ArticlesListView.swift in Sources */,
+				4B496C0428A0F0FC00EAD8A2 /* SignalModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1116,7 +1145,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jb55/secp256k1.swift";
 			requirement = {
-				branch = main;
+				branch = 40b4b38b3b1c83f7088c76189a742870e0ca06a9;
 				kind = branch;
 			};
 		};
