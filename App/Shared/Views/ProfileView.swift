@@ -80,7 +80,7 @@ struct ProfileView: View {
         let dmview = DMChatView(damus_state: damus_state, pubkey: profile.pubkey)
             .environmentObject(dm_model)
         return NavigationLink(destination: dmview) {
-            Label("", systemImage: "text.bubble")
+            Label("DMButton", systemImage: "text.bubble")
         }
         .buttonStyle(PlainButtonStyle())
     }
@@ -97,6 +97,12 @@ struct ProfileView: View {
                 DMButton
                     .padding([.trailing], 20)
                 FollowButtonView(target: profile.get_follow_target(), follow_state: damus_state.contacts.follow_state(profile.pubkey))
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
+
             }
             #else
             HStack(alignment: .center) {
@@ -158,10 +164,10 @@ struct ProfileView: View {
             }
             .frame(maxHeight: .infinity, alignment: .topLeading)
         }
-        .padding([.leading, .trailing], 6)
+        .padding([.leading, .trailing, .top, .bottom], 100) //This make more sense on how it is being layed out now!!
         .frame(maxWidth: .infinity, alignment: .topLeading)
         #if !os(macOS)
-        .navigationBarTitle("Profile")
+        .navigationBarTitle("")
         #endif
         .onAppear() {
             profile.subscribe()
@@ -188,18 +194,23 @@ struct ProfileView_Previews: PreviewProvider {
 func test_damus_state() -> DamusState {
     let pubkey = "3efdaebb1d8923ebd99c9e7ace3b4194ab45512e2be79c1b7d68d9243e0d2681"
     #if !os(macOS)
+
     let damus = DamusState(pool: RelayPool(), keypair: Keypair(pubkey: pubkey, privkey: "privkey"), likes: EventCounter(our_pubkey: pubkey), boosts: EventCounter(our_pubkey: pubkey), contacts: Contacts(), tips: TipCounter(our_pubkey: pubkey), image_cache: ImageCache(), profiles: Profiles(), dms: DirectMessagesModel())
     
     let prof = Profile(name: "damus", display_name: "Damus", about: "iOS app!", picture: "https://damus.io/img/logo.png")
     let tsprof = TimestampedProfile(profile: prof, timestamp: 0)
     damus.profiles.add(id: pubkey, profile: tsprof)
+
     #else
+
     let damus = DamusState(pool: RelayPool(), keypair: Keypair(pubkey: pubkey, privkey: "privkey"), likes: EventCounter(our_pubkey: pubkey), boosts: EventCounter(our_pubkey: pubkey), contacts: Contacts(), tips: TipCounter(our_pubkey: pubkey), profiles: Profiles(), dms: DirectMessagesModel())
     
     let prof = Profile(name: "damus", display_name: "Damus", about: "iOS app!", picture: "https://damus.io/img/logo.png")
     let tsprof = TimestampedProfile(profile: prof, timestamp: 0)
     damus.profiles.add(id: pubkey, profile: tsprof)
+
     #endif
+
     return damus
 }
 
