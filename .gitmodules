@@ -4,3 +4,9 @@
 [submodule "damus.swift"]
 	path = damus.swift
 	url = github.com:RandyMcMillan/damus.swift.git
+[submodule "damus"]
+	path = damus
+	url = ./damus
+[submodule "nostril"]
+	path = nostril
+	url = ./nostril
