@@ -20,14 +20,15 @@ struct ThreadView: View {
             if is_chatroom {
                 ChatroomView(damus: damus)
                     #if !os(macOS)
-                    .navigationBarTitle("Chat")
+                    .navigationBarTitle("ThreadView Chat")
                     #endif
                     .environmentObject(thread)
             } else {
                 EventDetailView(damus: damus, thread: thread)
                     #if !os(macOS)
-                    .navigationBarTitle("Thread")
+                    .navigationBarTitle("EventDetailView Thread")
                     #endif
+                    .navigationTitle("EventDetailView Thread")
                     .environmentObject(thread)
             }
             
@@ -37,7 +38,7 @@ struct ThreadView: View {
             }
              */
         }
-        .padding([.leading, .trailing], 6)
+        .padding([.leading, .trailing], 200)
         .onReceive(NotificationCenter.default.publisher(for: .switched_timeline)) { n in
             dismiss()
         }
