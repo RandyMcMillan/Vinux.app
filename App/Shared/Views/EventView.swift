@@ -79,7 +79,7 @@ struct EventView: View {
                     
                     NavigationLink(destination: booster_profile) {
                         HStack {
-                            Label("", systemImage: "arrow.2.squarepath")
+                            Label("HStack Label", systemImage: "arrow.2.squarepath")
                                 .foregroundColor(Color.gray)
                             ProfileName(pubkey: event.pubkey, profile: damus.profiles.lookup(id: event.pubkey))
                                 .foregroundColor(Color.gray)
@@ -130,7 +130,29 @@ struct EventView: View {
                 }
 
                 NoteContentView(privkey: damus.keypair.privkey, event: event, profiles: damus.profiles, content: content)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    #if !os(macOS)
+                    .frame(
+                        minWidth:    UIScreen.main.bounds.width*0.00,
+                        idealWidth:  UIScreen.main.bounds.width*0.10,
+                        maxWidth:    UIScreen.main.bounds.width*0.50,
+                        minHeight:   UIScreen.main.bounds.width*0.10,
+                        idealHeight: UIScreen.main.bounds.width*0.20,
+                        maxHeight:   UIScreen.main.bounds.width*0.50,
+                        alignment:   .leading
+                    )
+                    #else
+                    .frame(
+                        // minWidth:    UIScreen.main.bounds.width*0.00,
+                        // idealWidth:  UIScreen.main.bounds.width*0.10,
+                        // maxWidth:    UIScreen.main.bounds.width*0.50,
+                        // minHeight:   UIScreen.main.bounds.width*0.10,
+                        // idealHeight: UIScreen.main.bounds.width*0.20,
+                        // maxHeight:   UIScreen.main.bounds.width*0.50,
+                        alignment:   .leading
+                    )
+                    #endif
+                    //.frame(maxWidth: UIScreen.main.bounds.width*0.80, alignment: .topLeading)
+                    // .frame(maxWidth: .infinity, alignment: .leading)
                     .textSelection(.enabled)
 
                 if has_action_bar {
