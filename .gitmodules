@@ -6,7 +6,10 @@
 	url = github.com:RandyMcMillan/damus.swift.git
 [submodule "damus"]
 	path = damus
-	url = ./damus
+	url = github.com:RandyMcMillan/damus.git
 [submodule "nostril"]
 	path = nostril
 	url = ./nostril
+[submodule "nips"]
+	path = nips
+	url = https://github.com/nostr-protocol/nips.git
