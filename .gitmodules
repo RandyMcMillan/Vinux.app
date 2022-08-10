@@ -9,7 +9,7 @@
 	url = github.com:RandyMcMillan/damus.git
 [submodule "nostril"]
 	path = nostril
-	url = ./nostril
+	url = git@github.com:RandyMcMillan/nostril.git
 [submodule "nips"]
 	path = nips
 	url = https://github.com/nostr-protocol/nips.git
