@@ -6,15 +6,15 @@
 	<dict>
 		<key>Resources/AppIcon.icns</key>
 		<data>
-		bM3FAvG05XVYrZeytE9+f5lAFx4=
+		0guZn0/LkJAF72F2pprKnqje0Zc=
 		</data>
 		<key>Resources/Assets.car</key>
 		<data>
-		fzSjg9ZUHbLGLMexSAdUKQKMWXQ=
+		QVsdyHhdExV7t+raF9jg7OIkSoI=
 		</data>
-		<key>Resources/Info-macos.plist</key>
+		<key>Resources/Info-ios.plist</key>
 		<data>
-		Al22WaOfbV1UuSw0fua6Nq+JVHQ=
+		KJIaNE5FtJbYYg2DmKdAcIsyRsQ=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -23,21 +23,21 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hd3Mld4JarD/ifFS8URaGAcoMxu0K7QaTkYWhDC8uY4=
+			4kIzs8aeJVu7IQ4eAtKYHwzHWmO99LYEXBj0ou7mMh0=
 			</data>
 		</dict>
 		<key>Resources/Assets.car</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			UqqIFHzHpw/omwitH6tsxrocUdcVJNkEoDu3AWqavCQ=
+			tJxRxG1gZUYTLg5LJB5ssK3hn/fGn9HW85MeGiu7+Jk=
 			</data>
 		</dict>
-		<key>Resources/Info-macos.plist</key>
+		<key>Resources/Info-ios.plist</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			/9StFd4Ejs1mAEPsumw03SS8nWXk+Cd21+oZj2RzV0g=
+			J1Fm0Y9VyK7z8uNQql/JITpY1vBQ+mF7Rx/GGFovkqk=
 			</data>
 		</dict>
 	</dict>
