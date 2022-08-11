@@ -62,7 +62,8 @@ struct ChatView: View {
     }
     
     var ReplyDescription: some View {
-        Text("\(reply_desc(profiles: damus_state.profiles, event: event))")
+        Text("ReplyDescription in ChatView.swift")
+        //Text("\(reply_desc(profiles: damus_state.profiles, event: event))")
             .font(.footnote)
             .foregroundColor(.gray)
             .frame(alignment: .leading)
@@ -72,7 +73,9 @@ struct ChatView: View {
     
     var body: some View {
         HStack {
+            Text("ChatView HStack")
             VStack {
+            Text("ChatView VStack")
                 if is_active || just_started {
                     #if !os(macOS)
                     ProfilePicView(pubkey: event.pubkey, size: 32, highlight: is_active ? .main : .none, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
@@ -87,10 +90,13 @@ struct ChatView: View {
             
             Group {
                 VStack(alignment: .leading) {
+                    Text("ChatView Group VStack")
+                    // Displays the comments for each
                     if just_started {
                         HStack {
-                            ProfileName(pubkey: event.pubkey, profile: damus_state.profiles.lookup(id: event.pubkey))
-                                .foregroundColor(colorScheme == .dark ?  id_to_color(event.pubkey) : Color.black)
+                            Text("ChatView>Group>VStack>HStack")
+                            //ProfileName(pubkey: event.pubkey, profile: damus_state.profiles.lookup(id: event.pubkey))
+                              //  .foregroundColor(colorScheme == .dark ?  id_to_color(event.pubkey) : Color.black)
                                 //.shadow(color: Color.black, radius: 2)
                             Text("\(format_relative_time(event.created_at))")
                                     .foregroundColor(.gray)
@@ -117,22 +123,23 @@ struct ChatView: View {
                     }
 
                     //Spacer()
-                }
+                }// End VStack
                 .padding(6)
-            }
+            }// End Group
             .padding([.leading], 2)
             .background(Color.secondary.opacity(0.04))
             .cornerRadius(8.0)
-            
+            .border(Color.red)
+
             //.border(Color.red)
-        }
+        } // End HStack
         .contentShape(Rectangle())
         .id(event.id)
         .frame(minHeight: just_started ? PFP_SIZE : 0)
         .padding([.bottom], next_ev == nil ? 30 : 0)
-        //.border(Color.green)
+        .border(Color.green)
         
-    }
+    }// End body Some View
     
 }
 
