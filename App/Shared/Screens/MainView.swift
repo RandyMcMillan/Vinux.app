@@ -20,20 +20,53 @@ struct MainView: View {
         // MARK: - UI Elements
         @ViewBuilder
         var body: some View {
+
+        Group {
+            if let kp = keypair, !needs_setup {
+
             NavigationView {
+
+
                 #if os(iOS)
-                if horizontalSizeClass == .compact {
+
+
+                if horizontalSizeClass == .compact
+                {
+
                     TabBar()
-                } else {
-                    SideBar()
+
                 }
-                #else
+                else
+                {
+
+                    SideBar()
+
+                }
+
+
+                #else // not iOS
+
+
                 SideBar()
                 ArticlesListView(articles: techArticles)
+
+
                 #endif
+            }//End NavigationView
+
+            } else {
+
+                SetupView()
+                    .onReceive(handle_notify(.login)) { notif in
+                        needs_setup = false
+                        keypair = get_saved_keypair()
+                    }
+                Text("MainView.swift @ViewBulder after SetupView()")
             }
-        }
-    }
+
+            }// End Group
+        }//End body View
+    }// End MainView View
 
     struct MainView_Previews: PreviewProvider {
         static var previews: some View {
