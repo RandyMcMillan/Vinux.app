@@ -46,7 +46,8 @@ struct LoginView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            DamusGradient()
+            // BackNav()
+            // DamusGradient()
             VStack {
                 Text("Login")
                     .foregroundColor(.white)
@@ -92,8 +93,11 @@ struct LoginView: View {
             .padding()
         }
         #if !os(macOS)
+        .frame(minWidth: 300, idealWidth: 500, maxWidth: .infinity, minHeight: 300, idealHeight: .infinity, maxHeight: .infinity, alignment: .center)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
+        #else
+        // BackNav()
         #endif
     }
 }

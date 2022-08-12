@@ -23,20 +23,20 @@ struct CreateAccountView: View {
     }
     
     var body: some View {
-        ZStack(alignment: .top) {
-            DamusGradient()
-            
-            VStack {
+        VStack(alignment: .center) {
+            // DamusGradient()
                 Text("Create Account")
                     .font(.title.bold())
                     .foregroundColor(.white)
-                
+
+            ZStack {
+
                 ProfilePictureSelector(pubkey: account.pubkey)
                 
                 HStack(alignment: .top) {
                     VStack {
-                        Text("   ")
-                            .foregroundColor(.white)
+                        // Text("This is in CreateAccountView")
+                            // .foregroundColor(.white)
                     }
                     VStack {
                         SignupForm {
@@ -59,36 +59,45 @@ struct CreateAccountView: View {
                                 #endif
                             FormLabel("About", optional: true)
                             FormTextInput("Creator(s) of Bitcoin. Absolute legend.", text: $account.about)
-                            
                             FormLabel("Account ID")
                                 .onTapGesture {
                                     regen_key()
                                 }
-                            
                             KeyText($account.pubkey)
                                 .onTapGesture {
                                     regen_key()
                                 }
                         }
-                    }
-                }
-                
-                NavigationLink(destination: SaveKeysView(account: account), isActive: $is_done) {
-                    EmptyView()
-                }
                 DamusWhiteButton("Create") {
                     self.is_done = true
                 }
                 .padding()
+
+                    }
+                }
+                
+                NavigationLink(destination: SaveKeysView(account: account), isActive: $is_done) {
+                    // EmptyView()
+                }
+                .hidden()
+                //DamusWhiteButton("Create") {
+                  //  self.is_done = true
+                //}
+                //.padding()
             }
             .padding(.leading, 14.0)
             .padding(.trailing, 20.0)
             
         }
         #if !os(macOS)
-        .navigationBarTitleDisplayMode(.inline)
-        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.automatic)
+        // .navigationBarBackButtonHidden(false)
         .navigationBarItems(leading: BackNav())
+        #else
+        // EmptyView()
+        //BackNav()
+        //.navigationBarBackButtonHidden(false)
+        //.navigationViewStyle(navigationViewStyle(.automatic))
         #endif
 
     }

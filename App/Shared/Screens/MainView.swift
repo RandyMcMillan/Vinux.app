@@ -39,6 +39,7 @@ struct MainView: View {
                 {
 
                     SideBar()
+                    TabBar()
 
                 }
 
@@ -56,13 +57,14 @@ struct MainView: View {
             } else {
 
                 Text("MainView.swift @ViewBulder before SetupView()")
-                HStack {
+                ZStack {
                 Text("left")
                 SetupView()
                     .onReceive(handle_notify(.login)) { notif in
                         needs_setup = false
                         keypair = get_saved_keypair()
                     }
+
                 Text("right")
                 }
                 Text("MainView.swift @ViewBulder after SetupView()")
