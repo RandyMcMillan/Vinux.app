@@ -996,6 +996,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Universal App (iOS).entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M684FYCYG6;
 				ENABLE_PREVIEWS = YES;
@@ -1006,7 +1007,6 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = app.vinux.ios;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = app.vinux.macos;
 				PRODUCT_NAME = Vinux;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
@@ -1022,6 +1022,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = "Vinux.app (iOS)Release.entitlements";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M684FYCYG6;
 				ENABLE_PREVIEWS = YES;
