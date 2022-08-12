@@ -15,6 +15,7 @@ struct MainView: View {
         // MARK: - Properties
         #if os(iOS)
         @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+        @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
         #endif
 
         // MARK: - UI Elements
@@ -28,9 +29,7 @@ struct MainView: View {
 
 
                 #if os(iOS)
-
-
-                if horizontalSizeClass == .compact
+                if horizontalSizeClass == .compact //narrow screen
                 {
 
                     TabBar()
@@ -48,7 +47,7 @@ struct MainView: View {
 
 
                 SideBar()
-                ArticlesListView(articles: techArticles)
+                // ArticlesListView(articles: techArticles)
 
 
                 #endif
@@ -56,11 +55,16 @@ struct MainView: View {
 
             } else {
 
+                Text("MainView.swift @ViewBulder before SetupView()")
+                HStack {
+                Text("left")
                 SetupView()
                     .onReceive(handle_notify(.login)) { notif in
                         needs_setup = false
                         keypair = get_saved_keypair()
                     }
+                Text("right")
+                }
                 Text("MainView.swift @ViewBulder after SetupView()")
             }
 
@@ -125,7 +129,6 @@ struct MainView: View {
 //    }
 //}
 //
-//func needs_setup() -> Keypair? {
-//    return get_saved_keypair()
-//}
-//
+func needs_setup() -> Keypair? {
+    return get_saved_keypair()
+}
