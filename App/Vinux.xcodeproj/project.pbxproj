@@ -1005,7 +1005,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.bitcoincore.ios.vinux;
+				PRODUCT_BUNDLE_IDENTIFIER = app.vinux.ios;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = app.vinux.macos;
 				PRODUCT_NAME = Vinux;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
@@ -1030,7 +1031,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.bitcoincore.ios.vinux;
+				PRODUCT_BUNDLE_IDENTIFIER = app.vinux.ios;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = app.vinux.macos;
 				PRODUCT_NAME = Vinux;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
@@ -1047,7 +1049,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M684FYCYG6;
@@ -1058,7 +1060,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.bitcoincore.macos.vinux;
+				PRODUCT_BUNDLE_IDENTIFIER = app.vinux.macos;
 				PRODUCT_NAME = Vinux;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
@@ -1072,7 +1074,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = M684FYCYG6;
@@ -1083,7 +1085,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = dev.bitcoincore.macos.vinux;
+				PRODUCT_BUNDLE_IDENTIFIER = app.vinux.macos;
 				PRODUCT_NAME = Vinux;
 				SDKROOT = macosx;
 				SWIFT_VERSION = 5.0;
