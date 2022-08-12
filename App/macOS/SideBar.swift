@@ -16,14 +16,41 @@ enum NavigationItem {
 
 struct SideBar: View {
 
+    @State var keypair: Keypair? = get_saved_keypair();
+    @State var damus_state: DamusState? = nil
+    @State var profile_model: ProfileModel? = nil
+
     // MARK: - Properties
     @State var selection: Set<NavigationItem> = [.tech]
-    // @State var listStyle = DefaultListStyle()
     @State var listStyle = SidebarListStyle()
+
+#if !os(macOS)
+    var width:  CGFloat? = UIScreen.main.bounds.width
+    var height: CGFloat? = UIScreen.main.bounds.height
+    let screenSize = UIScreen.main.bounds
+#endif
 
     // MARK: - GUI Nav Entrypint
     @ViewBuilder
     var body: some View {
+
+        //print(self.view!.bounds.width)
+        // print(self.view!.bounds.height)
+
+        // print(self.frame.size.width)
+        // print(self.frame.size.height)
+
+
+        // detect if window appeared?
+        //if let window = self.view!.window {
+            // print(self.frame.origin)
+        //} else {
+            // print("The view is not in a window yet!")
+        //}
+        if let damus = self.damus_state {
+        let profile_model = ProfileModel(pubkey: keypair!.pubkey, damus: damus)
+        TinyProfileView(damus_state: damus_state!, profile: profile_model)
+        }
         List(selection: $selection) {
             NavigationLink(
                 destination: ArticlesListView(articles: techArticles),
