@@ -6,6 +6,65 @@
 //
 
 import SwiftUI
+import Introspect
+
+var numberFormatter = NumberFormatter()
+extension CGFloat {
+    var sf2:String {
+        get {
+            // numberFormatter.numberStyle.rawValue.formatted()// = NumberFormatStyleConfiguration.Precision.significantDigits(2)
+            numberFormatter.maximumSignificantDigits = 2
+            print(numberFormatter.string(for: self)!)
+            return numberFormatter.string(for: self)!
+        }
+    }
+}
+
+// class MainViewController: UIViewController {
+//
+//     // Screen width.
+//     func screenWidth() -> CGFloat {
+//         let x = CGFloat(5.23325)
+//         print("The value of x is \(x.sf2)")
+//         return UIScreen.main.bounds.width
+//     }
+//     // Screen height.
+//     func screenHeight() -> CGFloat {
+//         return UIScreen.main.bounds.height
+//     }
+//
+//     var textView:UITextView?
+//
+//     override func viewDidLoad() {
+//         super.viewDidLoad()
+//     }
+//
+//     override func viewWillAppear(_ animated: Bool) {
+//         super.viewWillAppear(animated)
+//
+//         determineMyDeviceOrientation()
+//     }
+//
+//     func determineMyDeviceOrientation()
+//     {
+//         if UIDevice.current.orientation.isLandscape {
+//             print("Device is in landscape mode")
+//         } else {
+//             print("Device is in portrait mode")
+//         }
+//     }
+//     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+//
+//         let _ = screenWidth()
+//         determineMyDeviceOrientation()
+//     }
+//
+//     override func didReceiveMemoryWarning() {
+//         super.didReceiveMemoryWarning()
+//         // Dispose of any resources that can be recreated.
+//     }
+//
+// }
 
 struct MainView: View {
 
@@ -52,7 +111,16 @@ struct MainView: View {
 
 
                 #endif
-            }//End NavigationView
+            }
+            //.introspectSplitViewController { controller in
+                  // some examples
+                  // controller.preferredSupplementaryColumnWidthFraction = 2
+                  // controller.preferredPrimaryColumnWidth = 180
+                  // controller.preferredDisplayMode = .twoBesideSecondary
+                  //controller.presentsWithGesture = false
+            //}
+
+
 
             } else {
 
