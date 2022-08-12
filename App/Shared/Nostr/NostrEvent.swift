@@ -479,7 +479,7 @@ func make_first_contact_event(keypair: Keypair) -> NostrEvent? {
     let rw_relay_info = RelayInfo(read: true, write: true)
     let relays: [String: RelayInfo] = ["wss://relay.damus.io": rw_relay_info]
     let relay_json = encode_json(relays)!
-    let damus_pubkey = "3efdaebb1d8923ebd99c9e7ace3b4194ab45512e2be79c1b7d68d9243e0d2681"
+    let damus_pubkey = "a34b99f22c790c4e36b2b3c2c35a36db06226e41c692fc82b8b56ac1c540c5bd"
     let tags = [
         ["p", damus_pubkey],
         ["p", keypair.pubkey] // you're a friend of yourself!

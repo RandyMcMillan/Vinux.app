@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 enum NavigationItem {
     case tech
@@ -48,17 +49,21 @@ struct SideBar: View {
             )
             .tag(NavigationItem.design)
         }
-        .navigationTitle("Articles")
+        .navigationTitle(String(keypair!.pubkey_bech32))
         .listStyle(listStyle)
+            #if !os(macOS)
         .frame(
-            // minWidth:    UIScreen.main.bounds.width*0.10,
-            // idealWidth:  UIScreen.main.bounds.width*0.33,
-            // maxWidth:    UIScreen.main.bounds.width*0.5,
-            // minHeight:   UIScreen.main.bounds.width*0.10,
-            // idealHeight: UIScreen.main.bounds.width*0.20,
-            // maxHeight:   UIScreen.main.bounds.width*0.50,
+            minWidth:    UIScreen.main.bounds.width*0.05,
+            idealWidth:  UIScreen.main.bounds.width*0.15,
+            maxWidth:    UIScreen.main.bounds.width*0.2,
+            minHeight:   UIScreen.main.bounds.width*0.10,
+            idealHeight: UIScreen.main.bounds.width*0.20,
+            maxHeight:   UIScreen.main.bounds.width*0.50,
             alignment:   .leading
             )
+            #else
+        .frame( minWidth: 100.0)
+            #endif
     }
 
 }
