@@ -17,7 +17,8 @@ struct SideBar: View {
 
     // MARK: - Properties
     @State var selection: Set<NavigationItem> = [.tech]
-    @State var listStyle = DefaultListStyle()
+    // @State var listStyle = DefaultListStyle()
+    @State var listStyle = SidebarListStyle()
 
     // MARK: - GUI Nav Entrypint
     @ViewBuilder
