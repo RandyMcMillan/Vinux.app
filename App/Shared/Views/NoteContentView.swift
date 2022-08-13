@@ -62,10 +62,6 @@ struct NoteContentView: View {
     }
 }
 
-
-// Mark - hashtag
-
-
 func hashtag_str(_ htag: String) -> String {
     return "[#\(htag)](nostr:hashtag:\(htag))"
 }
