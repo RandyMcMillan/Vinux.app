@@ -75,7 +75,7 @@ struct CreateAccountView: View {
 
                     }
                 }
-                
+
                 NavigationLink(destination: SaveKeysView(account: account), isActive: $is_done) {
                     // EmptyView()
                 }
