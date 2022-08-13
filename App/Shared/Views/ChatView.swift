@@ -14,6 +14,7 @@ struct ChatView: View {
     
     let damus_state: DamusState
     
+    @State var expand_reply: Bool = false
     @EnvironmentObject var thread: ThreadModel
     
     var just_started: Bool {
@@ -91,11 +92,10 @@ struct ChatView: View {
             Group {
                 VStack(alignment: .leading) {
                     Text("ChatView Group VStack")
-                    // Displays the comments for each
                     if just_started {
                         HStack {
                             Text("ChatView>Group>VStack>HStack")
-                            //ProfileName(pubkey: event.pubkey, profile: damus_state.profiles.lookup(id: event.pubkey))
+                            //ProfileName(pubkey: event.pubkey, profile: damus_state.profiles.lookup(id: event.pubkey), contacts: damus_state.contacts, show_friend_confirmed: true)
                               //  .foregroundColor(colorScheme == .dark ?  id_to_color(event.pubkey) : Color.black)
                                 //.shadow(color: Color.black, radius: 2)
                             Text("\(format_relative_time(event.created_at))")
@@ -105,18 +105,22 @@ struct ChatView: View {
                 
                     if let ref_id = thread.replies.lookup(event.id) {
                         if !is_reply_to_prev() {
-                            #if !os(macOS)
+#if !os(macOS)
                             ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
+                                .frame(maxHeight: expand_reply ? nil : 100)
                                 .environmentObject(thread)
-                            #else
-                            ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, profiles: damus_state.profiles)
-                            #endif
+                                .onTapGesture {
+                                    expand_reply = !expand_reply
+                                }
+#else
+                                ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, profiles: damus_state.profiles)
+#endif
                             ReplyDescription
                         }
                     }
-
-                    NoteContentView(privkey: damus_state.keypair.privkey, event: event, profiles: damus_state.profiles, content: event.content)
                     
+                    NoteContentView(privkey: damus_state.keypair.privkey, event: event, profiles: damus_state.profiles, content: event.content)
+
                     if is_active || next_ev == nil || next_ev!.pubkey != event.pubkey {
                         let bar = make_actionbar_model(ev: event, damus: damus_state)
                         EventActionBar(damus_state: damus_state, event: event, bar: bar)
