@@ -55,46 +55,15 @@ struct ProfilePicView: View {
             .padding(2)
     }
     
-    func ProfilePic(_ url: URL) -> some View {
-        #if !os(macOS)
-        let pub = load_image(cache: image_cache, from: url)
-        #endif
-        return Group {
+    var MainContent: some View {
+        Group {
             if let img = self.img {
                 img
                     .resizable()
-                        #if !os(macOS)
-                    .frame(
-                        width: UIScreen.main.bounds.width*0.10,
-                        height:  UIScreen.main.bounds.height*0.10
-                    )
-                        #else
-                    .frame(
-                        width: 100,
-                        height: 100
-                        )
-                        #endif
+                    .frame(width: size, height: size)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(highlight_color(highlight), lineWidth: pfp_line_width(highlight)))
-                    .padding(0)
-            } else {
-                Placeholder
-            }
-        }
-        #if !os(macOS)
-        .onReceive(pub) { mimg in
-            if let img = mimg {
-                self.img = Image(uiImage: img)
-            }
-        }
-        #endif
-    }
-    
-    var MainContent: some View {
-        Group {
-            let picture = picture ?? profiles.lookup(id: pubkey)?.picture ?? "https://robohash.org/\(pubkey).png?set=set3"
-            if let pic_url = URL(string: picture) {
-                ProfilePic(pic_url)
+                    .padding(2)
             } else {
                 Placeholder
             }
@@ -103,14 +72,33 @@ struct ProfilePicView: View {
     
     var body: some View {
         MainContent
+            .task {
+                let pic = picture ?? profiles.lookup(id: pubkey)?.picture ?? robohash(pubkey)
+                guard let url = URL(string: pic) else {
+                    return
+                }
+                let pfp_key = pfp_cache_key(url: url)
+                let ui_img = await image_cache.lookup_or_load_image(key: pfp_key, url: url)
+                
+                if let ui_img = ui_img {
+                    self.img = Image(uiImage: ui_img)
+                    return
+                }
+            }
             .onReceive(handle_notify(.profile_updated)) { notif in
                 let updated = notif.object as! ProfileUpdate
-                if updated.pubkey != pubkey {
+
+                guard updated.pubkey == self.pubkey else {
                     return
                 }
                 
-                if updated.profile.picture != picture {
-                    picture = updated.profile.picture
+                if let pic = updated.profile.picture {
+                    if let url = URL(string: pic) {
+                        let pfp_key = pfp_cache_key(url: url)
+                        if let ui_img = image_cache.lookup_sync(key: pfp_key) {
+                            self.img = Image(uiImage: ui_img)
+                        }
+                    }
                 }
             }
     }
