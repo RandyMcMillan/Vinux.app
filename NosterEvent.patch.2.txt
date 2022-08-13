@@ -1,0 +1,119 @@
+diff --git a/App/Shared/Nostr/NostrEvent.swift b/App/Shared/Nostr/NostrEvent.swift
+index b6d361f..2123be4 100755
+--- a/App/Shared/Nostr/NostrEvent.swift
++++ b/App/Shared/Nostr/NostrEvent.swift
+@@ -45,7 +45,11 @@ struct EventId: Identifiable, CustomStringConvertible {
+     }
+ }
+ 
+-class NostrEvent: Codable, Identifiable, CustomStringConvertible {
++class NostrEvent: Codable, Identifiable, CustomStringConvertible, Equatable {
++    static func == (lhs: NostrEvent, rhs: NostrEvent) -> Bool {
++        return lhs.id == rhs.id
++    }
++    
+     var id: String
+     var sig: String
+     var tags: [[String]]
+@@ -61,31 +65,31 @@ class NostrEvent: Codable, Identifiable, CustomStringConvertible {
+     let created_at: Int64
+     let kind: Int
+     let content: String
+-
++    
+     var is_textlike: Bool {
+         return kind == 1 || kind == 42
+     }
+-
++    
+     var too_big: Bool {
+         return self.content.count > 32000
+     }
+-
++    
+     var should_show_event: Bool {
+         return !too_big
+     }
+-
++    
+     var is_valid_id: Bool {
+         return calculate_event_id(ev: self) == self.id
+     }
+-
++    
+     var is_valid: Bool {
+         return validity == .ok
+     }
+-
++    
+     lazy var validity: ValidationResult = {
+         return validate_event(ev: self)
+     }()
+-
++    
+     private var _blocks: [Block]? = nil
+     func blocks(_ privkey: String?) -> [Block] {
+         if let bs = _blocks {
+@@ -120,18 +124,18 @@ class NostrEvent: Codable, Identifiable, CustomStringConvertible {
+         guard let key = privkey else {
+             return nil
+         }
+-
++        
+         guard let our_pubkey = privkey_to_pubkey(privkey: key) else {
+             return nil
+         }
+-
++        
+         var pubkey = self.pubkey
+         // This is our DM, we need to use the pubkey of the person we're talking to instead
+         if our_pubkey == pubkey {
+             guard let refkey = self.referenced_pubkeys.first else {
+                 return nil
+             }
+-
++            
+             pubkey = refkey.ref_id
+         }
+ 
+@@ -145,7 +149,7 @@ class NostrEvent: Codable, Identifiable, CustomStringConvertible {
+         if known_kind == .dm {
+             return decrypted(privkey: privkey) ?? "*failed to decrypt content*"
+         }
+-
++        
+         switch validity {
+         case .ok:
+             return content
+@@ -710,7 +714,7 @@ func aes_operation(operation: CCOperation, data: [UInt8], iv: [UInt8], shared_se
+ func validate_event(ev: NostrEvent) -> ValidationResult {
+     let raw_id = sha256(calculate_event_commitment(ev: ev))
+     let id = hex_encode(raw_id)
+-
++    
+     if id != ev.id {
+         return .bad_id
+     }
+@@ -719,11 +723,11 @@ func validate_event(ev: NostrEvent) -> ValidationResult {
+     guard var sig64 = hex_decode(ev.sig)?.bytes else {
+         return .bad_sig
+     }
+-
++    
+     guard var ev_pubkey = hex_decode(ev.pubkey)?.bytes else {
+         return .bad_sig
+     }
+-
++    
+     let ctx = secp256k1.Context.raw
+     var xonly_pubkey = secp256k1_xonly_pubkey.init()
+     var ok = secp256k1_xonly_pubkey_parse(ctx, &xonly_pubkey, &ev_pubkey) != 0
+@@ -731,7 +735,7 @@ func validate_event(ev: NostrEvent) -> ValidationResult {
+         return .bad_sig
+     }
+     var raw_id_bytes = raw_id.bytes
+-
++    
+     ok = secp256k1_schnorrsig_verify(ctx, &sig64, &raw_id_bytes, raw_id.count, &xonly_pubkey) > 0
+     return ok ? .ok : .bad_sig
+ }
