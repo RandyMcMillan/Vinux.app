@@ -564,7 +564,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3AE332492582A02B00FBDB3E /* Build configuration list for PBXNativeTarget "Vinux (macOS)" */;
 			buildPhases = (
-				4BDBFF1528A1AAFC00DDA935 /* ShellScript */,
+				4BDBFF1528A1AAFC00DDA935 /* Build Shared/AppInfo.swift */,
 				3AE332362582A02B00FBDB3E /* Sources */,
 				3AE332372582A02B00FBDB3E /* Frameworks */,
 				3AE332382582A02B00FBDB3E /* Resources */,
@@ -648,7 +648,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4BDBFF1528A1AAFC00DDA935 /* ShellScript */ = {
+		4BDBFF1528A1AAFC00DDA935 /* Build Shared/AppInfo.swift */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -657,13 +657,14 @@
 			);
 			inputPaths = (
 			);
+			name = "Build Shared/AppInfo.swift";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\n\necho \"$fileContent\" > /Users/Shared/Vinux.app/App/Shared/AppInfo.swift\n";
+			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\n\necho \"$fileContent\" > Shared/AppInfo.swift\n";
 		};
 		4BDBFF1628A1AB1A00DDA935 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
