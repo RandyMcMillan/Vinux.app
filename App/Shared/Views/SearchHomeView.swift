@@ -15,25 +15,33 @@ struct SearchHomeView: View {
     
     var SearchInput: some View {
         ZStack(alignment: .leading) {
-            TextField("", text: $search)
-                .padding(5)
-                .padding(.leading, 35)
-                #if !os(macOS)
-                .textInputAutocapitalization(.never)
-                #endif
-                .disableAutocorrection(true)
+            HStack{
+                TextField("", text: $search)
+                    .padding(5)
+                    .padding(.leading, 35)
+#if !os(macOS)
+                    .textInputAutocapitalization(.never)
+#endif
+                Label("", systemImage: "xmark.square")
+                    .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 10.0))
+                    .opacity((search == "") ? 0.0 : 1.0)
+                    .onTapGesture {
+                        self.search = ""
+                    }
+            }
+                
             Label("", systemImage: "magnifyingglass")
                 .padding(.leading, 10)
         }
         .background {
             RoundedRectangle(cornerRadius: 20)
-                .foregroundColor(.gray.opacity(0.2))
+            .foregroundColor(.gray.opacity(0.2))
         }
         .padding()
     }
     
     var GlobalContent: some View {
-        TimelineView(events: $model.events, loading: $model.loading, damus: damus_state)
+        TimelineView(events: $model.events, loading: $model.loading, damus: damus_state, show_friend_icon: true)
     }
     
     var SearchContent: some View {
@@ -53,7 +61,7 @@ struct SearchHomeView: View {
     var body: some View {
         VStack {
             SearchInput
-            // GlobalContent
+            
             MainContent
         }
         .onChange(of: search) { s in
@@ -74,7 +82,7 @@ struct SearchHomeView_Previews: PreviewProvider {
         let state = test_damus_state()
         SearchHomeView(
             damus_state: state,
-            model: SearchHomeModel(pool: state.pool)
+            model: SearchHomeModel(damus_state: state)
         )
     }
 }
