@@ -18,22 +18,19 @@ struct ProfilePictureSelector: View {
                 .font(.title)
                 .foregroundColor(.white)
              */
-            
-            #if !os(macOS)
-            ProfilePicView(pubkey: pubkey,
-                           size: 80.0,
-                           highlight: highlight,
-                           image_cache: ImageCache(),
-                           profiles: Profiles()
-            )
-            #endif
+
+#if !os(macOS)
+            ProfilePicView(pubkey: pubkey, size: 80.0, highlight: highlight, image_cache: ImageCache(), profiles: Profiles())
+#else
+            ProfilePicView(pubkey: pubkey, size: 80.0, highlight: highlight, profiles: Profiles())
+#endif
         }
     }
 }
 
 struct ProfilePictureSelector_Previews: PreviewProvider {
     static var previews: some View {
-        let test_pubkey = "ff48854ac6555fed8e439ebb4fa2d928410e0eef13fa41164ec45aaaa132d846"
+        let test_pubkey = "7bc0ff3de7b2205ed8bc366f7657138eacb5164d43d9580b8f5b47b7e6a7c235"
         ProfilePictureSelector(pubkey: test_pubkey)
     }
 }
