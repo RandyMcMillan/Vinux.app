@@ -58,6 +58,13 @@ func bech32_pubkey(_ pubkey: String) -> String? {
     return bech32_encode(hrp: "npub", bytes)
 }
 
+func bech32_note_id(_ evid: String) -> String? {
+    guard let bytes = hex_decode(evid) else {
+        return nil
+    }
+    return bech32_encode(hrp: "note", bytes)
+}
+
 func generate_new_keypair() -> Keypair {
     let key = try! secp256k1.Signing.PrivateKey()
     let privkey = hex_encode(key.rawRepresentation)
@@ -84,13 +91,22 @@ func save_privkey(privkey: String) {
     UserDefaults.standard.set(privkey, forKey: "privkey")
 }
 
-func clear_privkey() {
+func clear_saved_privkey() {
     UserDefaults.standard.removeObject(forKey: "privkey")
+}
+
+func clear_saved_pubkey() {
+    UserDefaults.standard.removeObject(forKey: "pubkey")
 }
 
 func save_keypair(pubkey: String, privkey: String) {
     save_pubkey(pubkey: pubkey)
     save_privkey(privkey: privkey)
+}
+
+func clear_keypair() {
+    clear_saved_privkey()
+    clear_saved_pubkey()
 }
 
 func get_saved_keypair() -> Keypair? {
