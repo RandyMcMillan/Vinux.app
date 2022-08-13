@@ -1,0 +1,13 @@
+diff --git a/App/Shared/Nostr/NostrEvent.swift b/App/Shared/Nostr/NostrEvent.swift
+index d3135aa..2123be4 100755
+--- a/App/Shared/Nostr/NostrEvent.swift
++++ b/App/Shared/Nostr/NostrEvent.swift
+@@ -174,7 +174,7 @@ class NostrEvent: Codable, Identifiable, CustomStringConvertible, Equatable {
+     }
+ 
+     private func get_referenced_ids(key: String) -> [ReferencedId] {
+-        return damus.get_referenced_ids(tags: self.tags, key: key)
++        return Vinux.get_referenced_ids(tags: self.tags, key: key)
+     }
+ 
+     public func is_root_event() -> Bool {
