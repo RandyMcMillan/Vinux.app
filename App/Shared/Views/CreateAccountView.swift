@@ -23,20 +23,20 @@ struct CreateAccountView: View {
     }
     
     var body: some View {
-        VStack(alignment: .center) {
-            // DamusGradient()
+        ZStack(alignment: .top) {
+            DamusGradient()
+            
+            VStack {
                 Text("Create Account")
                     .font(.title.bold())
                     .foregroundColor(.white)
-
-            ZStack {
-
+                
                 ProfilePictureSelector(pubkey: account.pubkey)
                 
                 HStack(alignment: .top) {
                     VStack {
-                        // Text("This is in CreateAccountView")
-                            // .foregroundColor(.white)
+                        Text("   ")
+                            .foregroundColor(.white)
                     }
                     VStack {
                         SignupForm {
@@ -47,22 +47,24 @@ struct CreateAccountView: View {
                                     .padding(.leading, -25.0)
                                 
                                 FormTextInput("satoshi", text: $account.nick_name)
-                                #if !os(macOS)
+#if !os(macOS)
                                     .textInputAutocapitalization(.never)
-                                #endif
+#endif
                             }
                             
                             FormLabel("Display Name", optional: true)
                             FormTextInput("Satoshi Nakamoto", text: $account.real_name)
-                                #if !os(macOS)
+#if !os(macOS)
                                 .textInputAutocapitalization(.words)
-                                #endif
+#endif
                             FormLabel("About", optional: true)
                             FormTextInput("Creator(s) of Bitcoin. Absolute legend.", text: $account.about)
+                            
                             FormLabel("Account ID")
                                 .onTapGesture {
                                     regen_key()
                                 }
+                            
                             KeyText($account.pubkey)
                                 .onTapGesture {
                                     regen_key()
@@ -89,17 +91,12 @@ struct CreateAccountView: View {
             .padding(.trailing, 20.0)
             
         }
-        #if !os(macOS)
-        .navigationBarTitleDisplayMode(.automatic)
-        // .navigationBarBackButtonHidden(false)
+#if !os(macOS)
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
-        #else
-        // EmptyView()
-        //BackNav()
-        //.navigationBarBackButtonHidden(false)
-        //.navigationViewStyle(navigationViewStyle(.automatic))
-        #endif
-
+#else
+#endif
     }
 }
 
