@@ -47,7 +47,7 @@ struct LoginView: View {
     var body: some View {
         ZStack(alignment: .top) {
             // BackNav()
-            // DamusGradient()
+            DamusGradient()
             VStack {
                 Text("Login")
                     .foregroundColor(.white)
