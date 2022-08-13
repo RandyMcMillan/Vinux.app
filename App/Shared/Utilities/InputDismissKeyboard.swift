@@ -16,11 +16,11 @@ public extension View {
 
 public struct DismissKeyboardOnTap: ViewModifier {
     public func body(content: Content) -> some View {
-        #if !os(macOS)
+#if !os(macOS)
         return content.gesture(tapGesture)
-        #else
+#else
         return content
-        #endif
+#endif
     }
 
     private var tapGesture: some Gesture {
@@ -38,5 +38,7 @@ func end_editing() {
       .first?.windows
       .filter {$0.isKeyWindow}
       .first?.endEditing(true)
-    #endif
+#else
+    // TODO: better macOS support
+#endif
 }
