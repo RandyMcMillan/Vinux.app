@@ -42,31 +42,35 @@ struct EventView: View {
     let has_action_bar: Bool
     let damus: DamusState
     let pubkey: String
+    let show_friend_icon: Bool
 
     @EnvironmentObject var action_bar: ActionBarModel
 
-    init(event: NostrEvent, highlight: Highlight, has_action_bar: Bool, damus: DamusState) {
+    init(event: NostrEvent, highlight: Highlight, has_action_bar: Bool, damus: DamusState, show_friend_icon: Bool) {
         self.event = event
         self.highlight = highlight
         self.has_action_bar = has_action_bar
         self.damus = damus
         self.pubkey = event.pubkey
+        self.show_friend_icon = show_friend_icon
     }
 
-    init(damus: DamusState, event: NostrEvent) {
+    init(damus: DamusState, event: NostrEvent, show_friend_icon: Bool) {
         self.event = event
         self.highlight = .none
         self.has_action_bar = false
         self.damus = damus
         self.pubkey = event.pubkey
+        self.show_friend_icon = show_friend_icon
     }
 
-    init(damus: DamusState, event: NostrEvent, pubkey: String) {
+    init(damus: DamusState, event: NostrEvent, pubkey: String, show_friend_icon: Bool) {
         self.event = event
         self.highlight = .none
         self.has_action_bar = false
         self.damus = damus
         self.pubkey = pubkey
+        self.show_friend_icon = show_friend_icon
     }
 
     var body: some View {
@@ -81,7 +85,7 @@ struct EventView: View {
                         HStack {
                             Label("HStack Label", systemImage: "arrow.2.squarepath")
                                 .foregroundColor(Color.gray)
-                            ProfileName(pubkey: event.pubkey, profile: damus.profiles.lookup(id: event.pubkey))
+                            ProfileName(pubkey: event.pubkey, profile: damus.profiles.lookup(id: event.pubkey), contacts: damus.contacts, show_friend_confirmed: show_friend_icon)
                                 .foregroundColor(Color.gray)
                             Text(" Boosted")
                                 .foregroundColor(Color.gray)
@@ -117,7 +121,7 @@ struct EventView: View {
 
             VStack(alignment: .leading) {
                 HStack(alignment: .center) {
-                    ProfileName(pubkey: pubkey, profile: profile)
+                    ProfileName(pubkey: pubkey, profile: profile, contacts: damus.contacts, show_friend_confirmed: show_friend_icon)
                     Text("\(format_relative_time(event.created_at))")
                         .foregroundColor(.gray)
                 }
@@ -130,30 +134,15 @@ struct EventView: View {
                 }
 
                 NoteContentView(privkey: damus.keypair.privkey, event: event, profiles: damus.profiles, content: content)
-                    #if !os(macOS)
-                    .frame(
-                        minWidth:    UIScreen.main.bounds.width*0.00,
-                        idealWidth:  UIScreen.main.bounds.width*0.10,
-                        maxWidth:    UIScreen.main.bounds.width*0.50,
-                        minHeight:   UIScreen.main.bounds.width*0.10,
-                        idealHeight: UIScreen.main.bounds.width*0.20,
-                        maxHeight:   UIScreen.main.bounds.width*0.50,
-                        alignment:   .leading
-                    )
-                    #else
-                    .frame(
-                        // minWidth:    UIScreen.main.bounds.width*0.00,
-                        // idealWidth:  UIScreen.main.bounds.width*0.10,
-                        // maxWidth:    UIScreen.main.bounds.width*0.50,
-                        // minHeight:   UIScreen.main.bounds.width*0.10,
-                        // idealHeight: UIScreen.main.bounds.width*0.20,
-                        // maxHeight:   UIScreen.main.bounds.width*0.50,
-                        alignment:   .leading
-                    )
-                    #endif
-                    //.frame(maxWidth: UIScreen.main.bounds.width*0.80, alignment: .topLeading)
-                    // .frame(maxWidth: .infinity, alignment: .leading)
+#if !os(macOS)
+                    .frame(maxWidth: UIScreen.main.bounds.width*0.80, alignment: .topLeading)
+                    //.frame(minWidth: UIScreen.main.bounds.width*0.8, idealWidth: UIScreen.main.bounds.width*0.85, maxWidth: UIScreen.main.bounds.width, minHeight: 0.0, idealHeight: UIScreen.main.bounds.height*0.15, maxHeight: UIScreen.main.bounds.height, alignment: .topLeading)
                     .textSelection(.enabled)
+#else
+                    .frame(
+                        alignment: .leading
+                    )
+#endif
 
                 if has_action_bar {
                     let bar = make_actionbar_model(ev: event, damus: damus)
@@ -166,6 +155,7 @@ struct EventView: View {
             .padding([.leading], 2)
         }
         .contentShape(Rectangle())
+        .background(event_validity_color(event.validity))
         .id(event.id)
         .frame(minHeight: PFP_SIZE)
         .padding([.bottom], 4)
@@ -173,52 +163,62 @@ struct EventView: View {
     }
 }
 
+func event_validity_color(_ validation: ValidationResult) -> some View {
+    Group {
+        switch validation {
+        case .ok:
+            EmptyView()
+        case .bad_id:
+            Color.orange.opacity(0.4)
+        case .bad_sig:
+            Color.red.opacity(0.4)
+        }
+    }
+}
+
 extension View {
 
+    func pubkey_context_menu(bech32_pubkey: String) -> some View {
+        return self.contextMenu {
+            Button {
+                    UIPasteboard.general.string = bech32_pubkey
+            } label: {
+                Label("Copy Account ID", systemImage: "doc.on.doc")
+            }
+        }
+    }
+    
     func event_context_menu(_ event: NostrEvent, privkey: String?) -> some View {
         return self.contextMenu {
-            
-// #if os(macOS)
-//     NSPasteboard.general.declareTypes([.string], owner: nil)
-// #endi
-        
-// #if !os(macOS)
-// UIPasteboard.general.string = text
-// #else
-// NSPasteboard.general.declareTypes([.string], owner: nil)
-// NSPasteboard.general.clearContents()
-// NSPasteboard.general.setString(text, forType: .string)
-// #endif
-
             Button {
-                #if !os(macOS)
+#if !os(macOS)
                 UIPasteboard.general.string = event.get_content(privkey)
-                #else
+#else
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.setString(event.get_content(privkey), forType: .string)
-                #endif
+#endif
             } label: {
                 Label("Copy Text", systemImage: "doc.on.doc")
             }
 
             Button {
-                #if !os(macOS)
-                UIPasteboard.general.string = "@" + event.pubkey
-                #else
+#if !os(macOS)
+                UIPasteboard.general.string = bech32_pubkey(event.pubkey) ?? event.pubkey
+#else
                 NSPasteboard.general.clearContents()
-                NSPasteboard.general.setString("@" + event.pubkey, forType: .string)
-                #endif
+                NSPasteboard.general.setString(event.get_content(privkey), forType: .string)
+#endif
             } label: {
                 Label("Copy User ID", systemImage: "tag")
             }
 
             Button {
-                #if !os(macOS)
-                UIPasteboard.general.string = "&" + event.pubkey
-                #else
+#if !os(macOS)
+                UIPasteboard.general.string = bech32_note_id(event.id) ?? event.id
+#else
                 NSPasteboard.general.clearContents()
-                NSPasteboard.general.setString("&" + event.pubkey, forType: .string)
-                #endif
+                NSPasteboard.general.setString(event.get_content(privkey), forType: .string)
+#endif
             } label: {
                 Label("Copy Note ID", systemImage: "tag")
             }
