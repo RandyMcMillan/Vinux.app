@@ -148,6 +148,10 @@
 		4B59C79C289483430063304F /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D1152582BA4500636BA4 /* SideBar.swift */; };
 		4B59C79D2894849A0063304F /* ArticlesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE332742582AE2700FBDB3E /* ArticlesListView.swift */; };
 		4B59C79E289484CE0063304F /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10F2582B9DC00636BA4 /* ArticleView.swift */; };
+		4B95E52B28A6DE9E00E565E4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4B95E52A28A6DE9E00E565E4 /* Introspect */; };
+		4B95E52E28A6DEAE00E565E4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4B95E52D28A6DEAE00E565E4 /* Introspect */; };
+		4BBEDC5528A6521200B5683F /* TinyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBEDC5428A6521200B5683F /* TinyProfileView.swift */; };
+		4BBEDC5628A6521200B5683F /* TinyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBEDC5428A6521200B5683F /* TinyProfileView.swift */; };
 		4BDBFF1328A19ED100DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BDBFF1428A19ED900DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BE04AAF289858B700E710CF /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE04AAE289858B700E710CF /* secp256k1 */; };
@@ -304,6 +308,7 @@
 		4B4CC2A728938437001F6FB4 /* CarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		4B4CC3A82893915B001F6FB4 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4B7D77A928935E5B007486E7 /* Universal App (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Universal App (iOS).entitlements"; sourceTree = "<group>"; };
+		4BBEDC5428A6521200B5683F /* TinyProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinyProfileView.swift; sourceTree = "<group>"; };
 		4BDBFF0D28A199D800DDA935 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		4BE04AB528985B0900E710CF /* Vinux.app (iOS)Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Vinux.app (iOS)Release.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -314,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BE04AAF289858B700E710CF /* secp256k1 in Frameworks */,
+				4B95E52B28A6DE9E00E565E4 /* Introspect in Frameworks */,
 				4B49F18A28993E2C0013FC2F /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BE04AB228985AA300E710CF /* secp256k1 in Frameworks */,
+				4B95E52E28A6DEAE00E565E4 /* Introspect in Frameworks */,
 				4B49F18D28993E3B0013FC2F /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,6 +430,7 @@
 		3AE332732582AE1500FBDB3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				4BBEDC5428A6521200B5683F /* TinyProfileView.swift */,
 				4B4CC3A82893915B001F6FB4 /* ContentView.swift */,
 				4B4CC29628938437001F6FB4 /* AddRelayView.swift */,
 				4B4CC2A128938437001F6FB4 /* BlocksView.swift */,
@@ -546,6 +554,7 @@
 			packageProductDependencies = (
 				4BE04AAE289858B700E710CF /* secp256k1 */,
 				4B49F18928993E2C0013FC2F /* Starscream */,
+				4B95E52A28A6DE9E00E565E4 /* Introspect */,
 			);
 			productName = "Universal App (iOS)";
 			productReference = 3AE332322582A02B00FBDB3E /* Vinux.app */;
@@ -568,6 +577,7 @@
 			packageProductDependencies = (
 				4BE04AB128985AA300E710CF /* secp256k1 */,
 				4B49F18C28993E3B0013FC2F /* Starscream */,
+				4B95E52D28A6DEAE00E565E4 /* Introspect */,
 			);
 			productName = "Universal App (macOS)";
 			productReference = 3AE3323A2582A02B00FBDB3E /* Vinux.app */;
@@ -603,6 +613,8 @@
 				4BE04AAD289858B700E710CF /* XCRemoteSwiftPackageReference "secp256k1" */,
 				4B49F18828993E2C0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */,
 				4B49F18B28993E3B0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */,
+				4B95E52928A6DE9E00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				4B95E52C28A6DEAE00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 3AE332332582A02B00FBDB3E /* Products */;
 			projectDirPath = "";
@@ -715,6 +727,7 @@
 				4B496C4728A0F15100EAD8A2 /* ProofOfWork.swift in Sources */,
 				4B4CC33628939029001F6FB4 /* SaveKeysView.swift in Sources */,
 				4B4CC32628939029001F6FB4 /* SetupView.swift in Sources */,
+				4BBEDC5528A6521200B5683F /* TinyProfileView.swift in Sources */,
 				4B4CC37628939046001F6FB4 /* Universal_App.swift in Sources */,
 				4B496C0D28A0F0FC00EAD8A2 /* EventRef.swift in Sources */,
 				4B496C3D28A0F15100EAD8A2 /* NostrRequest.swift in Sources */,
@@ -815,6 +828,7 @@
 				4B496C4828A0F15100EAD8A2 /* ProofOfWork.swift in Sources */,
 				4BE04AEA28985BD800E710CF /* DMView.swift in Sources */,
 				4B496C2A28A0F0FC00EAD8A2 /* ThreadModel.swift in Sources */,
+				4BBEDC5628A6521200B5683F /* TinyProfileView.swift in Sources */,
 				4BE04AEB28985BD800E710CF /* EventActionBar.swift in Sources */,
 				4BE04AEC28985BD800E710CF /* EventDetailView.swift in Sources */,
 				4B496C3E28A0F15100EAD8A2 /* NostrRequest.swift in Sources */,
@@ -1142,6 +1156,22 @@
 				version = 4.0.4;
 			};
 		};
+		4B95E52928A6DE9E00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
+		4B95E52C28A6DEAE00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4BE04AAD289858B700E710CF /* XCRemoteSwiftPackageReference "secp256k1" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jb55/secp256k1.swift";
@@ -1162,6 +1192,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B49F18828993E2C0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */;
 			productName = Starscream;
+		};
+		4B95E52A28A6DE9E00E565E4 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B95E52928A6DE9E00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
+		};
+		4B95E52D28A6DEAE00E565E4 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B95E52C28A6DEAE00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		4BE04AAE289858B700E710CF /* secp256k1 */ = {
 			isa = XCSwiftPackageProductDependency;

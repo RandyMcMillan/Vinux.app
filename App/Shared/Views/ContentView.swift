@@ -196,7 +196,7 @@ struct ContentView: View {
                 // #if !os(macOS)
                 // .navigationViewStyle(.stack)
                 // #else
-                .navigationViewStyle(.automatic)
+                .navigationViewStyle(.columns)
                 // #endif
             }
 
