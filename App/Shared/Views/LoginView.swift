@@ -46,7 +46,6 @@ struct LoginView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            // BackNav()
             DamusGradient()
             VStack {
                 Text("Login")
@@ -145,12 +144,12 @@ func process_login(_ key: ParsedKey, is_pubkey: Bool) -> Bool {
         save_pubkey(pubkey: pk)
         
     case .pub(let pub):
-        clear_privkey()
+        clear_saved_privkey()
         save_pubkey(pubkey: pub)
     
     case .hex(let hexstr):
         if is_pubkey {
-            clear_privkey()
+            clear_saved_privkey()
             save_pubkey(pubkey: hexstr)
         } else {
             save_privkey(privkey: hexstr)
@@ -204,7 +203,7 @@ struct KeyInput: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        let pubkey = "3efdaebb1d8923ebd99c9e7ace3b4194ab45512e2be79c1b7d68d9243e0d2681"
+        let pubkey = "7bc0ff3de7b2205ed8bc366f7657138eacb5164d43d9580b8f5b47b7e6a7c235"
         let bech32_pubkey = "KeyInput"
         Group {
             LoginView(key: pubkey)
