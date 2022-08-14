@@ -205,6 +205,10 @@
 		4BE04B0C28985BF200E710CF /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC26F28938408001F6FB4 /* TimeAgo.swift */; };
 		4BE04B0D28985BF200E710CF /* TipCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC26A28938408001F6FB4 /* TipCounter.swift */; };
 		4BE04B0E28985C0600E710CF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10B2582B9A600636BA4 /* TabBar.swift */; };
+		4BE2BD8B28A95A9A005AE9C6 /* EndBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */; };
+		4BE2BD8C28A95A9A005AE9C6 /* EndBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */; };
+		4BE2BD8D28A95A9A005AE9C6 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */; };
+		4BE2BD8E28A95A9A005AE9C6 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -311,6 +315,8 @@
 		4BBEDC5428A6521200B5683F /* TinyProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinyProfileView.swift; sourceTree = "<group>"; };
 		4BDBFF0D28A199D800DDA935 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		4BE04AB528985B0900E710CF /* Vinux.app (iOS)Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Vinux.app (iOS)Release.entitlements"; sourceTree = "<group>"; };
+		4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndBlock.swift; sourceTree = "<group>"; };
+		4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -337,7 +343,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3A030AC8258401580012228D /* Utilities */ = {
+		3A030AC8258401580012228D /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				4B4CC26C28938408001F6FB4 /* Bech32.swift */,
@@ -350,7 +356,7 @@
 				4B4CC26F28938408001F6FB4 /* TimeAgo.swift */,
 				4B4CC26A28938408001F6FB4 /* TipCounter.swift */,
 			);
-			path = Utilities;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		3A030ACE258401860012228D /* Support */ = {
@@ -388,10 +394,11 @@
 		3AE3322A2582A02900FBDB3E /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				4BE2BD8728A95A9A005AE9C6 /* Components */,
 				4BDBFF0D28A199D800DDA935 /* AppInfo.swift */,
 				4B496C2B28A0F15100EAD8A2 /* Nostr */,
 				4B496BD928A0F0FC00EAD8A2 /* Models */,
-				3A030AC8258401580012228D /* Utilities */,
+				3A030AC8258401580012228D /* Util */,
 				3A030B0925841B860012228D /* Screens */,
 				3AE332732582AE1500FBDB3E /* Views */,
 				3A030ACE258401860012228D /* Support */,
@@ -532,6 +539,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4BE2BD8728A95A9A005AE9C6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */,
+				4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -706,6 +722,7 @@
 				4B4CC31228938E87001F6FB4 /* MainView.swift in Sources */,
 				4B4CC31A28939029001F6FB4 /* NoteContentView.swift in Sources */,
 				4B4CC33428939029001F6FB4 /* PubkeyView.swift in Sources */,
+				4BE2BD8D28A95A9A005AE9C6 /* TextFieldAlert.swift in Sources */,
 				4B4CC32528939029001F6FB4 /* LoginView.swift in Sources */,
 				4B4CC31E28939029001F6FB4 /* DMView.swift in Sources */,
 				4B496C1D28A0F0FC00EAD8A2 /* DamusState.swift in Sources */,
@@ -745,6 +762,7 @@
 				4B4CC31828939029001F6FB4 /* ProfilePictureSelector.swift in Sources */,
 				4B4CC31C28939029001F6FB4 /* CarouselView.swift in Sources */,
 				4B4CC36F28939046001F6FB4 /* Notifications.swift in Sources */,
+				4BE2BD8B28A95A9A005AE9C6 /* EndBlock.swift in Sources */,
 				4B496BFF28A0F0FC00EAD8A2 /* Contacts.swift in Sources */,
 				4B4CC32D28939029001F6FB4 /* SearchResultsView.swift in Sources */,
 				4B4CC31928939029001F6FB4 /* ReplyQuoteView.swift in Sources */,
@@ -807,6 +825,7 @@
 				4BE04B0A28985BF200E710CF /* Notifications.swift in Sources */,
 				4BE04B0B28985BF200E710CF /* Parser.swift in Sources */,
 				4BE04B0C28985BF200E710CF /* TimeAgo.swift in Sources */,
+				4BE2BD8E28A95A9A005AE9C6 /* TextFieldAlert.swift in Sources */,
 				4BE04B0D28985BF200E710CF /* TipCounter.swift in Sources */,
 				4BE04AE028985BD800E710CF /* ContentView.swift in Sources */,
 				4B496C1E28A0F0FC00EAD8A2 /* DamusState.swift in Sources */,
@@ -846,6 +865,7 @@
 				4B496C0C28A0F0FC00EAD8A2 /* SearchModel.swift in Sources */,
 				4BE04AF428985BD800E710CF /* PostButton.swift in Sources */,
 				4BE04AF528985BD800E710CF /* PostView.swift in Sources */,
+				4BE2BD8C28A95A9A005AE9C6 /* EndBlock.swift in Sources */,
 				4BE04AF628985BD800E710CF /* PowView.swift in Sources */,
 				4B496C0028A0F0FC00EAD8A2 /* Contacts.swift in Sources */,
 				4BE04AF728985BD800E710CF /* ProfileName.swift in Sources */,
