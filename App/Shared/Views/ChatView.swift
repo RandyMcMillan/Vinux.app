@@ -63,8 +63,8 @@ struct ChatView: View {
     }
     
     var ReplyDescription: some View {
-        Text("ReplyDescription in ChatView.swift")
-        //Text("\(reply_desc(profiles: damus_state.profiles, event: event))")
+        // Text("ReplyDescription in ChatView.swift")
+        Text("\(reply_desc(profiles: damus_state.profiles, event: event))")
             .font(.footnote)
             .foregroundColor(.gray)
             .frame(alignment: .leading)
@@ -91,12 +91,11 @@ struct ChatView: View {
             
             Group {
                 VStack(alignment: .leading) {
-                    Text("ChatView Group VStack")
                     if just_started {
                         HStack {
-                            Text("ChatView>Group>VStack>HStack")
-                            //ProfileName(pubkey: event.pubkey, profile: damus_state.profiles.lookup(id: event.pubkey), contacts: damus_state.contacts, show_friend_confirmed: true)
-                              //  .foregroundColor(colorScheme == .dark ?  id_to_color(event.pubkey) : Color.black)
+                            //Text("ChatView>Group>VStack>HStack")
+                            ProfileName(pubkey: event.pubkey, profile: damus_state.profiles.lookup(id: event.pubkey), contacts: damus_state.contacts, show_friend_confirmed: true)
+                                .foregroundColor(colorScheme == .dark ?  id_to_color(event.pubkey) : Color.black)
                                 //.shadow(color: Color.black, radius: 2)
                             Text("\(format_relative_time(event.created_at))")
                                     .foregroundColor(.gray)
@@ -105,16 +104,21 @@ struct ChatView: View {
                 
                     if let ref_id = thread.replies.lookup(event.id) {
                         if !is_reply_to_prev() {
-#if !os(macOS)
+                            #if !os(macOS)
                             ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
                                 .frame(maxHeight: expand_reply ? nil : 100)
                                 .environmentObject(thread)
                                 .onTapGesture {
                                     expand_reply = !expand_reply
                                 }
-#else
-                                ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, profiles: damus_state.profiles)
-#endif
+                            #else
+                            ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, profiles: damus_state.profiles)
+                                .frame(maxHeight: expand_reply ? nil : 100)
+                                .environmentObject(thread)
+                                .onTapGesture {
+                                    expand_reply = !expand_reply
+                                }
+                            #endif
                             ReplyDescription
                         }
                     }
@@ -127,23 +131,21 @@ struct ChatView: View {
                     }
 
                     //Spacer()
-                }// End VStack
+                }
                 .padding(6)
-            }// End Group
-            .padding([.leading], 2)
-            .background(Color.secondary.opacity(0.04))
+            }
+            .background(Color.secondary.opacity(0.1))
             .cornerRadius(8.0)
-            .border(Color.red)
-
+            
             //.border(Color.red)
-        } // End HStack
+        }
         .contentShape(Rectangle())
         .id(event.id)
         .frame(minHeight: just_started ? PFP_SIZE : 0)
         .padding([.bottom], next_ev == nil ? 30 : 0)
-        .border(Color.green)
+        //.border(Color.green)
         
-    }// End body Some View
+    }
     
 }
 
