@@ -14,7 +14,11 @@ struct SearchView: View {
     
     var body: some View {
         TimelineView(events: $search.events, loading: $search.loading, damus: appstate, show_friend_icon: true)
+        #if !os(macOS)
             .navigationBarTitle(describe_search(search.search))
+        #else
+            .navigationTitle(describe_search(search.search))
+        #endif
             .padding([.leading, .trailing], 6)
             .onReceive(handle_notify(.switched_timeline)) { obj in
                 dismiss()
