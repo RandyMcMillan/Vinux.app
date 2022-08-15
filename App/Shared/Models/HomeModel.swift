@@ -6,7 +6,10 @@
 //
 
 import Foundation
+#if canImport(UIKit)
 import UIKit
+#endif
+import Combine
 
 struct NewEventsBits {
     let bits: Int
@@ -300,9 +303,15 @@ class HomeModel: ObservableObject {
         }
     }
 
+#if !os(macOS)
     func handle_metadata_event(_ ev: NostrEvent) {
         process_metadata_event(image_cache: damus_state.image_cache, profiles: damus_state.profiles, ev: ev)
     }
+#else
+    func handle_metadata_event(_ ev: NostrEvent) {
+        process_metadata_event(profiles: damus_state.profiles, ev: ev)
+    }
+#endif
 
     func get_last_event_of_kind(relay_id: String, kind: Int) -> NostrEvent? {
         guard let m = last_event_of_kind[relay_id] else {
@@ -490,6 +499,7 @@ func print_filters(relay_id: String?, filters groups: [[NostrFilter]]) {
     print("-----")
 }
 
+#if !os(macOS)
 func process_metadata_event(image_cache: ImageCache, profiles: Profiles, ev: NostrEvent) {
     guard let profile: Profile = decode_data(Data(ev.content.utf8)) else {
         return
@@ -520,6 +530,39 @@ func process_metadata_event(image_cache: ImageCache, profiles: Profiles, ev: Nos
     
     notify(.profile_updated, ProfileUpdate(pubkey: ev.pubkey, profile: profile))
 }
+#else
+func process_metadata_event(profiles: Profiles, ev: NostrEvent) {
+    guard let profile: Profile = decode_data(Data(ev.content.utf8)) else {
+        return
+    }
+
+    if let mprof = profiles.lookup_with_timestamp(id: ev.pubkey) {
+        if mprof.timestamp > ev.created_at {
+            // skip if we already have an newer profile
+            return
+        }
+    }
+
+    let tprof = TimestampedProfile(profile: profile, timestamp: ev.created_at)
+    profiles.add(id: ev.pubkey, profile: tprof)
+
+    // load pfps asap
+    // let picture = tprof.profile.picture ?? robohash(ev.pubkey)
+    // if let url = URL(string: picture) {
+    //     Task<UIImage?, Never>.init(priority: .background) {
+    //         let pfp_key = pfp_cache_key(url: url)
+    //         let res = await image_cache.lookup_or_load_image(key: // pfp_key, url: url)
+    //         DispatchQueue.main.async {
+    //             notify(.profile_updated, ProfileUpdate(pubkey: // ev.pubkey, profile: profile))
+    //         }
+    //         return res
+    //     }
+    // }
+
+    notify(.profile_updated, ProfileUpdate(pubkey: ev.pubkey, profile: profile))
+}
+
+#endif
 
 func robohash(_ pk: String) -> String {
     return "https://robohash.org/" + pk
