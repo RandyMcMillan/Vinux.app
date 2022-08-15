@@ -28,14 +28,20 @@ struct CarouselView: View {
     var body: some View {
         TabView {
             ForEach(carousel_items) { item in
-                CarouselItemView(item: item)
-                    .tabItem {
-                        Text(item.id)
-                    }
+                VStack{
+                    CarouselItemView(item: item)
+                        .tabItem {
+                            Text(item.id)
+                        }
+                    Spacer(minLength: 20.0)
+                }
+                
             }
         }
         #if !os(macOS)
         .tabViewStyle(PageTabViewStyle())
+        #else
+        .tabViewStyle( DefaultTabViewStyle())
         #endif
     }
 }
