@@ -191,15 +191,15 @@ struct ContentView: View {
                             LoadingContainer
                         }
                 }
-                // #if !os(macOS)
-                // .navigationViewStyle(.stack)
-                // #else
+                #if !os(macOS)
+                .navigationViewStyle(.stack)
+                #else
                 .navigationViewStyle(.columns)
-                // #endif
+                #endif
             }
 
-            TabBar2(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
-            // TabBar()
+            TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
+            NavTabBar()
         }
         .onAppear() {
             self.connect()
@@ -451,6 +451,7 @@ extension UINavigationController: UIGestureRecognizerDelegate {
         return viewControllers.count > 1
     }
 }
+#else
 #endif
 
 struct LastNotification {

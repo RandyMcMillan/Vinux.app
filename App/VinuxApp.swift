@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct Universal_App: App {
+struct VinuxApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()

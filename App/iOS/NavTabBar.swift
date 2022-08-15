@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TabBar: View {
+struct NavTabBar: View {
     
     // MARK: - GUI Nav Entrypint
     // MARK: - TabBar
@@ -38,8 +38,8 @@ struct TabBar: View {
     }
 }
 
-struct TabBar_Previews: PreviewProvider {
+struct NavTabBar_Previews: PreviewProvider {
     static var previews: some View {
-        TabBar()
+        NavTabBar()
     }
 }

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A85D10C2582B9A600636BA4 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10B2582B9A600636BA4 /* TabBar.swift */; };
+		3A85D10C2582B9A600636BA4 /* NavTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10B2582B9A600636BA4 /* NavTabBar.swift */; };
 		3AE332422582A02B00FBDB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE3322D2582A02B00FBDB3E /* Assets.xcassets */; };
 		3AE332432582A02B00FBDB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE3322D2582A02B00FBDB3E /* Assets.xcassets */; };
 		4B496BF528A0F0FC00EAD8A2 /* PostBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B496BDA28A0F0FC00EAD8A2 /* PostBlock.swift */; };
@@ -142,7 +142,7 @@
 		4B4CC37328939046001F6FB4 /* TipCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC26A28938408001F6FB4 /* TipCounter.swift */; };
 		4B4CC37428939046001F6FB4 /* Bech32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC26C28938408001F6FB4 /* Bech32.swift */; };
 		4B4CC37528939046001F6FB4 /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC26F28938408001F6FB4 /* TimeAgo.swift */; };
-		4B4CC37628939046001F6FB4 /* Universal_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3322B2582A02900FBDB3E /* Universal_App.swift */; };
+		4B4CC37628939046001F6FB4 /* VinuxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3322B2582A02900FBDB3E /* VinuxApp.swift */; };
 		4B4CC3A92893915B001F6FB4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC3A82893915B001F6FB4 /* ContentView.swift */; };
 		4B4CC3AF28939587001F6FB4 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC28628938437001F6FB4 /* ChatView.swift */; };
 		4B59C79C289483430063304F /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D1152582BA4500636BA4 /* SideBar.swift */; };
@@ -150,13 +150,11 @@
 		4B59C79E289484CE0063304F /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10F2582B9DC00636BA4 /* ArticleView.swift */; };
 		4B95E52B28A6DE9E00E565E4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4B95E52A28A6DE9E00E565E4 /* Introspect */; };
 		4B95E52E28A6DEAE00E565E4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4B95E52D28A6DEAE00E565E4 /* Introspect */; };
-		4BBEDC5528A6521200B5683F /* TinyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBEDC5428A6521200B5683F /* TinyProfileView.swift */; };
-		4BBEDC5628A6521200B5683F /* TinyProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BBEDC5428A6521200B5683F /* TinyProfileView.swift */; };
 		4BDBFF1328A19ED100DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BDBFF1428A19ED900DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BE04AAF289858B700E710CF /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE04AAE289858B700E710CF /* secp256k1 */; };
 		4BE04AB228985AA300E710CF /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE04AB128985AA300E710CF /* secp256k1 */; };
-		4BE04AD128985BC100E710CF /* Universal_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3322B2582A02900FBDB3E /* Universal_App.swift */; };
+		4BE04AD128985BC100E710CF /* VinuxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3322B2582A02900FBDB3E /* VinuxApp.swift */; };
 		4BE04ADF28985BCF00E710CF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A030AD325840BDE0012228D /* MainView.swift */; };
 		4BE04AE028985BD800E710CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC3A82893915B001F6FB4 /* ContentView.swift */; };
 		4BE04AE128985BD800E710CF /* AddRelayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC29628938437001F6FB4 /* AddRelayView.swift */; };
@@ -204,7 +202,7 @@
 		4BE04B0B28985BF200E710CF /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC26D28938408001F6FB4 /* Parser.swift */; };
 		4BE04B0C28985BF200E710CF /* TimeAgo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC26F28938408001F6FB4 /* TimeAgo.swift */; };
 		4BE04B0D28985BF200E710CF /* TipCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC26A28938408001F6FB4 /* TipCounter.swift */; };
-		4BE04B0E28985C0600E710CF /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10B2582B9A600636BA4 /* TabBar.swift */; };
+		4BE04B0E28985C0600E710CF /* NavTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10B2582B9A600636BA4 /* NavTabBar.swift */; };
 		4BE2BD8B28A95A9A005AE9C6 /* EndBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */; };
 		4BE2BD8C28A95A9A005AE9C6 /* EndBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */; };
 		4BE2BD8D28A95A9A005AE9C6 /* TextFieldAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */; };
@@ -213,10 +211,10 @@
 
 /* Begin PBXFileReference section */
 		3A030AD325840BDE0012228D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		3A85D10B2582B9A600636BA4 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		3A85D10B2582B9A600636BA4 /* NavTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavTabBar.swift; sourceTree = "<group>"; };
 		3A85D10F2582B9DC00636BA4 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
 		3A85D1152582BA4500636BA4 /* SideBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBar.swift; sourceTree = "<group>"; };
-		3AE3322B2582A02900FBDB3E /* Universal_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Universal_App.swift; sourceTree = "<group>"; };
+		3AE3322B2582A02900FBDB3E /* VinuxApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinuxApp.swift; sourceTree = "<group>"; };
 		3AE3322D2582A02B00FBDB3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3AE332322582A02B00FBDB3E /* Vinux.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vinux.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AE332352582A02B00FBDB3E /* Info-ios.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-ios.plist"; sourceTree = "<group>"; };
@@ -224,6 +222,8 @@
 		3AE3323C2582A02B00FBDB3E /* Info-macos.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macos.plist"; sourceTree = "<group>"; };
 		3AE3323D2582A02B00FBDB3E /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		3AE332742582AE2700FBDB3E /* ArticlesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListView.swift; sourceTree = "<group>"; tabWidth = 2; };
+		4B24816D28AABF0800413BD6 /* Vinux.app(iOS)Release.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Vinux.app(iOS)Release.entitlements"; sourceTree = "<group>"; };
+		4B24816E28AABF1100413BD6 /* VinuxApp(iOS)Debug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "VinuxApp(iOS)Debug.entitlements"; sourceTree = "<group>"; };
 		4B48E256289937260061B785 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		4B496BDA28A0F0FC00EAD8A2 /* PostBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBlock.swift; sourceTree = "<group>"; };
 		4B496BDB28A0F0FC00EAD8A2 /* DirectMessagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectMessagesModel.swift; sourceTree = "<group>"; };
@@ -311,10 +311,7 @@
 		4B4CC2A628938437001F6FB4 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		4B4CC2A728938437001F6FB4 /* CarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		4B4CC3A82893915B001F6FB4 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		4B7D77A928935E5B007486E7 /* Universal App (iOS).entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Universal App (iOS).entitlements"; sourceTree = "<group>"; };
-		4BBEDC5428A6521200B5683F /* TinyProfileView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TinyProfileView.swift; sourceTree = "<group>"; };
 		4BDBFF0D28A199D800DDA935 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
-		4BE04AB528985B0900E710CF /* Vinux.app (iOS)Release.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Vinux.app (iOS)Release.entitlements"; sourceTree = "<group>"; };
 		4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndBlock.swift; sourceTree = "<group>"; };
 		4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -380,9 +377,8 @@
 			isa = PBXGroup;
 			children = (
 				4B48E256289937260061B785 /* Package.swift */,
-				4BE04AB528985B0900E710CF /* Vinux.app (iOS)Release.entitlements */,
-				4B7D77A928935E5B007486E7 /* Universal App (iOS).entitlements */,
-				3AE3322B2582A02900FBDB3E /* Universal_App.swift */,
+				3AE3322B2582A02900FBDB3E /* VinuxApp.swift */,
+				4B4CC3A82893915B001F6FB4 /* ContentView.swift */,
 				3AE3322A2582A02900FBDB3E /* Shared */,
 				3AE332342582A02B00FBDB3E /* iOS */,
 				3AE3323B2582A02B00FBDB3E /* macOS */,
@@ -418,7 +414,9 @@
 		3AE332342582A02B00FBDB3E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				3A85D10B2582B9A600636BA4 /* TabBar.swift */,
+				4B24816E28AABF1100413BD6 /* VinuxApp(iOS)Debug.entitlements */,
+				4B24816D28AABF0800413BD6 /* Vinux.app(iOS)Release.entitlements */,
+				3A85D10B2582B9A600636BA4 /* NavTabBar.swift */,
 				3AE332352582A02B00FBDB3E /* Info-ios.plist */,
 			);
 			path = iOS;
@@ -437,8 +435,6 @@
 		3AE332732582AE1500FBDB3E /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4BBEDC5428A6521200B5683F /* TinyProfileView.swift */,
-				4B4CC3A82893915B001F6FB4 /* ContentView.swift */,
 				4B4CC29628938437001F6FB4 /* AddRelayView.swift */,
 				4B4CC2A128938437001F6FB4 /* BlocksView.swift */,
 				4B4CC2A728938437001F6FB4 /* CarouselView.swift */,
@@ -680,7 +676,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\n\necho \"$fileContent\" > Shared/AppInfo.swift\n";
+			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\necho \"$fileContent\" > Shared/AppInfo.swift\n";
 		};
 		4BDBFF1628A1AB1A00DDA935 /* Build Shared/AppInfo.swift */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -698,7 +694,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\n\necho \"$fileContent\" > /Users/Shared/Vinux.app/App/Shared/AppInfo.swift\n\n";
+			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\n\necho \"$fileContent\" > /Users/Shared/Vinux.app/App/Shared/AppInfo.swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -719,7 +715,7 @@
 				4B4CC31F28939029001F6FB4 /* ReplyView.swift in Sources */,
 				4B496C3B28A0F15100EAD8A2 /* Nostr.swift in Sources */,
 				4B496BFD28A0F0FC00EAD8A2 /* Reply.swift in Sources */,
-				3A85D10C2582B9A600636BA4 /* TabBar.swift in Sources */,
+				3A85D10C2582B9A600636BA4 /* NavTabBar.swift in Sources */,
 				4B4CC31228938E87001F6FB4 /* MainView.swift in Sources */,
 				4B4CC31A28939029001F6FB4 /* NoteContentView.swift in Sources */,
 				4B4CC33428939029001F6FB4 /* PubkeyView.swift in Sources */,
@@ -746,8 +742,7 @@
 				4B496C4728A0F15100EAD8A2 /* ProofOfWork.swift in Sources */,
 				4B4CC33628939029001F6FB4 /* SaveKeysView.swift in Sources */,
 				4B4CC32628939029001F6FB4 /* SetupView.swift in Sources */,
-				4BBEDC5528A6521200B5683F /* TinyProfileView.swift in Sources */,
-				4B4CC37628939046001F6FB4 /* Universal_App.swift in Sources */,
+				4B4CC37628939046001F6FB4 /* VinuxApp.swift in Sources */,
 				4B496C0D28A0F0FC00EAD8A2 /* EventRef.swift in Sources */,
 				4B496C3D28A0F15100EAD8A2 /* NostrRequest.swift in Sources */,
 				4B4CC36D28939046001F6FB4 /* InsertSort.swift in Sources */,
@@ -811,7 +806,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4BDBFF1428A19ED900DDA935 /* AppInfo.swift in Sources */,
-				4BE04B0E28985C0600E710CF /* TabBar.swift in Sources */,
+				4BE04B0E28985C0600E710CF /* NavTabBar.swift in Sources */,
 				4BE04B0528985BF200E710CF /* Bech32.swift in Sources */,
 				4BE04B0628985BF200E710CF /* ImageCache.swift in Sources */,
 				4B496C3A28A0F15100EAD8A2 /* NostrResponse.swift in Sources */,
@@ -849,7 +844,6 @@
 				4B496C4828A0F15100EAD8A2 /* ProofOfWork.swift in Sources */,
 				4BE04AEA28985BD800E710CF /* DMView.swift in Sources */,
 				4B496C2A28A0F0FC00EAD8A2 /* ThreadModel.swift in Sources */,
-				4BBEDC5628A6521200B5683F /* TinyProfileView.swift in Sources */,
 				4BE04AEB28985BD800E710CF /* EventActionBar.swift in Sources */,
 				4BE04AEC28985BD800E710CF /* EventDetailView.swift in Sources */,
 				4B496C3E28A0F15100EAD8A2 /* NostrRequest.swift in Sources */,
@@ -893,7 +887,7 @@
 				4B496C0628A0F0FC00EAD8A2 /* EventsModel.swift in Sources */,
 				4BE04B0428985BD800E710CF /* TimelineView.swift in Sources */,
 				4BE04ADF28985BCF00E710CF /* MainView.swift in Sources */,
-				4BE04AD128985BC100E710CF /* Universal_App.swift in Sources */,
+				4BE04AD128985BC100E710CF /* VinuxApp.swift in Sources */,
 				4B496C2828A0F0FC00EAD8A2 /* ProfileModel.swift in Sources */,
 				4B496C4A28A0F15100EAD8A2 /* NostrKind.swift in Sources */,
 				4B496BF628A0F0FC00EAD8A2 /* PostBlock.swift in Sources */,
