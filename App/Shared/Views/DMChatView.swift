@@ -21,9 +21,7 @@ struct DMChatView: View {
                         DMView(event: dms.events[ind], damus_state: damus_state)
                             .event_context_menu(ev, privkey: damus_state.keypair.privkey)
                     }
-                    Color.white.opacity(0)
-                        .id("endblock")
-                        .frame(height: 80)
+                    EndBlock()
                 }
             }
             .onAppear {
@@ -39,12 +37,12 @@ struct DMChatView: View {
         let profile_page = ProfileView(damus_state: damus_state, profile: pmodel, followers: fmodel)
         return NavigationLink(destination: profile_page) {
             HStack {
-                #if !os(macOS)
+#if !os(macOS)
                 ProfilePicView(pubkey: pubkey, size: 24, highlight: .none, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
-                #else
-                ProfilePicView(pubkey: pubkey, size: 24, highlight: .none, profiles: damus_state.profiles)
-                #endif
-                ProfileName(pubkey: pubkey, profile: profile)
+#else
+#endif
+                ProfileName(pubkey: pubkey, profile: profile, contacts: damus_state.contacts, show_friend_confirmed: true)
+
             }
         }
         .buttonStyle(PlainButtonStyle())
@@ -111,7 +109,12 @@ struct DMChatView: View {
     }
 
     func send_message() {
-        guard let dm = create_dm(message, to_pk: pubkey, keypair: damus_state.keypair) else {
+        let tags = [["p", pubkey]]
+        let post_blocks = parse_post_blocks(content: message)
+        let post_tags = make_post_tags(post_blocks: post_blocks, tags: tags)
+        let content = render_blocks(blocks: post_tags.blocks)
+        
+        guard let dm = create_dm(content, to_pk: pubkey, tags: post_tags.tags, keypair: damus_state.keypair) else {
             print("error creating dm")
             return
         }
@@ -132,6 +135,12 @@ struct DMChatView: View {
 
                 Footer
             }
+            Text("Send a message to start the conversation...")
+            .lineLimit(nil)
+            .multilineTextAlignment(.center)
+            .padding(.horizontal, 40)
+            .opacity(((dms.events.count == 0) ? 1.0 : 0.0))
+            .foregroundColor(.gray)
         }
         .navigationTitle("DM")
         .toolbar { Header }
@@ -150,13 +159,12 @@ struct DMChatView_Previews: PreviewProvider {
 }
 
 
-func create_dm(_ message: String, to_pk: String, keypair: Keypair) -> NostrEvent?
+func create_dm(_ message: String, to_pk: String, tags: [[String]], keypair: Keypair) -> NostrEvent?
 {
     guard let privkey = keypair.privkey else {
         return nil
     }
 
-    let tags = [["p", to_pk]]
     let iv = random_bytes(count: 16).bytes
     guard let shared_sec = get_shared_secret(privkey: privkey, pubkey: to_pk) else {
         return nil
@@ -179,6 +187,8 @@ extension View {
             .onAppear {
                 #if !os(macOS)
                 UITextView.appearance().backgroundColor = .clear
+                #else
+                //TODO macOS
                 #endif
             }
             .background(content())
