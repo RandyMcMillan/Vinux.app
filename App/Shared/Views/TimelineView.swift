@@ -25,7 +25,11 @@ struct InnerTimelineView: View {
                 NavigationLink(destination: tv) {
                     EventView(event: ev, highlight: .none, has_action_bar: true, damus: damus, show_friend_icon: show_friend_icon)
                 }
+                #if !os(macOS)
                 .isDetailLink(true)
+                #else
+                //TODO: macOS
+                #endif
                 .buttonStyle(PlainButtonStyle())
             }
         }
