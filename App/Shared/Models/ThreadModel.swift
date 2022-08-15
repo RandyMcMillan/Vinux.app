@@ -75,25 +75,20 @@ class ThreadModel: ObservableObject {
         self.initial_event = .event(event)
         self.privkey = privkey
         self.kind = kind
-        print("func init()")
     }
     
     func unsubscribe() {
         self.pool.unsubscribe(sub_id: sub_id)
-        print("ThreadModel.swift LINE:82")
-        print("sub_id: ",sub_id)
         print("unsubscribing from thread \(initial_event.id) with sub_id \(sub_id)")
     }
     
     func reset_events() {
-        print("func reset_events()")
         self.events.removeAll()
         self.event_map.removeAll()
         self.replies.replies.removeAll()
     }
     
     func should_resubscribe(_ ev_b: NostrEvent) -> Bool {
-        print("func should_subscribe()")
         if self.events.count == 0 {
             return true
         }
@@ -108,7 +103,6 @@ class ThreadModel: ObservableObject {
     }
     
     func set_active_event(_ ev: NostrEvent, privkey: String?) {
-        print("func set_active_event()")
         if should_resubscribe(ev) {
             unsubscribe()
             self.initial_event = .event(ev)
@@ -122,7 +116,6 @@ class ThreadModel: ObservableObject {
     }
     
     func subscribe() {
-        print("func subscribe()")
         var ref_events = NostrFilter.filter_kinds([self.kind,5,6,7])
         var events_filter = NostrFilter.filter_kinds([self.kind])
         //var likes_filter = NostrFilter.filter_kinds(7])
@@ -141,8 +134,6 @@ class ThreadModel: ObservableObject {
 
         //likes_filter.ids = ref_events.referenced_ids!
 
-        print("ThreadModel.swift LINE:137")
-        print("sub_id: ",sub_id)
         print("subscribing to thread \(initial_event.id) with sub_id \(sub_id)")
         pool.register_handler(sub_id: sub_id, handler: handle_event)
         loading = true
@@ -157,6 +148,10 @@ class ThreadModel: ObservableObject {
     }
     
     func add_event(_ ev: NostrEvent, privkey: String?) {
+        guard ev.should_show_event else {
+            return
+        }
+        
         if event_map[ev.id] != nil {
             return
         }
@@ -194,7 +189,9 @@ class ThreadModel: ObservableObject {
         }
         
         if done {
-            loading = false
+            if (events.contains { ev in ev.id == initial_event.id }) {
+                loading = false
+            }
         }
     }
 
