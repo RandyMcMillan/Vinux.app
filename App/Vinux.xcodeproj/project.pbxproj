@@ -222,8 +222,6 @@
 		3AE3323C2582A02B00FBDB3E /* Info-macos.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macos.plist"; sourceTree = "<group>"; };
 		3AE3323D2582A02B00FBDB3E /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		3AE332742582AE2700FBDB3E /* ArticlesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListView.swift; sourceTree = "<group>"; tabWidth = 2; };
-		4B24816D28AABF0800413BD6 /* Vinux.app(iOS)Release.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "Vinux.app(iOS)Release.entitlements"; sourceTree = "<group>"; };
-		4B24816E28AABF1100413BD6 /* VinuxApp(iOS)Debug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "VinuxApp(iOS)Debug.entitlements"; sourceTree = "<group>"; };
 		4B48E256289937260061B785 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		4B496BDA28A0F0FC00EAD8A2 /* PostBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBlock.swift; sourceTree = "<group>"; };
 		4B496BDB28A0F0FC00EAD8A2 /* DirectMessagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectMessagesModel.swift; sourceTree = "<group>"; };
@@ -311,6 +309,8 @@
 		4B4CC2A628938437001F6FB4 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		4B4CC2A728938437001F6FB4 /* CarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		4B4CC3A82893915B001F6FB4 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4B75644728AAE5C000B0EC23 /* ios-release.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "ios-release.entitlements"; sourceTree = "<group>"; };
+		4B75644828AAE5CA00B0EC23 /* ios-debug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "ios-debug.entitlements"; sourceTree = "<group>"; };
 		4BDBFF0D28A199D800DDA935 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndBlock.swift; sourceTree = "<group>"; };
 		4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
@@ -414,8 +414,8 @@
 		3AE332342582A02B00FBDB3E /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				4B24816E28AABF1100413BD6 /* VinuxApp(iOS)Debug.entitlements */,
-				4B24816D28AABF0800413BD6 /* Vinux.app(iOS)Release.entitlements */,
+				4B75644828AAE5CA00B0EC23 /* ios-debug.entitlements */,
+				4B75644728AAE5C000B0EC23 /* ios-release.entitlements */,
 				3A85D10B2582B9A600636BA4 /* NavTabBar.swift */,
 				3AE332352582A02B00FBDB3E /* Info-ios.plist */,
 			);
@@ -1025,7 +1025,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "iOS/Vinux.app(iOS)Debug.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/ios-debug.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M684FYCYG6;
@@ -1051,7 +1051,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = "iOS/Vinux.app(iOS)Release.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "iOS/ios-release.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M684FYCYG6;
