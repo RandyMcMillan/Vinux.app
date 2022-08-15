@@ -181,7 +181,13 @@ extension View {
     func pubkey_context_menu(bech32_pubkey: String) -> some View {
         return self.contextMenu {
             Button {
+                    #if !os(macOS)
                     UIPasteboard.general.string = bech32_pubkey
+                    #else
+                    NSPasteboard.general.declareTypes([.string], owner: nil)
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(bech32_pubkey, forType: .string)
+                    #endif
             } label: {
                 Label("Copy Account ID", systemImage: "doc.on.doc")
             }
