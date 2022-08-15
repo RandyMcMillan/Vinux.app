@@ -19,9 +19,11 @@ struct SearchHomeView: View {
                 TextField("", text: $search)
                     .padding(5)
                     .padding(.leading, 35)
-#if !os(macOS)
+                #if !os(macOS)
                     .textInputAutocapitalization(.never)
-#endif
+                #else
+                //TODO: macOS
+                #endif
                 Label("", systemImage: "xmark.square")
                     .padding(EdgeInsets(top: 0.0, leading: 0.0, bottom: 0.0, trailing: 10.0))
                     .opacity((search == "") ? 0.0 : 1.0)
