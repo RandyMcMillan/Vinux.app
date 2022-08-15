@@ -37,11 +37,11 @@ struct EventDetailView: View {
     @StateObject var thread: ThreadModel
     @State var collapsed: Bool = true
     
-    func toggle_collapse_thread(scroller: ScrollViewProxy, id mid: String?, animate: Bool = true, anchor: UnitPoint = .center) {
+    func toggle_collapse_thread(scroller: ScrollViewProxy, id mid: String?, animate: Bool = true) {
         self.collapsed = !self.collapsed
         if let id = mid {
             if !self.collapsed {
-                scroll_to_event(scroller: scroller, id: id, delay: 0.1, animate: animate, anchor: anchor)
+                scroll_to_event(scroller: scroller, id: id, delay: 0.1, animate: animate)
             }
         }
     }
@@ -52,7 +52,7 @@ struct EventDetailView: View {
         print("uncollapsing section at \(c.start) '\(ev.content.prefix(12))...'")
         let start_id = ev.id
         
-    toggle_collapse_thread(scroller: scroller, id: start_id, animate: true, anchor: .topTrailing)
+        toggle_collapse_thread(scroller: scroller, id: start_id, animate: false)
     }
     
     func CollapsedEventView(_ cev: CollapsedEvent, scroller: ScrollViewProxy) -> some View {
@@ -60,25 +60,24 @@ struct EventDetailView: View {
             switch cev {
             case .collapsed(let c):
                 Text("··· \(c.count) other notes ···")
+                    .padding([.top,.bottom], 10)
                     .font(.footnote)
                     .foregroundColor(.gray)
                     .onTapGesture {
                         //self.uncollapse_section(scroller: proxy, c: c)
                         //self.toggle_collapse_thread(scroller: proxy, id: nil)
+                        if let ev = thread.events[safe: c.start] {
+                            thread.set_active_event(ev, privkey: damus.keypair.privkey)
+                        }
                         toggle_thread_view()
                     }
             case .event(let ev, let highlight):
-                EventView(event: ev, highlight: highlight, has_action_bar: true, damus: damus)
+                EventView(event: ev, highlight: highlight, has_action_bar: true, damus: damus, show_friend_icon: true)
                     .onTapGesture {
                         if thread.initial_event.id == ev.id {
                             toggle_thread_view()
                         } else {
                             thread.set_active_event(ev, privkey: damus.keypair.privkey)
-                        }
-                    }
-                    .onAppear() {
-                        if highlight.is_main {
-                            scroll_to_event(scroller: scroller, id: ev.id, delay: 0.5, animate: true)
                         }
                     }
             }
@@ -87,7 +86,11 @@ struct EventDetailView: View {
     
     var body: some View {
         ScrollViewReader { proxy in
-            ScrollView {
+            if thread.loading {
+                ProgressView().progressViewStyle(.circular)
+            }
+            
+            ScrollView(.vertical) {
                 let collapsed_events = calculated_collapsed_events(
                     privkey: damus.keypair.privkey,
                     collapsed: self.collapsed,
@@ -97,14 +100,29 @@ struct EventDetailView: View {
                 ForEach(collapsed_events, id: \.id) { cev in
                     CollapsedEventView(cev, scroller: proxy)
                 }
+                
+                EndBlock(height: 600)
+            }
+            .onChange(of: thread.loading) { val in
+                scroll_after_load(proxy)
+            }
+            .onAppear() {
+                scroll_after_load(proxy)
             }
         }
         #if !os(macOS)
-        .navigationBarTitle("! macOS Thread")
-       #else
-        .navigationTitle("macOS Thread")
+        .navigationBarTitle("Thread")
+        #else
+        .navigationTitle("Thread")
         #endif
 
+    }
+    
+    func scroll_after_load(_ proxy: ScrollViewProxy) {
+        if !thread.loading {
+            let id = thread.initial_event.id
+            scroll_to_event(scroller: proxy, id: id, delay: 0.1, animate: false)
+        }
     }
 
     func toggle_thread_view() {
@@ -277,14 +295,14 @@ func print_event(_ ev: NostrEvent) {
     print(ev.description)
 }
 
-func scroll_to_event(scroller: ScrollViewProxy, id: String, delay: Double, animate: Bool, anchor: UnitPoint = .center) {
+func scroll_to_event(scroller: ScrollViewProxy, id: String, delay: Double, animate: Bool) {
     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
         if animate {
             withAnimation {
-                scroller.scrollTo(id, anchor: anchor)
+                scroller.scrollTo(id, anchor: .top)
             }
         } else {
-            scroller.scrollTo(id, anchor: anchor)
+            scroller.scrollTo(id, anchor: .top)
         }
     }
 }
@@ -320,3 +338,12 @@ func scroll_to_event(scroller: ScrollViewProxy, id: String, delay: Double, anima
         }
     }
      */
+
+
+extension Collection {
+
+    /// Returns the element at the specified index if it is within bounds, otherwise nil.
+    subscript (safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
