@@ -9,7 +9,7 @@ import SwiftUI
 import Starscream
 
 let BOOTSTRAP_RELAYS = [
-    // "wss://relay.damus.io",
+    "wss://relay.damus.io",
     "wss://moonbreeze.richardbondi.net/ws",
     "wss://nostr.delo.software",
     "wss://nostr.drss.io",
