@@ -35,6 +35,7 @@ struct ConfigView: View {
     }
     
     var body: some View {
+
         ZStack(alignment: .leading) {
             Form {
                 if let ev = state.contacts.event {
@@ -83,8 +84,7 @@ struct ConfigView: View {
                         confirm_logout = true
                     }
                 }
-            }
-            
+
             VStack {
                 HStack {
                     Spacer()
@@ -97,8 +97,18 @@ struct ConfigView: View {
                 }
                 
                 Spacer()
-            }
-        }
+            } //End VStack
+            } //End Form
+            ZStack(alignment: .center) {
+                Section("Nostr") {
+                    Spacer()
+                    NavTabBar()
+                    Spacer()
+                } //End End Nostr Section
+                Spacer()
+            }// End ZStack
+
+        } //End first ZStack
         .navigationTitle("Settings")
         #if !os(macOS)
         .navigationBarTitleDisplayMode(.large)
@@ -151,8 +161,9 @@ struct ConfigView: View {
         .onReceive(handle_notify(.switched_timeline)) { _ in
             dismiss()
         }
-    }
-}
+
+    } //End body
+} //End struct ConfigView
 
 struct ConfigView_Previews: PreviewProvider {
     static var previews: some View {
