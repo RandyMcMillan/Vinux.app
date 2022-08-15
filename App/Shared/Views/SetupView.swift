@@ -80,6 +80,8 @@ struct SetupView: View {
         #if !os(macOS)
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(StackNavigationViewStyle())
+        #else
+        //TODO: implement macOS
         #endif
     }
 }
