@@ -174,36 +174,27 @@ struct KeyInput: View {
     }
     
     var body: some View {
+        TextField("", text: key)
+            .placeholder(when: key.wrappedValue.isEmpty) {
+                Text(title).foregroundColor(.white.opacity(0.6))
+            }
+            .padding()
+            .background {
+                RoundedRectangle(cornerRadius: 4.0).opacity(0.2)
+            }
         #if !os(macOS)
-        TextField("", text: key)
-            .placeholder(when: key.wrappedValue.isEmpty) {
-                Text(title).foregroundColor(.white.opacity(0.6))
-            }
-            .padding()
-            .background {
-                RoundedRectangle(cornerRadius: 4.0).opacity(0.2)
-            }
             .autocapitalization(.none)
-            .foregroundColor(.white)
-            .font(.body.monospaced())
         #else
-        TextField("", text: key)
-            .placeholder(when: key.wrappedValue.isEmpty) {
-                Text(title).foregroundColor(.white.opacity(0.6))
-            }
-            .padding()
-            .background {
-                RoundedRectangle(cornerRadius: 4.0).opacity(0.2)
-            }
+            .disableAutocorrection(true)
+        #endif
             .foregroundColor(.white)
             .font(.body.monospaced())
-        #endif
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        let pubkey = "7bc0ff3de7b2205ed8bc366f7657138eacb5164d43d9580b8f5b47b7e6a7c235"
+        let pubkey = "3efdaebb1d8923ebd99c9e7ace3b4194ab45512e2be79c1b7d68d9243e0d2681"
         let bech32_pubkey = "KeyInput"
         Group {
             LoginView(key: pubkey)
