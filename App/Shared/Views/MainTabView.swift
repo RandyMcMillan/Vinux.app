@@ -64,10 +64,9 @@ struct TabButton: View {
         .foregroundColor(selected != timeline ? .gray : .primary)
     }
 }
+    
 
-    // MARK: - GUI Nav Entrypint
-
-struct TabBar2: View {
+struct TabBar: View {
     @Binding var new_events: NewEventsBits
     @Binding var selected: Timeline?
     
@@ -77,10 +76,27 @@ struct TabBar2: View {
         VStack {
             Divider()
             HStack {
+                Spacer()
                 TabButton(timeline: .home, img: "house", selected: $selected, new_events: $new_events, action: action)
+                    .frame(minWidth:   0, idealWidth:  40, maxWidth:  100,
+                           minHeight:  0, idealHeight: 40, maxHeight: 100,
+                           alignment: .center)
+                Spacer()
                 TabButton(timeline: .dms, img: "bubble.left.and.bubble.right", selected: $selected, new_events: $new_events, action: action)
+                    .frame(minWidth:   0, idealWidth:  40, maxWidth:  100,
+                           minHeight:  0, idealHeight: 40, maxHeight: 100,
+                           alignment: .center)
+                Spacer()
                 TabButton(timeline: .search, img: "magnifyingglass.circle", selected: $selected, new_events: $new_events, action: action)
+                    .frame(minWidth:   0, idealWidth:  40, maxWidth:  100,
+                           minHeight:  0, idealHeight: 40, maxHeight: 100,
+                           alignment: .center)
+                Spacer()
                 TabButton(timeline: .notifications, img: "bell", selected: $selected, new_events: $new_events, action: action)
+                    .frame(minWidth:  30, idealWidth:  40, maxWidth:  100,
+                           minHeight: 30, idealHeight: 40, maxHeight: 100,
+                           alignment: .center)
+                Spacer()
             }
         }
     }
