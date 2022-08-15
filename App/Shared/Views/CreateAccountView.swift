@@ -27,10 +27,17 @@ struct CreateAccountView: View {
             DamusGradient()
             
             VStack {
+                #if !os(macOS)
                 Text("Create Account")
                     .font(.title.bold())
                     .foregroundColor(.white)
-                
+                #endif
+                #if targetEnvironment(macCatalyst)
+                Text("Create Account on macCatalyst")
+                    .font(.title.bold())
+                    .foregroundColor(.white)
+                #endif
+
                 ProfilePictureSelector(pubkey: account.pubkey)
                 
                 HStack(alignment: .top) {
@@ -47,16 +54,16 @@ struct CreateAccountView: View {
                                     .padding(.leading, -25.0)
                                 
                                 FormTextInput("satoshi", text: $account.nick_name)
-#if !os(macOS)
+                                #if !os(macOS)
                                     .textInputAutocapitalization(.never)
-#endif
+                                #endif
                             }
                             
                             FormLabel("Display Name", optional: true)
                             FormTextInput("Satoshi Nakamoto", text: $account.real_name)
-#if !os(macOS)
+                            #if !os(macOS)
                                 .textInputAutocapitalization(.words)
-#endif
+                            #endif
                             FormLabel("About", optional: true)
                             FormTextInput("Creator(s) of Bitcoin. Absolute legend.", text: $account.about)
                             
@@ -70,6 +77,11 @@ struct CreateAccountView: View {
                                     regen_key()
                                 }
                         }
+
+                NavigationLink(destination: SaveKeysView(account: account), isActive: $is_done) {
+                    EmptyView()
+                }
+                //.hidden()
                 DamusWhiteButton("Create") {
                     self.is_done = true
                 }
@@ -77,15 +89,6 @@ struct CreateAccountView: View {
 
                     }
                 }
-
-                NavigationLink(destination: SaveKeysView(account: account), isActive: $is_done) {
-                    // EmptyView()
-                }
-                .hidden()
-                //DamusWhiteButton("Create") {
-                  //  self.is_done = true
-                //}
-                //.padding()
             }
             .padding(.leading, 14.0)
             .padding(.trailing, 20.0)
@@ -95,10 +98,16 @@ struct CreateAccountView: View {
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
-#else
+#elseif targetEnvironment(macCatalyst)
+        .navigationBarTitleDisplayMode(.automatic)
+        //.navigationBarBackButtonHidden(false)
+        .navigationBarItems(leading: BackNav())
+    //print("UIKit running on macOS")
 #endif
-    }
 }
+}
+
+
 
 struct BackNav: View {
     @Environment(\.dismiss) var dismiss
