@@ -18,7 +18,7 @@ struct SaveKeysView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            // DamusGradient()
+            DamusGradient()
             
             VStack(alignment: .center) {
                 Text("Welcome, \(account.rendered_name)!")
