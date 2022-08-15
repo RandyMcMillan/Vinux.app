@@ -60,7 +60,11 @@ class FollowingModel {
             switch nev {
             case .event(_, let ev):
                 if ev.kind == 0 {
+                    #if !os(macOS)
                     process_metadata_event(image_cache: damus_state.image_cache, profiles: damus_state.profiles, ev: ev)
+                    #else
+                    process_metadata_event(profiles: damus_state.profiles, ev: ev)
+                    #endif
                 }
             case .notice(let msg):
                 print("followingmodel notice: \(msg)")
