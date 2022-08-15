@@ -9,7 +9,7 @@ import SwiftUI
 import Starscream
 
 let BOOTSTRAP_RELAYS = [
-    "wss://relay.damus.io",
+    // "wss://relay.damus.io",
     "wss://moonbreeze.richardbondi.net/ws",
     "wss://nostr.delo.software",
     "wss://nostr.drss.io",
@@ -45,21 +45,16 @@ enum ThreadState {
 }
 
 struct ContentView: View {
-
-#if os(iOS)
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
-#endif
-
     let keypair: Keypair
-
+    
     var pubkey: String {
         return keypair.pubkey
     }
-
+    
     var privkey: String? {
         return keypair.privkey
     }
-
+    
     @State var status: String = "Not connected"
     @State var active_sheet: Sheets? = nil
     @State var damus_state: DamusState? = nil
@@ -74,36 +69,37 @@ struct ContentView: View {
     @State var thread_open: Bool = false
     @State var search_open: Bool = false
     @StateObject var home: HomeModel = HomeModel()
-
+    
     // connect retry timer
     let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
 
     let sub_id = UUID().description
-
+    
     var LoadingContainer: some View {
         VStack {
             HStack(alignment: .center) {
-                // Spacer()
+                Spacer()
+        
                 if home.signal.signal != home.signal.max_signal {
                     Text("\(home.signal.signal)/\(home.signal.max_signal)")
                         .font(.callout)
                         .foregroundColor(.gray)
                 }
-
+                
                 NavigationLink(destination: ConfigView(state: damus_state!)) {
                     Label("", systemImage: "gear")
                 }
                 .buttonStyle(PlainButtonStyle())
             }
 
-            // Spacer()
+            Spacer()
         }
     }
 
     var PostingTimelineView: some View {
         ZStack {
             if let damus = self.damus_state {
-                TimelineView(events: $home.events, loading: $home.loading, damus: damus)
+                TimelineView(events: $home.events, loading: $home.loading, damus: damus, show_friend_icon: false)
             }
             if privkey != nil {
                 PostButtonContainer {
@@ -112,7 +108,7 @@ struct ContentView: View {
             }
         }
     }
-
+    
     func MainContent(damus: DamusState) -> some View {
         VStack {
             NavigationLink(destination: MaybeProfileView, isActive: $profile_open) {
@@ -126,27 +122,29 @@ struct ContentView: View {
             }
             switch selected_timeline {
             case .search:
-                SearchHomeView(damus_state: damus_state!, model: SearchHomeModel(pool: damus_state!.pool) )
-
+                SearchHomeView(damus_state: damus_state!, model: SearchHomeModel(damus_state: damus_state!))
+                
             case .home:
                 PostingTimelineView
-
+                
             case .notifications:
-                TimelineView(events: $home.notifications, loading: $home.loading, damus: damus)
+                TimelineView(events: $home.notifications, loading: $home.loading, damus: damus, show_friend_icon: true)
                     .navigationTitle("Notifications")
-
+                
             case .dms:
                 DirectMessagesView(damus_state: damus_state!)
                     .environmentObject(home.dms)
-
+            
             case .none:
                 EmptyView()
             }
         }
-        #if !os(macOS)
-        .navigationBarTitle("Damus", displayMode: .inline)
+        #if targetEnvironment(macCatalyst)
+        .navigationTitle("Vinux (macCatalyst)")
+        #elseif os(macOS)
+        .navigationTitle("Vinux (macOS)")
         #else
-        .navigationTitle("Damus")
+        .navigationBarTitle("Vinux", displayMode: .inline)
         #endif
     }
 
@@ -159,18 +157,18 @@ struct ContentView: View {
             }
         }
     }
-
+    
     var MaybeThreadView: some View {
         Group {
             if let evid = self.active_event_id {
                 let thread_model = ThreadModel(evid: evid, pool: damus_state!.pool, privkey: damus_state!.keypair.privkey)
-                ThreadView(thread: thread_model, damus: damus_state!)
+                ThreadView(thread: thread_model, damus: damus_state!, is_chatroom: false)
             } else {
                 EmptyView()
             }
         }
     }
-
+    
     var MaybeProfileView: some View {
         Group {
             if let pk = self.active_profile {
@@ -219,7 +217,7 @@ struct ContentView: View {
             guard let link = decode_nostr_uri(url.absoluteString) else {
                 return
             }
-
+            
             switch link {
             case .ref(let ref):
                 if ref.key == "p" {
@@ -235,7 +233,7 @@ struct ContentView: View {
                 break
                 // TODO: handle filter searches?
             }
-
+            
         }
         .onReceive(handle_notify(.boost)) { notif in
             guard let privkey = self.privkey else {
@@ -265,21 +263,21 @@ struct ContentView: View {
             guard let privkey = self.privkey else {
                 return
             }
-
+            
             guard let damus = self.damus_state else {
                 return
             }
-
+            
             let target = notif.object as! FollowTarget
             let pk = target.pubkey
-
+            
             if let ev = unfollow_user(pool: damus.pool,
                              our_contacts: damus.contacts.event,
                              pubkey: damus.pubkey,
                              privkey: privkey,
                              unfollow: pk) {
                 notify(.unfollowed, pk)
-
+                
                 damus.contacts.event = ev
                 damus.contacts.remove_friend(pk)
                 //friend_events = friend_events.filter { $0.pubkey != pk }
@@ -289,21 +287,21 @@ struct ContentView: View {
             guard let privkey = self.privkey else {
                 return
             }
-
+            
             let fnotify = notif.object as! FollowTarget
             guard let damus = self.damus_state else {
                 return
             }
-
+            
             if let ev = follow_user(pool: damus.pool,
                            our_contacts: damus.contacts.event,
                            pubkey: damus.pubkey,
                            privkey: privkey,
                            follow: ReferencedId(ref_id: fnotify.pubkey, relay_id: nil, key: "p")) {
                 notify(.followed, fnotify.pubkey)
-
+                
                 damus_state?.contacts.event = ev
-
+                
                 switch fnotify {
                 case .pubkey(let pk):
                     damus.contacts.add_friend_pubkey(pk)
@@ -316,7 +314,7 @@ struct ContentView: View {
             guard let privkey = self.privkey else {
                 return
             }
-
+            
             let post_res = obj.object as! NostrPostResult
             switch post_res {
             case .post(let post):
@@ -332,45 +330,20 @@ struct ContentView: View {
             self.damus_state?.pool.connect_to_disconnected()
         }
     }
-
+    
     func switch_timeline(_ timeline: Timeline) {
+        NotificationCenter.default.post(name: .switched_timeline, object: timeline)
+        
         if timeline == self.selected_timeline {
             NotificationCenter.default.post(name: .scroll_to_top, object: nil)
             return
         }
-
-        // Leaving a tab
-        if self.selected_timeline == .home {
-            print("Leaving .home")
-        }
-        if self.selected_timeline == .notifications {
-            print("Leaving .notifications")
-        }
-        if self.selected_timeline == .dms {
-            print("Leaving .dms")
-        }
-        if self.selected_timeline == .search {
-            print("Leaving .search")
-        }
-        // Entering a tab
-        if timeline == .home {
-            print("Entering .home")
-        }
-        if timeline == .notifications {
-            print("Entering .notifications")
-        }
-        if timeline == .dms {
-            print("Entering .dms")
-        }
-        if timeline == .search {
-            print("Entering .search")
-        }
-
+        
         self.selected_timeline = timeline
-        NotificationCenter.default.post(name: .switched_timeline, object: timeline)
+        //NotificationCenter.default.post(name: .switched_timeline, object: timeline)
         //self.selected_timeline = timeline
     }
-
+    
     func add_relay(_ pool: RelayPool, _ relay: String) {
         //add_rw_relay(pool, "wss://nostr-pub.wellorder.net")
         add_rw_relay(pool, relay)
@@ -384,16 +357,14 @@ struct ContentView: View {
 
     func connect() {
         let pool = RelayPool()
-
+        
         for relay in BOOTSTRAP_RELAYS {
             add_relay(pool, relay)
         }
-
+        
         pool.register_handler(sub_id: sub_id, handler: home.handle_event)
 #if !os(macOS)
-        self.damus_state = DamusState(
-                                pool: pool,
-                                keypair: keypair,
+        self.damus_state = DamusState(pool: pool, keypair: keypair,
                                 likes: EventCounter(our_pubkey: pubkey),
                                 boosts: EventCounter(our_pubkey: pubkey),
                                 contacts: Contacts(),
@@ -415,10 +386,11 @@ struct ContentView: View {
         )
 #endif
         home.damus_state = self.damus_state!
-
+        
         pool.connect()
     }
 
+    
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -427,11 +399,12 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+
 func get_since_time(last_event: NostrEvent?) -> Int64? {
     if let last_event = last_event {
         return last_event.created_at - 60 * 10
     }
-
+    
     return nil
 }
 
@@ -490,7 +463,7 @@ func get_last_event(_ timeline: Timeline) -> LastNotification? {
     let last = UserDefaults.standard.string(forKey: "last_\(str)")
     let last_created = UserDefaults.standard.string(forKey: "last_\(str)_time")
         .flatMap { Int64($0) }
-
+    
     return last.flatMap { id in
         last_created.map { created in
             return LastNotification(id: id, created_at: created)
@@ -504,39 +477,41 @@ func save_last_event(_ ev: NostrEvent, timeline: Timeline) {
     UserDefaults.standard.set(String(ev.created_at), forKey: "last_\(str)_time")
 }
 
+
 func get_like_pow() -> [String] {
     return ["00000"] // 20 bits
 }
 
-func update_filters_with_since(last_of_kind: [Int: NostrEvent], filters: [NostrFilter]) -> [NostrFilter] {
 
+func update_filters_with_since(last_of_kind: [Int: NostrEvent], filters: [NostrFilter]) -> [NostrFilter] {
+    
     return filters.map { filter in
         let kinds = filter.kinds ?? []
         let initial: Int64? = nil
         let earliest = kinds.reduce(initial) { earliest, kind in
             let last = last_of_kind[kind]
             let since: Int64? = get_since_time(last_event: last)
-
+            
             if earliest == nil {
                 if since == nil {
                     return nil
                 }
                 return since
             }
-
+            
             if since == nil {
                 return earliest
             }
-
+            
             return since! < earliest! ? since! : earliest!
         }
-
+        
         if let earliest = earliest {
             var with_since = NostrFilter.copy(from: filter)
             with_since.since = earliest
             return with_since
         }
-
+        
         return filter
     }
 }
@@ -548,13 +523,13 @@ func setup_notifications() {
     #if !os(macOS)
     UIApplication.shared.registerForRemoteNotifications()
     let center = UNUserNotificationCenter.current()
-
+    
     center.getNotificationSettings { settings in
         guard settings.authorizationStatus == .authorized else {
             center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-
+                
             }
-
+            
             return
         }
     }
