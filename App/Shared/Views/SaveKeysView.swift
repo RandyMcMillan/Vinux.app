@@ -18,7 +18,7 @@ struct SaveKeysView: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            DamusGradient()
+            // DamusGradient()
             
             VStack(alignment: .center) {
                 Text("Welcome, \(account.rendered_name)!")
@@ -78,6 +78,8 @@ struct SaveKeysView: View {
         #if !os(macOS)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
+        #else
+        //TODO use toolbar?
         #endif
     }
     
