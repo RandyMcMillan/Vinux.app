@@ -12,9 +12,10 @@ struct ConfigView: View {
     let state: DamusState
     @Environment(\.dismiss) var dismiss
     @State var show_add_relay: Bool = false
+    @State var show_nostr_help: Bool = false
     @State var confirm_logout: Bool = false
     @State var new_relay: String = ""
-    
+
     func Relay(_ ev: NostrEvent, relay: String) -> some View {
         return Text(relay)
             .swipeActions {
@@ -95,18 +96,23 @@ struct ConfigView: View {
                             .padding()
                     }
                 }
+                VStack(alignment:.trailing){
+                    HStack(alignment:.center){
+
+                            Button(action: { show_nostr_help = true }) {
+                                Label("", systemImage: "questionmark.circle")
+                                    .foregroundColor(.accentColor)
+                                    .padding()
+                            }
+
+                    }
+
+
+                }
                 
                 Spacer()
             } //End VStack
             } //End Form
-            ZStack(alignment: .center) {
-                Section("Nostr") {
-                    Spacer()
-                    NavTabBar()
-                    Spacer()
-                } //End End Nostr Section
-                Spacer()
-            }// End ZStack
 
         } //End first ZStack
         .navigationTitle("Settings")
