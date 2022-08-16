@@ -87,27 +87,24 @@ struct ConfigView: View {
                 }
 
             } //End Form
-            VStack {
-                    Spacer()
-
-                    Button(action: { show_add_relay = true }) {
-                        Label("", systemImage: "plus")
-                            .foregroundColor(.accentColor)
-                            .padding()
-                    }
-                //} //End VStack
+            HStack(alignment: .center){
                 Spacer()
+                Button(action: { show_add_relay = true }) {
+                    Label("", systemImage: "plus")
+                        .foregroundColor(.accentColor)
+                        .padding()
+                }
+                //} //End VStack
                 // VStack {
                     //VStack(alignment:.trailing){
                         //HStack(alignment:.center){
-                                Button(action: { show_nostr_help = true }) {
-                                    Label("", systemImage: "questionmark.circle")
-                                        .foregroundColor(.accentColor)
-                                        .padding()
-                                }
+                Button(action: { show_nostr_help = true }) {
+                    Label("", systemImage: "questionmark.circle")
+                        .foregroundColor(.accentColor)
+                        .padding()
+                }
                         //}
                     //}
-                Spacer()
             } //End VStack
 
         } //End first ZStack
