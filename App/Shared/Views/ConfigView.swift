@@ -37,22 +37,24 @@ struct ConfigView: View {
     
     var body: some View {
 
-            VStack(alignment:.trailing){
-                HStack(alignment: .center){
-                    Spacer()
-                    Button(action: { show_add_relay = true }) {
-                        Label("", systemImage: "plus")
-                            .foregroundColor(.accentColor)
-                            .padding()
-                    }
-                    Button(action: { show_nostr_help = true }) {
-                        Label("", systemImage: "questionmark.circle")
-                            .foregroundColor(.accentColor)
-                            .padding()
-                    }
-                } //End HStack
-            } //End VStack
-        VStack(alignment: .leading) {
+        VStack(alignment: .trailing){
+            HStack(alignment: .center){
+                Spacer()
+                Button(action: { show_add_relay = true }) {
+                    Label("", systemImage: "plus")
+                        .foregroundColor(.accentColor)
+                        .padding()
+                }
+                Button(action: { show_nostr_help = true }) {
+                    Label("", systemImage: "questionmark.circle")
+                        .foregroundColor(.accentColor)
+                        .padding()
+                }
+            }
+        }
+        .padding()
+        Spacer()
+        ZStack(alignment: .leading) {
             Form {
                 if let ev = state.contacts.event {
                     Section("Relays") {
@@ -65,19 +67,19 @@ struct ConfigView: View {
                     }
                 }
                 
-                Section("Public Account ID") {
-                    Text(state.keypair.pubkey_bech32)
-                        .textSelection(.enabled)
-                        .onTapGesture {
-                            #if !os(macOS)
-                            UIPasteboard.general.string = state.keypair.pubkey_bech32
-                            AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                            #else
-                            NSPasteboard.general.clearContents()
-                            NSPasteboard.general.setString(state.keypair.pubkey_bech32, forType: .string)
-                            #endif
-                        }
+        Section("Public Account ID") {
+            Text(state.keypair.pubkey_bech32)
+                .textSelection(.enabled)
+                .onTapGesture {
+                    #if !os(macOS)
+                    UIPasteboard.general.string = state.keypair.pubkey_bech32
+                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                    #else
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(state.keypair.pubkey_bech32, forType: .string)
+                    #endif
                 }
+        }
                     
                 if let sec = state.keypair.privkey_bech32 {
                     Section("Secret Account Login Key") {
