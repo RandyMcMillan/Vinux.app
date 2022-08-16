@@ -37,7 +37,22 @@ struct ConfigView: View {
     
     var body: some View {
 
-        ZStack(alignment: .leading) {
+            VStack(alignment:.trailing){
+                HStack(alignment: .center){
+                    Spacer()
+                    Button(action: { show_add_relay = true }) {
+                        Label("", systemImage: "plus")
+                            .foregroundColor(.accentColor)
+                            .padding()
+                    }
+                    Button(action: { show_nostr_help = true }) {
+                        Label("", systemImage: "questionmark.circle")
+                            .foregroundColor(.accentColor)
+                            .padding()
+                    }
+                } //End HStack
+            } //End VStack
+        VStack(alignment: .leading) {
             Form {
                 if let ev = state.contacts.event {
                     Section("Relays") {
@@ -87,26 +102,6 @@ struct ConfigView: View {
                 }
 
             } //End Form
-            HStack(alignment: .center){
-                Spacer()
-                Button(action: { show_add_relay = true }) {
-                    Label("", systemImage: "plus")
-                        .foregroundColor(.accentColor)
-                        .padding()
-                }
-                //} //End VStack
-                // VStack {
-                    //VStack(alignment:.trailing){
-                        //HStack(alignment:.center){
-                Button(action: { show_nostr_help = true }) {
-                    Label("", systemImage: "questionmark.circle")
-                        .foregroundColor(.accentColor)
-                        .padding()
-                }
-                        //}
-                    //}
-            } //End VStack
-
         } //End first ZStack
         .navigationTitle("Settings")
         #if !os(macOS)
