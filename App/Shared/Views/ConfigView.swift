@@ -86,7 +86,8 @@ struct ConfigView: View {
                     }
                 }
 
-                VStack {
+            } //End Form
+            VStack {
                     Spacer()
 
                     Button(action: { show_add_relay = true }) {
@@ -94,26 +95,20 @@ struct ConfigView: View {
                             .foregroundColor(.accentColor)
                             .padding()
                     }
-                }
+                //} //End VStack
                 Spacer()
-            VStack {
-
-
-                VStack(alignment:.trailing){
-                    HStack(alignment:.center){
-
-                            Button(action: { show_nostr_help = true }) {
-                                Label("", systemImage: "questionmark.circle")
-                                    .foregroundColor(.accentColor)
-                                    .padding()
-                            }
-
-                    }
-                }
-                
+                // VStack {
+                    //VStack(alignment:.trailing){
+                        //HStack(alignment:.center){
+                                Button(action: { show_nostr_help = true }) {
+                                    Label("", systemImage: "questionmark.circle")
+                                        .foregroundColor(.accentColor)
+                                        .padding()
+                                }
+                        //}
+                    //}
                 Spacer()
             } //End VStack
-            } //End Form
 
         } //End first ZStack
         .navigationTitle("Settings")
