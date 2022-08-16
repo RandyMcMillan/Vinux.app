@@ -86,11 +86,9 @@ struct ConfigView: View {
                     }
                 }
 
-            VStack {
-
                 VStack {
                     Spacer()
-                    
+
                     Button(action: { show_add_relay = true }) {
                         Label("", systemImage: "plus")
                             .foregroundColor(.accentColor)
@@ -98,6 +96,8 @@ struct ConfigView: View {
                     }
                 }
                 Spacer()
+            VStack {
+
 
                 VStack(alignment:.trailing){
                     HStack(alignment:.center){
