@@ -199,7 +199,7 @@ struct ContentView: View {
             }
 
             TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
-            NavTabBar()
+            // NavTabBar()
         }
         .onAppear() {
             self.connect()

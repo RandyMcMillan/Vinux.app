@@ -148,6 +148,8 @@
 		4B59C79C289483430063304F /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D1152582BA4500636BA4 /* SideBar.swift */; };
 		4B59C79D2894849A0063304F /* ArticlesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE332742582AE2700FBDB3E /* ArticlesListView.swift */; };
 		4B59C79E289484CE0063304F /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10F2582B9DC00636BA4 /* ArticleView.swift */; };
+		4B75644A28AB2CF500B0EC23 /* AddHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75644928AB2CF500B0EC23 /* AddHelpView.swift */; };
+		4B75644B28AB2CF500B0EC23 /* AddHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75644928AB2CF500B0EC23 /* AddHelpView.swift */; };
 		4B95E52B28A6DE9E00E565E4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4B95E52A28A6DE9E00E565E4 /* Introspect */; };
 		4B95E52E28A6DEAE00E565E4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4B95E52D28A6DEAE00E565E4 /* Introspect */; };
 		4BDBFF1328A19ED100DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
@@ -311,6 +313,7 @@
 		4B4CC3A82893915B001F6FB4 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4B75644728AAE5C000B0EC23 /* ios-release.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "ios-release.entitlements"; sourceTree = "<group>"; };
 		4B75644828AAE5CA00B0EC23 /* ios-debug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "ios-debug.entitlements"; sourceTree = "<group>"; };
+		4B75644928AB2CF500B0EC23 /* AddHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHelpView.swift; sourceTree = "<group>"; };
 		4BDBFF0D28A199D800DDA935 /* AppInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndBlock.swift; sourceTree = "<group>"; };
 		4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldAlert.swift; sourceTree = "<group>"; };
@@ -436,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				4B4CC29628938437001F6FB4 /* AddRelayView.swift */,
+				4B75644928AB2CF500B0EC23 /* AddHelpView.swift */,
 				4B4CC2A128938437001F6FB4 /* BlocksView.swift */,
 				4B4CC2A728938437001F6FB4 /* CarouselView.swift */,
 				4B4CC28528938437001F6FB4 /* ChatroomView.swift */,
@@ -728,6 +732,7 @@
 				4B4CC32E28939029001F6FB4 /* PostView.swift in Sources */,
 				4B496C2128A0F0FC00EAD8A2 /* DirectMessageModel.swift in Sources */,
 				4B496C1128A0F0FC00EAD8A2 /* ReplyMap.swift in Sources */,
+				4B75644A28AB2CF500B0EC23 /* AddHelpView.swift in Sources */,
 				4B496BFB28A0F0FC00EAD8A2 /* FollowTarget.swift in Sources */,
 				4B496C4128A0F15100EAD8A2 /* NostrFilter.swift in Sources */,
 				4B496C4F28A0F15100EAD8A2 /* Profiles.swift in Sources */,
@@ -830,6 +835,7 @@
 				4BE04AE328985BD800E710CF /* CarouselView.swift in Sources */,
 				4B496C2228A0F0FC00EAD8A2 /* DirectMessageModel.swift in Sources */,
 				4B496C1228A0F0FC00EAD8A2 /* ReplyMap.swift in Sources */,
+				4B75644B28AB2CF500B0EC23 /* AddHelpView.swift in Sources */,
 				4B496BFC28A0F0FC00EAD8A2 /* FollowTarget.swift in Sources */,
 				4B496C4228A0F15100EAD8A2 /* NostrFilter.swift in Sources */,
 				4B496C5028A0F15100EAD8A2 /* Profiles.swift in Sources */,
