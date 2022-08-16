@@ -87,7 +87,8 @@ struct ConfigView: View {
                 }
 
             VStack {
-                HStack {
+
+                VStack {
                     Spacer()
                     
                     Button(action: { show_add_relay = true }) {
@@ -96,6 +97,8 @@ struct ConfigView: View {
                             .padding()
                     }
                 }
+                Spacer()
+
                 VStack(alignment:.trailing){
                     HStack(alignment:.center){
 
@@ -106,8 +109,6 @@ struct ConfigView: View {
                             }
 
                     }
-
-
                 }
                 
                 Spacer()
@@ -128,6 +129,10 @@ struct ConfigView: View {
             }
         } message: {
             Text("Make sure your nsec account key is saved before you logout or you will lose access to this account")
+        }
+        .sheet(isPresented: $show_nostr_help) {
+            //TODO:
+            AddHelpView(show_nostr_help: $show_nostr_help)
         }
         .sheet(isPresented: $show_add_relay) {
             AddRelayView(show_add_relay: $show_add_relay, relay: $new_relay) { m_relay in

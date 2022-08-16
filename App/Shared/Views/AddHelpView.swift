@@ -9,9 +9,6 @@
 
     struct AddHelpView: View {
         @Binding var show_nostr_help: Bool
-        @Binding var relay: String
-
-        let action: (String?) -> Void
 
         var body: some View {
             VStack(alignment: .leading) {
@@ -20,7 +17,6 @@
                     HStack {
                         Button("Cancel") {
                             show_nostr_help = false
-                            action(nil)
                         }
                         .contentShape(Rectangle())
 
@@ -37,6 +33,6 @@
         @State static var relay: String = ""
 
         static var previews: some View {
-            AddHelpView(show_nostr_help: $show, relay: $relay, action: {_ in })
+            AddHelpView(show_nostr_help: $show)
         }
     }
