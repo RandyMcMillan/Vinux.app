@@ -381,7 +381,6 @@ struct ContentView: View {
                                 boosts: EventCounter(our_pubkey: pubkey),
                                 contacts: Contacts(),
                                 tips: TipCounter(our_pubkey: pubkey),
-                                image_cache: ImageCache(),
                                 profiles: Profiles(),
                                 dms: home.dms
         )
