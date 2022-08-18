@@ -25,7 +25,7 @@ struct SideBar: View {
     var body: some View {
         List(selection: $selection) {
             NavigationLink(
-                destination: ArticlesListView(articles: techArticles),
+                destination: ArticlesListView(articles: Nostr),
                 label: {
                     Label("Tech", systemImage: "newspaper.fill")
                 }
