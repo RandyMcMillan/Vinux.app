@@ -91,7 +91,7 @@ struct LoginView: View {
             }
             .padding()
         }
-        #if !os(macOS)
+        #if !os(macOS)  || targetEnvironment(macCatalyst)
         .frame(minWidth: 300, idealWidth: 500, maxWidth: .infinity, minHeight: 300, idealHeight: .infinity, maxHeight: .infinity, alignment: .center)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
@@ -182,7 +182,7 @@ struct KeyInput: View {
             .background {
                 RoundedRectangle(cornerRadius: 4.0).opacity(0.2)
             }
-        #if !os(macOS)
+        #if !os(macOS) || targetEnvironment(macCatalyst)
             .autocapitalization(.none)
         #else
             .disableAutocorrection(true)
