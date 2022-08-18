@@ -36,6 +36,6 @@ struct ArticlesListView: View {
 
 struct ItemsListView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticlesListView(articles: techArticles)
+        ArticlesListView(articles: Nostr)
     }
 }
