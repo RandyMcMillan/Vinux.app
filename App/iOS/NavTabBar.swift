@@ -13,7 +13,7 @@ struct NavTabBar: View {
     // MARK: - TabBar
     var body: some View {
         TabView {
-            ArticlesListView(articles: techArticles)
+            ArticlesListView(articles: Nostr)
                 .tabItem {
                     Image(systemName: "newspaper.fill")
                     Text("Tech")
