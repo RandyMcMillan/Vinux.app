@@ -69,7 +69,7 @@ class SearchHomeModel: ObservableObject {
                         $0.created_at > $1.created_at
                     }
                 } else if ev.known_kind == .metadata {
-                    #if !os(macOS)
+                    #if !os(macOS)  || targetEnvironment(macCatalyst)
                     process_metadata_event(image_cache: damus_state.image_cache, profiles: damus_state.profiles, ev: ev)
                     #else
                     process_metadata_event(profiles: damus_state.profiles, ev: ev)
