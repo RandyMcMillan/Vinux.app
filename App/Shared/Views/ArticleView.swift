@@ -29,6 +29,6 @@ struct ArticleView: View {
 
 struct ArticleView_Previews: PreviewProvider {
     static var previews: some View {
-        ArticleView(article: techArticles[0])
+        ArticleView(article: Nostr[0])
     }
 }
