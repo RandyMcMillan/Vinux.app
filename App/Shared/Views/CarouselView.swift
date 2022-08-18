@@ -38,7 +38,7 @@ struct CarouselView: View {
                 
             }
         }
-        #if !os(macOS)
+        #if !os(macOS)  || targetEnvironment(macCatalyst)
         .tabViewStyle(PageTabViewStyle())
         #else
         .tabViewStyle( DefaultTabViewStyle())
