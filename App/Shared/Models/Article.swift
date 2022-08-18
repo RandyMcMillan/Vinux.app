@@ -16,10 +16,11 @@ struct Article: Identifiable {
     let type: String
 }
 
-let techArticles = [
-    Article(title: "AirPods Max: This is Expensive", description: "Let's take a closer look at AirPods Max, Apple's last product in 2020.", type: "Tech"),
-    Article(title: "Mac Apps are Back!", description: "With first Apple Silicon -M1- Macs, many applications that we use on iPhones and iPads come to the Mac App Store! Here is why.", type: "Tech"),
-    Article(title: "How to Create an Onboarding Screens in Your App", description: "Onboarding screens are very important for new users to fully understand the application and have a smooth user experience.", type: "Tech")
+let Nostr = [
+    Article(title: "What is Nostr?", description: "The simplest open protocol that is able to create a censorship-resistant global \"social\" network once and for all. It doesn't rely on any trusted central server, hence it is resilient; it is based on cryptographic keys and signatures, so it is tamperproof; it does not rely on P2P techniques, therefore it works.", type: "Nostr"),
+    Article(title: "How does it work?", description: "Very short summary of how it works, if you don't plan to read anything else: Everybody runs a client. It can be a native client, a web client, etc. To publish something, you write a post, sign it with your key and send it to multiple relays (servers hosted by someone else, or yourself). To get updates from other people, you ask multiple relays if they know anything about these other people. Anyone can run a relay. A relay is very simple and dumb. It does nothing besides accepting posts from some people and forwarding to others. Relays don't have to be trusted. Signatures are verified on the client side.", type: "Nostr"),
+    Article(title: "How does it work?", description: "Very short summary of how it works, if you don't plan to read anything else: Everybody runs a client. It can be a native client, a web client, etc. To publish something, you write a post, sign it with your key and send it to multiple relays (servers hosted by someone else, or yourself). To get updates from other people, you ask multiple relays if they know anything about these other people. Anyone can run a relay. A relay is very simple and dumb. It does nothing besides accepting posts from some people and forwarding to others. Relays don't have to be trusted. Signatures are verified on the client side.", type: "Nostr"),
+    Article(title: "How does it work?", description: "Very short summary of how it works, if you don't plan to read anything else: Everybody runs a client. It can be a native client, a web client, etc. To publish something, you write a post, sign it with your key and send it to multiple relays (servers hosted by someone else, or yourself). To get updates from other people, you ask multiple relays if they know anything about these other people. Anyone can run a relay. A relay is very simple and dumb. It does nothing besides accepting posts from some people and forwarding to others. Relays don't have to be trusted. Signatures are verified on the client side.", type: "Nostr"),
 ]
 
 let scienceArticles = [
