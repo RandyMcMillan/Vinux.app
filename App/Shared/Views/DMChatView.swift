@@ -37,9 +37,10 @@ struct DMChatView: View {
         let profile_page = ProfileView(damus_state: damus_state, profile: pmodel, followers: fmodel)
         return NavigationLink(destination: profile_page) {
             HStack {
-#if !os(macOS)
+#if !os(macOS)  || targetEnvironment(macCatalyst)
                 ProfilePicView(pubkey: pubkey, size: 24, highlight: .none, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
 #else
+                ProfilePicView(pubkey: pubkey, size: 24, highlight: .none, profiles: damus_state.profiles)
 #endif
                 ProfileName(pubkey: pubkey, profile: profile, contacts: damus_state.contacts, show_friend_confirmed: true)
 
@@ -185,7 +186,7 @@ extension View {
     func textEditorBackground<V>(@ViewBuilder _ content: () -> V) -> some View where V : View {
         self
             .onAppear {
-                #if !os(macOS)
+                #if !os(macOS)  || targetEnvironment(macCatalyst)
                 UITextView.appearance().backgroundColor = .clear
                 #else
                 //TODO macOS
