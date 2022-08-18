@@ -13,3 +13,9 @@
 [submodule "nips"]
 	path = nips
 	url = https://github.com/RandyMcMillan/nips.git
+[submodule "secp256k1.swift"]
+	path = secp256k1.swift
+	url = git@github.com:vinux-app/secp256k1.swift.git
+[submodule "Twift"]
+	path = Twift
+	url = git@github.com:vinux-app/Twift.git
