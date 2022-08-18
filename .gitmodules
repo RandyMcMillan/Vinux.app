@@ -19,3 +19,6 @@
 [submodule "Twift"]
 	path = Twift
 	url = git@github.com:vinux-app/Twift.git
+[submodule "customTabBarSwift"]
+	path = customTabBarSwift
+	url = git@github.com:vinux-app/customTabBarSwift.git
