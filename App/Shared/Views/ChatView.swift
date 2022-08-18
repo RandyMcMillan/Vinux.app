@@ -78,7 +78,7 @@ struct ChatView: View {
             VStack {
             Text("ChatView VStack")
                 if is_active || just_started {
-                    #if !os(macOS)
+                    #if !os(macOS)  || targetEnvironment(macCatalyst)
                     ProfilePicView(pubkey: event.pubkey, size: 32, highlight: is_active ? .main : .none, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
                     #else
                     ProfilePicView(pubkey: event.pubkey, size: 32, highlight: is_active ? .main : .none, profiles: damus_state.profiles)
@@ -104,7 +104,7 @@ struct ChatView: View {
                 
                     if let ref_id = thread.replies.lookup(event.id) {
                         if !is_reply_to_prev() {
-                            #if !os(macOS)
+                            #if !os(macOS)  || targetEnvironment(macCatalyst)
                             ReplyQuoteView(privkey: damus_state.keypair.privkey, quoter: event, event_id: ref_id, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
                                 .frame(maxHeight: expand_reply ? nil : 100)
                                 .environmentObject(thread)
