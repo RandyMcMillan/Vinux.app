@@ -14,6 +14,13 @@
             VStack(alignment: .leading) {
 
                 VStack {
+                // NavTabBar()
+                    VStack{
+                    ArticleView(article: Nostr[0])
+                    ArticleView(article: Nostr[1])
+                    ArticleView(article: Nostr[2])
+                    ArticleView(article: Nostr[3])
+                    }
                     HStack {
                         Button("Cancel") {
                             show_nostr_help = false
