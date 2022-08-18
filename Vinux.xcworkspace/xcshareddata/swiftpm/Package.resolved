@@ -3,27 +3,19 @@
     {
       "identity" : "secp256k1.swift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/jb55/secp256k1.swift",
+      "location" : "https://github.com/vinux-app/secp256k1.swift",
       "state" : {
-        "revision" : "40b4b38b3b1c83f7088c76189a742870e0ca06a9"
+        "branch" : "main",
+        "revision" : "5fee95663dd5a312b360d3727c7bee55fa8c15c8"
       }
     },
     {
       "identity" : "starscream",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/daltoniam/Starscream.git",
+      "location" : "https://github.com/vinux-app/Starscream.git",
       "state" : {
         "revision" : "df8d82047f6654d8e4b655d1b1525c64e1059d21",
         "version" : "4.0.4"
-      }
-    },
-    {
-      "identity" : "swiftui-introspect",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
-      "state" : {
-        "branch" : "master",
-        "revision" : "7ef0df639079491ee1aaf6b83b6fd4d08df80393"
       }
     }
   ],

@@ -5,7 +5,6 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/jb55/secp256k1.swift.git",
       "state" : {
-        "branch" : "main",
         "revision" : "40b4b38b3b1c83f7088c76189a742870e0ca06a9"
       }
     },
@@ -15,6 +14,33 @@
       "location" : "https://github.com/daltoniam/Starscream.git",
       "state" : {
         "revision" : "df8d82047f6654d8e4b655d1b1525c64e1059d21"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-cmark.git",
+      "state" : {
+        "branch" : "gfm",
+        "revision" : "476f7b4fcf12eba381b4aaed8987006fd8fcec9c"
+      }
+    },
+    {
+      "identity" : "swift-markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-markdown.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "52563fc74a540b29854fde20e836b27394be2749"
+      }
+    },
+    {
+      "identity" : "swiftui-introspect",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/siteline/SwiftUI-Introspect.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "7ef0df639079491ee1aaf6b83b6fd4d08df80393"
       }
     }
   ],

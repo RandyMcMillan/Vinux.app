@@ -90,8 +90,6 @@
 		4B496C5028A0F15100EAD8A2 /* Profiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B496C3728A0F15100EAD8A2 /* Profiles.swift */; };
 		4B496C5128A0F15100EAD8A2 /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B496C3828A0F15100EAD8A2 /* Relay.swift */; };
 		4B496C5228A0F15100EAD8A2 /* Relay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B496C3828A0F15100EAD8A2 /* Relay.swift */; };
-		4B49F18A28993E2C0013FC2F /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 4B49F18928993E2C0013FC2F /* Starscream */; };
-		4B49F18D28993E3B0013FC2F /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 4B49F18C28993E3B0013FC2F /* Starscream */; };
 		4B4CC2FA28938AE3001F6FB4 /* Info-ios.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AE332352582A02B00FBDB3E /* Info-ios.plist */; };
 		4B4CC2FB28938B01001F6FB4 /* Info-macos.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3AE3323C2582A02B00FBDB3E /* Info-macos.plist */; };
 		4B4CC30728938D61001F6FB4 /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D1152582BA4500636BA4 /* SideBar.swift */; };
@@ -148,14 +146,14 @@
 		4B59C79C289483430063304F /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D1152582BA4500636BA4 /* SideBar.swift */; };
 		4B59C79D2894849A0063304F /* ArticlesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE332742582AE2700FBDB3E /* ArticlesListView.swift */; };
 		4B59C79E289484CE0063304F /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10F2582B9DC00636BA4 /* ArticleView.swift */; };
+		4B60B1E628AE0AF500814125 /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = 4B60B1E528AE0AF500814125 /* secp256k1 */; };
+		4B60B1E928AE0B6900814125 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 4B60B1E828AE0B6900814125 /* Starscream */; };
+		4B60B1EC28AE0BE800814125 /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = 4B60B1EB28AE0BE800814125 /* secp256k1 */; };
+		4B60B1EF28AE0C0300814125 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 4B60B1EE28AE0C0300814125 /* Starscream */; };
 		4B75644A28AB2CF500B0EC23 /* AddHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75644928AB2CF500B0EC23 /* AddHelpView.swift */; };
 		4B75644B28AB2CF500B0EC23 /* AddHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75644928AB2CF500B0EC23 /* AddHelpView.swift */; };
-		4B95E52B28A6DE9E00E565E4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4B95E52A28A6DE9E00E565E4 /* Introspect */; };
-		4B95E52E28A6DEAE00E565E4 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 4B95E52D28A6DEAE00E565E4 /* Introspect */; };
 		4BDBFF1328A19ED100DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BDBFF1428A19ED900DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
-		4BE04AAF289858B700E710CF /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE04AAE289858B700E710CF /* secp256k1 */; };
-		4BE04AB228985AA300E710CF /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = 4BE04AB128985AA300E710CF /* secp256k1 */; };
 		4BE04AD128985BC100E710CF /* VinuxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3322B2582A02900FBDB3E /* VinuxApp.swift */; };
 		4BE04ADF28985BCF00E710CF /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A030AD325840BDE0012228D /* MainView.swift */; };
 		4BE04AE028985BD800E710CF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC3A82893915B001F6FB4 /* ContentView.swift */; };
@@ -324,9 +322,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BE04AAF289858B700E710CF /* secp256k1 in Frameworks */,
-				4B95E52B28A6DE9E00E565E4 /* Introspect in Frameworks */,
-				4B49F18A28993E2C0013FC2F /* Starscream in Frameworks */,
+				4B60B1E628AE0AF500814125 /* secp256k1 in Frameworks */,
+				4B60B1E928AE0B6900814125 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,9 +331,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4BE04AB228985AA300E710CF /* secp256k1 in Frameworks */,
-				4B95E52E28A6DEAE00E565E4 /* Introspect in Frameworks */,
-				4B49F18D28993E3B0013FC2F /* Starscream in Frameworks */,
+				4B60B1EC28AE0BE800814125 /* secp256k1 in Frameworks */,
+				4B60B1EF28AE0C0300814125 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,9 +564,8 @@
 			);
 			name = "Vinux (iOS)";
 			packageProductDependencies = (
-				4BE04AAE289858B700E710CF /* secp256k1 */,
-				4B49F18928993E2C0013FC2F /* Starscream */,
-				4B95E52A28A6DE9E00E565E4 /* Introspect */,
+				4B60B1E528AE0AF500814125 /* secp256k1 */,
+				4B60B1E828AE0B6900814125 /* Starscream */,
 			);
 			productName = "Universal App (iOS)";
 			productReference = 3AE332322582A02B00FBDB3E /* Vinux.app */;
@@ -591,9 +586,8 @@
 			);
 			name = "Vinux (macOS)";
 			packageProductDependencies = (
-				4BE04AB128985AA300E710CF /* secp256k1 */,
-				4B49F18C28993E3B0013FC2F /* Starscream */,
-				4B95E52D28A6DEAE00E565E4 /* Introspect */,
+				4B60B1EB28AE0BE800814125 /* secp256k1 */,
+				4B60B1EE28AE0C0300814125 /* Starscream */,
 			);
 			productName = "Universal App (macOS)";
 			productReference = 3AE3323A2582A02B00FBDB3E /* Vinux.app */;
@@ -626,11 +620,10 @@
 			);
 			mainGroup = 3AE332252582A02900FBDB3E;
 			packageReferences = (
-				4BE04AAD289858B700E710CF /* XCRemoteSwiftPackageReference "secp256k1" */,
-				4B49F18828993E2C0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */,
-				4B49F18B28993E3B0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */,
-				4B95E52928A6DE9E00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				4B95E52C28A6DEAE00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				4B60B1E428AE0AF500814125 /* XCRemoteSwiftPackageReference "secp256k1" */,
+				4B60B1E728AE0B6900814125 /* XCRemoteSwiftPackageReference "Starscream" */,
+				4B60B1EA28AE0BE800814125 /* XCRemoteSwiftPackageReference "secp256k1" */,
+				4B60B1ED28AE0C0300814125 /* XCRemoteSwiftPackageReference "Starscream" */,
 			);
 			productRefGroup = 3AE332332582A02B00FBDB3E /* Products */;
 			projectDirPath = "";
@@ -1161,78 +1154,60 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4B49F18828993E2C0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */ = {
+		4B60B1E428AE0AF500814125 /* XCRemoteSwiftPackageReference "secp256k1" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/daltoniam/Starscream.git";
+			repositoryURL = "https://github.com/vinux-app/secp256k1.swift";
 			requirement = {
-				kind = exactVersion;
-				version = 4.0.4;
+				branch = main;
+				kind = branch;
 			};
 		};
-		4B49F18B28993E3B0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */ = {
+		4B60B1E728AE0B6900814125 /* XCRemoteSwiftPackageReference "Starscream" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/daltoniam/Starscream.git";
-			requirement = {
-				kind = exactVersion;
-				version = 4.0.4;
-			};
-		};
-		4B95E52928A6DE9E00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			repositoryURL = "https://github.com/vinux-app/Starscream.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.4;
+				minimumVersion = 4.0.0;
 			};
 		};
-		4B95E52C28A6DEAE00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+		4B60B1EA28AE0BE800814125 /* XCRemoteSwiftPackageReference "secp256k1" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect.git";
+			repositoryURL = "https://github.com/vinux-app/secp256k1.swift";
 			requirement = {
-				branch = master;
+				branch = main;
 				kind = branch;
 			};
 		};
-		4BE04AAD289858B700E710CF /* XCRemoteSwiftPackageReference "secp256k1" */ = {
+		4B60B1ED28AE0C0300814125 /* XCRemoteSwiftPackageReference "Starscream" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/jb55/secp256k1.swift";
+			repositoryURL = "https://github.com/vinux-app/Starscream.git";
 			requirement = {
-				branch = 40b4b38b3b1c83f7088c76189a742870e0ca06a9;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4B49F18928993E2C0013FC2F /* Starscream */ = {
+		4B60B1E528AE0AF500814125 /* secp256k1 */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4B49F18828993E2C0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */;
-			productName = Starscream;
-		};
-		4B49F18C28993E3B0013FC2F /* Starscream */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B49F18828993E2C0013FC2F /* XCRemoteSwiftPackageReference "Starscream" */;
-			productName = Starscream;
-		};
-		4B95E52A28A6DE9E00E565E4 /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B95E52928A6DE9E00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
-		};
-		4B95E52D28A6DEAE00E565E4 /* Introspect */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B95E52C28A6DEAE00E565E4 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
-			productName = Introspect;
-		};
-		4BE04AAE289858B700E710CF /* secp256k1 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4BE04AAD289858B700E710CF /* XCRemoteSwiftPackageReference "secp256k1" */;
+			package = 4B60B1E428AE0AF500814125 /* XCRemoteSwiftPackageReference "secp256k1" */;
 			productName = secp256k1;
 		};
-		4BE04AB128985AA300E710CF /* secp256k1 */ = {
+		4B60B1E828AE0B6900814125 /* Starscream */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4BE04AAD289858B700E710CF /* XCRemoteSwiftPackageReference "secp256k1" */;
+			package = 4B60B1E728AE0B6900814125 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
+		};
+		4B60B1EB28AE0BE800814125 /* secp256k1 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B60B1E428AE0AF500814125 /* XCRemoteSwiftPackageReference "secp256k1" */;
 			productName = secp256k1;
+		};
+		4B60B1EE28AE0C0300814125 /* Starscream */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B60B1E728AE0B6900814125 /* XCRemoteSwiftPackageReference "Starscream" */;
+			productName = Starscream;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
