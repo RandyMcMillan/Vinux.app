@@ -107,7 +107,7 @@ struct EventView: View {
             VStack {
                 let pmodel = ProfileModel(pubkey: pubkey, damus: damus)
                 let pv = ProfileView(damus_state: damus, profile: pmodel, followers: FollowersModel(damus_state: damus, target: pubkey))
-                #if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 NavigationLink(destination: pv) {
                     ProfilePicView(pubkey: pubkey, size: PFP_SIZE, highlight: highlight, image_cache: damus.image_cache, profiles: damus.profiles)
                 }
@@ -134,15 +134,15 @@ struct EventView: View {
                 }
 
                 NoteContentView(privkey: damus.keypair.privkey, event: event, profiles: damus.profiles, content: content)
-#if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                     .frame(maxWidth: UIScreen.main.bounds.width*0.80, alignment: .topLeading)
                     //.frame(minWidth: UIScreen.main.bounds.width*0.8, idealWidth: UIScreen.main.bounds.width*0.85, maxWidth: UIScreen.main.bounds.width, minHeight: 0.0, idealHeight: UIScreen.main.bounds.height*0.15, maxHeight: UIScreen.main.bounds.height, alignment: .topLeading)
                     .textSelection(.enabled)
-#else
+                #else
                     .frame(
                         alignment: .leading
                     )
-#endif
+                #endif
 
                 if has_action_bar {
                     let bar = make_actionbar_model(ev: event, damus: damus)
@@ -181,7 +181,7 @@ extension View {
     func pubkey_context_menu(bech32_pubkey: String) -> some View {
         return self.contextMenu {
             Button {
-                    #if !os(macOS)
+                    #if !os(macOS) || targetEnvironment(macCatalyst)
                     UIPasteboard.general.string = bech32_pubkey
                     #else
                     NSPasteboard.general.declareTypes([.string], owner: nil)
@@ -197,40 +197,40 @@ extension View {
     func event_context_menu(_ event: NostrEvent, privkey: String?) -> some View {
         return self.contextMenu {
             Button {
-#if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 UIPasteboard.general.string = event.get_content(privkey)
-#else
+                #else
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.setString(event.get_content(privkey), forType: .string)
-#endif
+                #endif
             } label: {
                 Label("Copy Text", systemImage: "doc.on.doc")
             }
 
             Button {
-#if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 UIPasteboard.general.string = bech32_pubkey(event.pubkey) ?? event.pubkey
-#else
+                #else
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.setString(event.get_content(privkey), forType: .string)
-#endif
+                #endif
             } label: {
                 Label("Copy User ID", systemImage: "tag")
             }
 
             Button {
-#if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 UIPasteboard.general.string = bech32_note_id(event.id) ?? event.id
-#else
+                #else
                 NSPasteboard.general.clearContents()
                 NSPasteboard.general.setString(event.get_content(privkey), forType: .string)
-#endif
+                #endif
             } label: {
                 Label("Copy Note ID", systemImage: "tag")
             }
 
             Button {
-                #if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 UIPasteboard.general.string = event_to_json(ev: event)
                 #else
                 NSPasteboard.general.clearContents()
