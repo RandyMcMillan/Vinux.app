@@ -20,7 +20,7 @@ struct ThreadView: View {
         Group {
             if is_chatroom {
                 ChatroomView(damus: damus)
-                #if !os(macOS)
+                #if !os(macOS)  || targetEnvironment(macCatalyst)
                     .navigationBarTitle("Chat")
                     .environmentObject(thread)
                 #else
@@ -29,7 +29,7 @@ struct ThreadView: View {
                 #endif
             } else {
                 EventDetailView(damus: damus, thread: thread)
-                #if !os(macOS)
+                #if !os(macOS)  || targetEnvironment(macCatalyst)
                     .navigationBarTitle("Thread")
                     .environmentObject(thread)
                 #else
