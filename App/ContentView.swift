@@ -10,16 +10,20 @@ import Starscream
 
 let BOOTSTRAP_RELAYS = [
     "wss://relay.damus.io",
-    "wss://moonbreeze.richardbondi.net/ws",
-    "wss://nostr.delo.software",
-    "wss://nostr.drss.io",
-    "wss://nostr.oxtr.dev",
-    "wss://freedom-relay.herokuapp.com/ws",
-    "wss://nostr-relay.wlvs.space",
-    "wss://nostr.bitcoiner.social",
-    "wss://nostr-relay.bigsun.xyz/ws",
-    "wss://nostr.onsats.org",
-    "wss://nostr.semisol.dev",
+    // "wss://relay.nyc1.vinux.app",
+    // "wss://moonbreeze.richardbondi.net/ws",
+    // "wss://nostr.delo.software",
+    // "wss://nostr.drss.io",
+    // "wss://nostr.oxtr.dev",
+    // "wss://freedom-relay.herokuapp.com/ws",
+    // "wss://nostr-relay.wlvs.space",
+    // "wss://nostr.bitcoiner.social",
+    // "wss://nostr-relay.bigsun.xyz/ws",
+    // "wss://nostr.onsats.org",
+    // "wss://nostr.semisol.dev",
+    // NOT WRITABLE
+    // "wss://expensive-relay.fiatjaf.com",
+    // "wss://rsslay.fiatjaf.com",
 ]
 
 struct TimestampedProfile {
@@ -54,6 +58,8 @@ struct ContentView: View {
     var privkey: String? {
         return keypair.privkey
     }
+
+    @State private var isSideBarOpened = false
     
     @State var status: String = "Not connected"
     @State var active_sheet: Sheets? = nil
@@ -182,22 +188,20 @@ struct ContentView: View {
     }
 
     var body: some View {
-        Text("ContentView.swift @ViewBulder body")
-        VStack(alignment: .leading, spacing: 0) {
+        VStack {
             if let damus = self.damus_state {
-                NavigationView {
-                    MainContent(damus: damus)
-                        .toolbar {
-                            LoadingContainer
-                        }
+            NavigationView {
+                GeometryReader { dimensions in
+                MainContent(damus: damus)
+                    .toolbar {
+                        LoadingContainer
+                    }
+
                 }
-                #if !os(macOS)
-                .navigationViewStyle(.stack)
-                #else
-                .navigationViewStyle(.columns)
-                #endif
             }
 
+            }
+            SideMenu(isSidebarVisible: $isSideBarOpened)
             TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
             // NavTabBar()
         }

@@ -74,6 +74,11 @@ class RelayPool {
         }
         let descriptor = RelayDescriptor(url: url, info: info)
         let relay = Relay(descriptor: descriptor, connection: conn)
+
+        print("relay.id:",relay.id)
+        print("replay.descriptor:",relay.descriptor)
+        print("relay.connection:",relay.connection)
+
         self.relays.append(relay)
     }
     
@@ -81,7 +86,9 @@ class RelayPool {
     func connect_to_disconnected() {
         for relay in relays {
             if !relay.connection.isConnected && !relay.connection.isConnecting {
+                print("relay.connection:",relay.connection)
                 relay.connection.connect()
+                print("relay.connection.last_connection_attempt:",relay.connection.last_connection_attempt)
             }
         }
     }
@@ -90,6 +97,9 @@ class RelayPool {
         let relays = to.map{ get_relays($0) } ?? self.relays
         for relay in relays {
             relay.connection.reconnect()
+            print("reconnect to:",relay.id)
+            print("relay.connection.last_connection_attempt:",relay.connection.last_connection_attempt)
+
         }
     }
 
@@ -97,6 +107,8 @@ class RelayPool {
         let relays = to.map{ get_relays($0) } ?? self.relays
         for relay in relays {
             relay.connection.connect()
+            print("connect to:",relay.id)
+            print("relay.connection.last_connection_attempt:",relay.connection.last_connection_attempt)
         }
     }
 
@@ -104,12 +116,15 @@ class RelayPool {
         let relays = to.map{ get_relays($0) } ?? self.relays
         for relay in relays {
             relay.connection.disconnect()
+            print("disconnect from:",relay.id)
         }
     }
     
     func unsubscribe(sub_id: String, to: [String]? = nil) {
         self.remove_handler(sub_id: sub_id)
+            print("remove_handler:",sub_id)
         self.send(.unsubscribe(sub_id))
+            print("unsubscribe from:",sub_id)
     }
     
     func subscribe(sub_id: String, filters: [NostrFilter], handler: @escaping (String, NostrConnectionEvent) -> ()) {
@@ -164,6 +179,8 @@ class RelayPool {
 
 func add_rw_relay(_ pool: RelayPool, _ url: String) {
     let url_ = URL(string: url)!
+    print(RelayInfo.rw.read,"___________________________________________________")
+    print(RelayInfo.rw.write,"___________________________________________________")
     try! pool.add_relay(url_, info: RelayInfo.rw)
 }
 

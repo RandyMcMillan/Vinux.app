@@ -143,6 +143,8 @@
 		4B4CC37628939046001F6FB4 /* VinuxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3322B2582A02900FBDB3E /* VinuxApp.swift */; };
 		4B4CC3A92893915B001F6FB4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC3A82893915B001F6FB4 /* ContentView.swift */; };
 		4B4CC3AF28939587001F6FB4 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4CC28628938437001F6FB4 /* ChatView.swift */; };
+		4B568BAF28B07AD40009DC2D /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B568BAE28B07AD40009DC2D /* SideMenu.swift */; };
+		4B568BB028B07AD40009DC2D /* SideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B568BAE28B07AD40009DC2D /* SideMenu.swift */; };
 		4B59C79C289483430063304F /* SideBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D1152582BA4500636BA4 /* SideBar.swift */; };
 		4B59C79D2894849A0063304F /* ArticlesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE332742582AE2700FBDB3E /* ArticlesListView.swift */; };
 		4B59C79E289484CE0063304F /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10F2582B9DC00636BA4 /* ArticleView.swift */; };
@@ -309,6 +311,7 @@
 		4B4CC2A628938437001F6FB4 /* ProfilePictureSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureSelector.swift; sourceTree = "<group>"; };
 		4B4CC2A728938437001F6FB4 /* CarouselView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarouselView.swift; sourceTree = "<group>"; };
 		4B4CC3A82893915B001F6FB4 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		4B568BAE28B07AD40009DC2D /* SideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenu.swift; sourceTree = "<group>"; };
 		4B75644728AAE5C000B0EC23 /* ios-release.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "ios-release.entitlements"; sourceTree = "<group>"; };
 		4B75644828AAE5CA00B0EC23 /* ios-debug.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "ios-debug.entitlements"; sourceTree = "<group>"; };
 		4B75644928AB2CF500B0EC23 /* AddHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddHelpView.swift; sourceTree = "<group>"; };
@@ -540,6 +543,7 @@
 		4BE2BD8728A95A9A005AE9C6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4B568BAE28B07AD40009DC2D /* SideMenu.swift */,
 				4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */,
 				4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */,
 			);
@@ -703,6 +707,7 @@
 				4BDBFF1328A19ED100DDA935 /* AppInfo.swift in Sources */,
 				4B4CC31728939029001F6FB4 /* SearchView.swift in Sources */,
 				4B4CC33828939029001F6FB4 /* ProfileName.swift in Sources */,
+				4B568BAF28B07AD40009DC2D /* SideMenu.swift in Sources */,
 				4B4CC32028939029001F6FB4 /* CreateAccountView.swift in Sources */,
 				4B496C3928A0F15100EAD8A2 /* NostrResponse.swift in Sources */,
 				4B4CC32828939029001F6FB4 /* MainTabView.swift in Sources */,
@@ -806,6 +811,7 @@
 				4BDBFF1428A19ED900DDA935 /* AppInfo.swift in Sources */,
 				4BE04B0E28985C0600E710CF /* NavTabBar.swift in Sources */,
 				4BE04B0528985BF200E710CF /* Bech32.swift in Sources */,
+				4B568BB028B07AD40009DC2D /* SideMenu.swift in Sources */,
 				4BE04B0628985BF200E710CF /* ImageCache.swift in Sources */,
 				4B496C3A28A0F15100EAD8A2 /* NostrResponse.swift in Sources */,
 				4BE04B0728985BF200E710CF /* InputDismissKeyboard.swift in Sources */,
