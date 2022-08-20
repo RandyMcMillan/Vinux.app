@@ -188,7 +188,7 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack {
+        ZStack {
             if let damus = self.damus_state {
             NavigationView {
                 GeometryReader { dimensions in
@@ -196,14 +196,11 @@ struct ContentView: View {
                     .toolbar {
                         LoadingContainer
                     }
-
+                    TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
                 }
             }
-
-            }
-            SideMenu(isSidebarVisible: $isSideBarOpened)
-            TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
-            // NavTabBar()
+                SideMenu(isSidebarVisible: $isSideBarOpened)
+            }// End if let damus
         }
         .onAppear() {
             self.connect()
