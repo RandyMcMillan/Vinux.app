@@ -144,6 +144,7 @@ struct ContentView: View {
             case .none:
                 EmptyView()
             }
+            TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
         }
         #if targetEnvironment(macCatalyst)
         .navigationTitle("Vinux (macCatalyst)")
@@ -196,12 +197,13 @@ struct ContentView: View {
                     .toolbar {
                         LoadingContainer
                     }
-                    TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
                 }
+                    // TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
+
             }
                 SideMenu(isSidebarVisible: $isSideBarOpened)
             }// End if let damus
-        }
+        }// End ZStack
         .onAppear() {
             self.connect()
             setup_notifications()
