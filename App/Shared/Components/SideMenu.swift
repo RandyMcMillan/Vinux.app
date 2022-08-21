@@ -31,6 +31,7 @@ struct SideMenu: View {
 
     @Binding var isSidebarVisible: Bool
     @State var profile: ProfileModel
+    @State var followers: FollowersModel
     @State var damus_state: DamusState
 
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.25
@@ -63,7 +64,17 @@ struct SideMenu: View {
                 VStack(alignment: .leading, spacing: 20) {
 
 
-                    userProfile
+                    // ProfileView(damus_state: damus_state, profile: profile, followers: followers)
+
+                    VStack {
+                        if let pubkey = profile.pubkey {
+                            let profile_model = ProfileModel(pubkey: profile.pubkey, damus: damus_state)
+                            let followers = FollowersModel(damus_state: damus_state, target: profile_model.pubkey)
+                            ProfileView(damus_state: damus_state, profile: profile_model, followers: followers)
+                        } else {
+                            EmptyView()
+                        }
+                    }
 
                     Divider()
                     MenuLinks(items: userActions)

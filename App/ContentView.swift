@@ -208,10 +208,11 @@ struct ContentView: View {
                     // TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
 
             }
-            // let profile_model = ProfileModel(pubkey: pk, damus: damus_state!)
-            let profile_model = ProfileModel(pubkey: self.pubkey, damus: damus_state!)
 
-            SideMenu(isSidebarVisible: $isSideBarOpened, profile: profile_model,damus_state: damus)
+            let profile_model = ProfileModel(pubkey: self.pubkey, damus: damus_state!)
+            let followers = FollowersModel(damus_state: damus_state!, target: self.pubkey)
+
+            SideMenu(isSidebarVisible: $isSideBarOpened, profile: profile_model,followers: followers, damus_state: damus)
                     .toolbar { LoadingContainer }
             }// End if let damus
         }// End ZStack
