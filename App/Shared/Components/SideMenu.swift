@@ -26,8 +26,13 @@ var profileActions: [MenuItem] = [
     MenuItem(id: 4005, icon: "iphone.and.arrow.forward", text: "Logout"),
 ]
 
+
 struct SideMenu: View {
+
     @Binding var isSidebarVisible: Bool
+    @State var profile: ProfileModel
+    @State var damus_state: DamusState
+
     var sideBarWidth = UIScreen.main.bounds.size.width * 0.25
     var menuColor: Color = Color(.init(red: 52 / 255, green: 70 / 255, blue: 182 / 255, alpha: 1))
     
@@ -49,6 +54,7 @@ struct SideMenu: View {
     }
     
     var content: some View {
+
         HStack(alignment: .top) {
             ZStack(alignment: .top) {
                 menuColor
@@ -57,9 +63,8 @@ struct SideMenu: View {
                 VStack(alignment: .leading, spacing: 20) {
 
 
-                    //userProfile
+                    userProfile
 
-                    
                     Divider()
                     MenuLinks(items: userActions)
                     Divider()

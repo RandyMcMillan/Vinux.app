@@ -202,7 +202,7 @@ struct ContentView: View {
                 GeometryReader { dimensions in
                 MainContent(damus: damus)
                     .toolbar {
-                        //LoadingContainer
+                        LoadingContainer
                     }
                 }
                     // TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)

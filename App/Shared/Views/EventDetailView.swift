@@ -111,7 +111,11 @@ struct EventDetailView: View {
             }
         }
         #if !os(macOS) || targetEnvironment(macCatalyst)
-        .navigationBarTitle("Thread !os(macOS) EventDetailView")
+            #if DEBUG
+            .navigationBarTitle("Thread !os(macOS) EventDetailView")
+            #else
+            .navigationBarTitle("Thread")
+            #endif
         #else
         .navigationTitle("Thread")
         #endif

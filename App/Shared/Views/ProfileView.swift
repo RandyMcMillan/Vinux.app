@@ -93,11 +93,13 @@ struct ProfileView: View {
             let data = damus_state.profiles.lookup(id: profile.pubkey)
             
             HStack(alignment: .center) {
-#if !os(macOS)
-                ProfilePicView(pubkey: profile.pubkey, size: PFP_SIZE, highlight: .custom(Color.black, 2), image_cache: damus_state.image_cache, profiles: damus_state.profiles)
-#else
+            #if !os(macOS) || targetEnvironment(macCatalyst)
+                ProfilePicView(pubkey: profile.pubkey, size: PFP_SIZE*3, highlight: .custom(Color.black, 2), image_cache: damus_state.image_cache, profiles: damus_state.profiles)
+                    .frame(minWidth: 0, idealWidth: PFP_SIZE*3, maxWidth: PFP_SIZE*4, minHeight: 0, idealHeight: PFP_SIZE*3, maxHeight: PFP_SIZE*4, alignment: .topLeading)
+                    .padding()
+            #else
                 ProfilePicView(pubkey: profile.pubkey, size: PFP_SIZE, highlight: .custom(Color.black, 2), profiles: damus_state.profiles)
-#endif
+            #endif
         
                 ProfileNameView(pubkey: profile.pubkey, profile: data, contacts: damus_state.contacts)
                 
@@ -157,11 +159,15 @@ struct ProfileView: View {
         }
         .padding([.leading, .trailing], 6)
         .frame(maxWidth: .infinity, alignment: .topLeading)
-#if !os(macOS)
-        .navigationBarTitle("Profile")
-#else
-        .navigationTitle("Profile")
-#endif
+        #if !os(macOS) || targetEnvironment(macCatalyst)
+            #if DEBUG
+            .navigationBarTitle("ProfileView")
+            #else
+            .navigationBarTitle("")
+            #endif
+        #else
+        .navigationTitle("")
+        #endif
         .onReceive(handle_notify(.switched_timeline)) { _ in
             dismiss()
         }
@@ -189,7 +195,7 @@ struct ProfileView_Previews: PreviewProvider {
 
 func test_damus_state() -> DamusState {
     let pubkey = "3efdaebb1d8923ebd99c9e7ace3b4194ab45512e2be79c1b7d68d9243e0d2681"
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
     let damus = DamusState(pool: RelayPool(), keypair: Keypair(pubkey: pubkey, privkey: "privkey"), likes: EventCounter(our_pubkey: pubkey), boosts: EventCounter(our_pubkey: pubkey), contacts: Contacts(), tips: TipCounter(our_pubkey: pubkey), image_cache: ImageCache(), profiles: Profiles(), dms: DirectMessagesModel())
 #else
     let damus = DamusState(pool: RelayPool(), keypair: Keypair(pubkey: pubkey, privkey: "privkey"), likes: EventCounter(our_pubkey: pubkey), boosts: EventCounter(our_pubkey: pubkey), contacts: Contacts(), tips: TipCounter(our_pubkey: pubkey), profiles: Profiles(), dms: DirectMessagesModel())
@@ -212,12 +218,18 @@ struct KeyView: View {
         let half = bech32.count / 2
         
         VStack {
+            #if !os(macOS) && !targetEnvironment(macCatalyst)
             Text("\(String(bech32.prefix(half)))")
                 .foregroundColor(colorScheme == .light ? .black : col)
                 .font(.footnote.monospaced())
             Text("\(String(bech32.suffix(half)))")
                 .font(.footnote.monospaced())
                 .foregroundColor(colorScheme == .light ? .black : col)
+            #else
+            Text("\(String(bech32))")
+                .foregroundColor(.yellow)
+                .font(.footnote.monospaced())
+            #endif
         }
     }
 }
