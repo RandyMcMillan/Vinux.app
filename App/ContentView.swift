@@ -71,7 +71,7 @@ struct ContentView: View {
     @State var active_profile: String? = nil
     @State var active_search: NostrFilter? = nil
     @State var active_event_id: String? = nil
-    @State var profile_open: Bool = false
+    @State var profile_open: Bool = true
     @State var thread_open: Bool = false
     @State var search_open: Bool = false
     @StateObject var home: HomeModel = HomeModel()
@@ -142,12 +142,19 @@ struct ContentView: View {
                     .environmentObject(home.dms)
             
             case .none:
-                EmptyView()
+                    if let pk = self.active_profile {
+                        let profile_model = ProfileModel(pubkey: pk, damus: damus_state!)
+                        let followers = FollowersModel(damus_state: damus_state!, target: pk)
+                        ProfileView(damus_state: damus_state!, profile: profile_model, followers: followers)
+                    } else {
+                        //EmptyView()
+                    }
+                //EmptyView()
             }
             TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
         }
         #if targetEnvironment(macCatalyst)
-        .navigationTitle("Vinux (macCatalyst)")
+        .navigationBarTitle("Vinux (macCat)", displayMode: .inline)
         #elseif os(macOS)
         .navigationTitle("Vinux (macOS)")
         #else
@@ -195,13 +202,17 @@ struct ContentView: View {
                 GeometryReader { dimensions in
                 MainContent(damus: damus)
                     .toolbar {
-                        LoadingContainer
+                        //LoadingContainer
                     }
                 }
                     // TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
 
             }
-                SideMenu(isSidebarVisible: $isSideBarOpened)
+            SideMenu(isSidebarVisible: $isSideBarOpened)
+                    .toolbar {
+                        LoadingContainer
+                        
+                    }
             }// End if let damus
         }// End ZStack
         .onAppear() {
@@ -366,7 +377,7 @@ struct ContentView: View {
         }
         
         pool.register_handler(sub_id: sub_id, handler: home.handle_event)
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
         self.damus_state = DamusState(pool: pool, keypair: keypair,
                                 likes: EventCounter(our_pubkey: pubkey),
                                 boosts: EventCounter(our_pubkey: pubkey),
@@ -443,7 +454,7 @@ func is_notification(ev: NostrEvent, pubkey: String) -> Bool {
     return ev.references(id: pubkey, key: "p")
 }
 
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
 extension UINavigationController: UIGestureRecognizerDelegate {
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -455,6 +466,16 @@ extension UINavigationController: UIGestureRecognizerDelegate {
     }
 }
 #else
+extension UINavigationController: UIGestureRecognizerDelegate {
+    override open func viewDidLoad() {
+        super.viewDidLoad()
+        interactivePopGestureRecognizer?.delegate = self
+    }
+
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        return viewControllers.count > 1
+    }
+}
 #endif
 
 struct LastNotification {

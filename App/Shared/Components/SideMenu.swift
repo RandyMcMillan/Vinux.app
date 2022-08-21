@@ -55,7 +55,11 @@ struct SideMenu: View {
                 MenuChevron
                 
                 VStack(alignment: .leading, spacing: 20) {
-                    userProfile
+
+
+                    //userProfile
+
+                    
                     Divider()
                     MenuLinks(items: userActions)
                     Divider()

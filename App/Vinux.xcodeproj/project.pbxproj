@@ -10,6 +10,7 @@
 		3A85D10C2582B9A600636BA4 /* NavTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A85D10B2582B9A600636BA4 /* NavTabBar.swift */; };
 		3AE332422582A02B00FBDB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE3322D2582A02B00FBDB3E /* Assets.xcassets */; };
 		3AE332432582A02B00FBDB3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AE3322D2582A02B00FBDB3E /* Assets.xcassets */; };
+		4B34277E28B1E96D0088EC15 /* rootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B34277D28B1E96D0088EC15 /* rootViewController.swift */; };
 		4B496BF528A0F0FC00EAD8A2 /* PostBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B496BDA28A0F0FC00EAD8A2 /* PostBlock.swift */; };
 		4B496BF628A0F0FC00EAD8A2 /* PostBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B496BDA28A0F0FC00EAD8A2 /* PostBlock.swift */; };
 		4B496BF728A0F0FC00EAD8A2 /* DirectMessagesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B496BDB28A0F0FC00EAD8A2 /* DirectMessagesModel.swift */; };
@@ -224,6 +225,7 @@
 		3AE3323C2582A02B00FBDB3E /* Info-macos.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macos.plist"; sourceTree = "<group>"; };
 		3AE3323D2582A02B00FBDB3E /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		3AE332742582AE2700FBDB3E /* ArticlesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesListView.swift; sourceTree = "<group>"; tabWidth = 2; };
+		4B34277D28B1E96D0088EC15 /* rootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rootViewController.swift; sourceTree = "<group>"; };
 		4B48E256289937260061B785 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
 		4B496BDA28A0F0FC00EAD8A2 /* PostBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostBlock.swift; sourceTree = "<group>"; };
 		4B496BDB28A0F0FC00EAD8A2 /* DirectMessagesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectMessagesModel.swift; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 		4BE2BD8728A95A9A005AE9C6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				4B34277D28B1E96D0088EC15 /* rootViewController.swift */,
 				4B568BAE28B07AD40009DC2D /* SideMenu.swift */,
 				4BE2BD8828A95A9A005AE9C6 /* EndBlock.swift */,
 				4BE2BD8928A95A9A005AE9C6 /* TextFieldAlert.swift */,
@@ -863,6 +866,7 @@
 				4B496C1428A0F0FC00EAD8A2 /* Mentions.swift in Sources */,
 				4B496C1C28A0F0FC00EAD8A2 /* HomeModel.swift in Sources */,
 				4B496C0C28A0F0FC00EAD8A2 /* SearchModel.swift in Sources */,
+				4B34277E28B1E96D0088EC15 /* rootViewController.swift in Sources */,
 				4BE04AF428985BD800E710CF /* PostButton.swift in Sources */,
 				4BE04AF528985BD800E710CF /* PostView.swift in Sources */,
 				4BE2BD8C28A95A9A005AE9C6 /* EndBlock.swift in Sources */,
