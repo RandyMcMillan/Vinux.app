@@ -68,7 +68,7 @@ struct SideMenu: View {
 
                     VStack {
                         if let pubkey = profile.pubkey {
-                            let profile_model = ProfileModel(pubkey: profile.pubkey, damus: damus_state)
+                            let profile_model = ProfileModel(pubkey: pubkey, damus: damus_state)
                             let followers = FollowersModel(damus_state: damus_state, target: profile_model.pubkey)
                             ProfileView(damus_state: damus_state, profile: profile_model, followers: followers)
                         } else {
@@ -77,7 +77,7 @@ struct SideMenu: View {
                     }
 
                     Divider()
-                    MenuLinks(items: userActions)
+                    //MenuLinks(items: userActions)
                     Divider()
                     MenuLinks(items: profileActions)
                 }
