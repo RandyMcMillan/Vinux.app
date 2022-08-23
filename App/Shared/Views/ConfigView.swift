@@ -40,7 +40,7 @@ struct ConfigView: View {
 
         ZStack(alignment: .leading) {
             Form {
-                VStack {
+                Section {
                     if let pubkey = state.pubkey {
                         //Text(state.pubkey)
                     let profile_model = ProfileModel(pubkey: state.pubkey, damus: state)
@@ -48,6 +48,41 @@ struct ConfigView: View {
                     ProfilePicView(pubkey: state.pubkey, size: PFP_SIZE, highlight: self.highlight, image_cache: state.image_cache, profiles: state.profiles)
                         // let profile_model = ProfileModel(pubkey: pubkey, damus: state)
                         // ProfileView(damus_state: state, profile: profile_model, followers: FollowersModel(damus_state: state, target: state.pubkey))
+                        Section("Public Account ID") {
+                            Text(state.keypair.pubkey_bech32)
+                                .textSelection(.enabled)
+                                .onTapGesture {
+                                    #if !os(macOS)
+                                    UIPasteboard.general.string = state.keypair.pubkey_bech32
+                                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                                    #else
+                                    NSPasteboard.general.clearContents()
+                                    NSPasteboard.general.setString(state.keypair.pubkey_bech32, forType: .string)
+                                    #endif
+                                }
+                        }
+
+                                if let sec = state.keypair.privkey_bech32 {
+                                    Section("Secret Account Login Key") {
+                                        Text(sec)
+                                            .textSelection(.enabled)
+                                            .onTapGesture {
+                                                #if !os(macOS)
+                                                UIPasteboard.general.string = sec
+                                                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+                                                #else
+                                                NSPasteboard.general.clearContents()
+                                                NSPasteboard.general.setString(sec, forType: .string)
+                                                #endif
+                                            }
+                                    }
+                                }
+
+                                Section("Reset") {
+                                    Button("Logout") {
+                                        confirm_logout = true
+                                    }
+                                }
                     } else {
                         EmptyView()
                     }
@@ -60,42 +95,6 @@ struct ConfigView: View {
                             }
                         }
                         
-                    }
-                }
-                
-        Section("Public Account ID") {
-            Text(state.keypair.pubkey_bech32)
-                .textSelection(.enabled)
-                .onTapGesture {
-                    #if !os(macOS)
-                    UIPasteboard.general.string = state.keypair.pubkey_bech32
-                    AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                    #else
-                    NSPasteboard.general.clearContents()
-                    NSPasteboard.general.setString(state.keypair.pubkey_bech32, forType: .string)
-                    #endif
-                }
-        }
-                    
-                if let sec = state.keypair.privkey_bech32 {
-                    Section("Secret Account Login Key") {
-                        Text(sec)
-                            .textSelection(.enabled)
-                            .onTapGesture {
-                                #if !os(macOS)
-                                UIPasteboard.general.string = sec
-                                AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-                                #else
-                                NSPasteboard.general.clearContents()
-                                NSPasteboard.general.setString(sec, forType: .string)
-                                #endif
-                            }
-                    }
-                }
-                    
-                Section("Reset") {
-                    Button("Logout") {
-                        confirm_logout = true
                     }
                 }
             } //End Form
