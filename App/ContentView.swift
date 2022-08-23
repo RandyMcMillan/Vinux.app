@@ -86,7 +86,7 @@ struct ContentView: View {
                         .foregroundColor(.gray)
                 }
                 
-                NavigationLink(destination: ConfigView(state: damus_state!)) {
+                NavigationLink(destination: ConfigView(state: damus_state!,highlight: .none)) {
                     Label("", systemImage: "gear")
                 }
                 .buttonStyle(PlainButtonStyle())
