@@ -37,18 +37,59 @@ struct ConfigView: View {
     }
     
     var body: some View {
+        VStack(alignment: .leading) {
+            // Text("pre Section")
+            // padding()
+            // padding()
+            // Section(String(state.pubkey)) {
+            Section() {
+            // Text("pre HStack")
+                HStack() {
+                ProfilePicView(pubkey: state.pubkey, size: PFP_SIZE, highlight: self.highlight, image_cache: state.image_cache, profiles: state.profiles)
+                    if let profile_name = Profile.displayName(profile: state.profiles.lookup(id: state.pubkey), pubkey: state.pubkey){
 
-        ZStack(alignment: .leading) {
+                        Text(profile_name.description )
+
+                    }
+
+
+                }
+            }
+                // Text("prespacer")
+                // Spacer()//push to right
+                // Text("postspacer")
+
+                Button(action: { show_add_relay = true }) {
+                    Label("", systemImage: "plus")
+                        .foregroundColor(.accentColor)
+                        // .padding()
+                }
+                Button(action: { show_nostr_help = true }) {
+                    Label("", systemImage: "questionmark.circle")
+                        .foregroundColor(.accentColor)
+                        // .padding()
+                }
+
+            }
+            // Text("post HStack")
+        ZStack() {
+
             Form {
-                Section {
-                    if let pubkey = state.pubkey {
-                        //Text(state.pubkey)
-                    let profile_model = ProfileModel(pubkey: state.pubkey, damus: state)
-                        //ProfileView(damus_state: state, profile: profile_model, followers: FollowersModel(damus_state: state, target: state.pubkey))
+                // Text("1st in Form")
+                HStack{
+                // Text("1st in ZStack")
                     ProfilePicView(pubkey: state.pubkey, size: PFP_SIZE, highlight: self.highlight, image_cache: state.image_cache, profiles: state.profiles)
-                        // let profile_model = ProfileModel(pubkey: pubkey, damus: state)
-                        // ProfileView(damus_state: state, profile: profile_model, followers: FollowersModel(damus_state: state, target: state.pubkey))
-                        Section("Public Account ID") {
+                    if let profile_name = Profile.displayName(profile: state.profiles.lookup(id: state.pubkey), pubkey: state.pubkey){
+                        Text(profile_name.description )
+                        Spacer()
+                    }
+                // Text("post ProfilePicView")
+                }
+                //Text("pre Section")
+                Section("Keys"){
+                // Text("1st in Section")
+                    if let pubkey = state.pubkey {
+                        Section("Public Key") {
                             Text(state.keypair.pubkey_bech32)
                                 .textSelection(.enabled)
                                 .onTapGesture {
@@ -60,10 +101,10 @@ struct ConfigView: View {
                                     NSPasteboard.general.setString(state.keypair.pubkey_bech32, forType: .string)
                                     #endif
                                 }
-                        }
 
-                                if let sec = state.keypair.privkey_bech32 {
-                                    Section("Secret Account Login Key") {
+                        }
+                        if let sec = state.keypair.privkey_bech32 {
+                                    Section("Private Key") {
                                         Text(sec)
                                             .textSelection(.enabled)
                                             .onTapGesture {
@@ -78,11 +119,11 @@ struct ConfigView: View {
                                     }
                                 }
 
-                                Section("Reset") {
+                                //Section("Reset") {
                                     Button("Logout") {
                                         confirm_logout = true
                                     }
-                                }
+                                //}
                     } else {
                         EmptyView()
                     }
@@ -98,31 +139,10 @@ struct ConfigView: View {
                     }
                 }
             } //End Form
-            VStack {
-                HStack {
-                    Spacer()
-
-                    Button(action: { show_add_relay = true }) {
-                        Label("", systemImage: "plus")
-                            .foregroundColor(.accentColor)
-                            .padding()
-                    }
-                    Button(action: { show_nostr_help = true }) {
-                        Label("", systemImage: "questionmark.circle")
-                            .foregroundColor(.accentColor)
-                            .padding()
-                    }
-
-                }
-                .padding()
-
-                Spacer()
-            }
-
         } //End first ZStack
-        .navigationTitle("Settings")
+        //.navigationTitle("")
         #if !os(macOS)
-        .navigationBarTitleDisplayMode(.large)
+        .navigationBarTitleDisplayMode(.automatic)
         #endif
         .alert("Logout", isPresented: $confirm_logout) {
             Button("Logout") {

@@ -39,6 +39,13 @@ struct ProfileName: View {
     
     @State var display_name: String?
     
+    init(pubkey: String, profile: Profile?) {
+        self.pubkey = pubkey
+        self.profile = profile
+        self.prefix = "@"
+        self.contacts = Contacts()
+        self.show_friend_confirmed = false
+    }
     init(pubkey: String, profile: Profile?, contacts: Contacts, show_friend_confirmed: Bool) {
         self.pubkey = pubkey
         self.profile = profile
