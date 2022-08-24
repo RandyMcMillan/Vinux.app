@@ -44,7 +44,7 @@ struct ConfigView: View {
             // Section(String(state.pubkey)) {
             Section() {
             // Text("pre HStack")
-                HStack() {
+                VStack(alignment:.leading) {
                 ProfilePicView(pubkey: state.pubkey, size: PFP_SIZE, highlight: self.highlight, image_cache: state.image_cache, profiles: state.profiles)
                     if let profile_name = Profile.displayName(profile: state.profiles.lookup(id: state.pubkey), pubkey: state.pubkey){
 
@@ -70,7 +70,7 @@ struct ConfigView: View {
                         // .padding()
                 }
 
-            }
+            } // End first VStack
             // Text("post HStack")
         ZStack() {
 
