@@ -15,6 +15,7 @@ struct ConfigView: View {
     @State var show_nostr_help: Bool = false
     @State var confirm_logout: Bool = false
     @State var new_relay: String = ""
+    @State var highlight: Highlight
 
     func Relay(_ ev: NostrEvent, relay: String) -> some View {
         return Text(relay)
@@ -39,6 +40,18 @@ struct ConfigView: View {
 
         ZStack(alignment: .leading) {
             Form {
+                VStack {
+                    if let pubkey = state.pubkey {
+                        //Text(state.pubkey)
+                    let profile_model = ProfileModel(pubkey: state.pubkey, damus: state)
+                        //ProfileView(damus_state: state, profile: profile_model, followers: FollowersModel(damus_state: state, target: state.pubkey))
+                    ProfilePicView(pubkey: state.pubkey, size: PFP_SIZE, highlight: self.highlight, image_cache: state.image_cache, profiles: state.profiles)
+                        // let profile_model = ProfileModel(pubkey: pubkey, damus: state)
+                        // ProfileView(damus_state: state, profile: profile_model, followers: FollowersModel(damus_state: state, target: state.pubkey))
+                    } else {
+                        EmptyView()
+                    }
+                }
                 if let ev = state.contacts.event {
                     Section("Relays") {
                         if let relays = decode_json_relays(ev.content) {
@@ -170,6 +183,6 @@ struct ConfigView: View {
 
 struct ConfigView_Previews: PreviewProvider {
     static var previews: some View {
-        ConfigView(state: test_damus_state())
+        ConfigView(state: test_damus_state(),highlight: .none)
     }
 }

@@ -92,7 +92,7 @@ struct ContentView: View {
                         .foregroundColor(.gray)
                 }
                 
-                NavigationLink(destination: ConfigView(state: damus_state!)) {
+                NavigationLink(destination: ConfigView(state: damus_state!,highlight: .none)) {
                     Label("", systemImage: "gear")
                 }
                 .buttonStyle(PlainButtonStyle())
@@ -208,13 +208,13 @@ struct ContentView: View {
                     // TabBar(new_events: $home.new_events, selected: $selected_timeline, action: switch_timeline)
 
             }
-            SideMenu(isSidebarVisible: $isSideBarOpened)
-                    .toolbar {
-                        LoadingContainer
+            //SideMenu(isSidebarVisible: $isSideBarOpened)
+              //      .toolbar {
+                //        LoadingContainer
                         
-                    }
-            }// End if let damus
-        }// End ZStack
+                    //}
+            } // End if let damus
+        } // End ZStack
         .onAppear() {
             self.connect()
             setup_notifications()
