@@ -698,7 +698,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
+<<<<<<< HEAD
 			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\necho \"$fileContent\" > ${SRCROOT}/Shared/AppInfo.swift\n";
+=======
+			shellScript = "#/bin/sh\n\nversion=$(git rev-parse --verify HEAD | cut -c 1-7)\n\ncommitDate=$(git log -n 1 HEAD --pretty=format:\"%h - %cd\" | cut -c 12-)\n\nfileContent=\"// DO NOT EDIT, // IT IS A MACHINE GENERATED FILE\n\n// AppInfo.swift $commitDate\n\nimport Foundation\nclass AppInfo {\nlet version: String\nlet build: String\nlet gitCommitSHA: String = \\\"$version\\\"\ninit?() {\n    guard let version =\nBundle.main.infoDictionary?[\\\"CFBundleShortVersionString\\\"] as? String, let build = Bundle.main.infoDictionary?[\\\"CFBundleVersion\\\"] as? String else { return nil }\n    self.version = version\n    self.build = build }\n}\"\necho \"$fileContent\" > /Users/Shared/Vinux/App/Shared/AppInfo.swift\n";
+>>>>>>> b8e6e6a (rolled back)
 		};
 /* End PBXShellScriptBuildPhase section */
 
