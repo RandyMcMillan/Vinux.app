@@ -110,7 +110,7 @@ struct EventDetailView: View {
                 scroll_after_load(proxy)
             }
         }
-        #if !os(macOS)
+        #if !os(macOS) || targetEnvironment(macCatalyst)
         .navigationBarTitle("Thread")
         #else
         .navigationTitle("Thread")

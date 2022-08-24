@@ -78,7 +78,7 @@ struct ConfigView: View {
                             Text(state.keypair.pubkey_bech32)
                                 .textSelection(.enabled)
                                 .onTapGesture {
-                                    #if !os(macOS)
+                                    #if !os(macOS) || targetEnvironment(macCatalyst)
                                     UIPasteboard.general.string = state.keypair.pubkey_bech32
                                     AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                                     #else
@@ -93,7 +93,7 @@ struct ConfigView: View {
                                         Text(sec)
                                             .textSelection(.enabled)
                                             .onTapGesture {
-                                                #if !os(macOS)
+                                                #if !os(macOS) || targetEnvironment(macCatalyst)
                                                 UIPasteboard.general.string = sec
                                                 AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                                                 #else
@@ -128,7 +128,7 @@ struct ConfigView: View {
             } //End Form
 
         .navigationTitle("Settings")
-        #if !os(macOS)
+        #if !os(macOS) || targetEnvironment(macCatalyst)
         .navigationBarTitleDisplayMode(.automatic)
         #endif
         .alert("Logout", isPresented: $confirm_logout) {

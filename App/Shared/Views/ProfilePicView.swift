@@ -35,7 +35,7 @@ struct ProfilePicView: View {
     let pubkey: String
     let size: CGFloat
     let highlight: Highlight
-    #if !os(macOS)
+    #if !os(macOS) || targetEnvironment(macCatalyst)
     let image_cache: ImageCache
     #else
     // let image_cache: NSImageCache
@@ -79,7 +79,7 @@ struct ProfilePicView: View {
                 guard let url = URL(string: pic) else {
                     return
                 }
-                #if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 let pfp_key = pfp_cache_key(url: url)
                 let ui_img = await image_cache.lookup_or_load_image(key: pfp_key, url: url)
                 
@@ -99,7 +99,7 @@ struct ProfilePicView: View {
                 
                 if let pic = updated.profile.picture {
                     if let url = URL(string: pic) {
-                        #if !os(macOS)
+                        #if !os(macOS) || targetEnvironment(macCatalyst)
                         let pfp_key = pfp_cache_key(url: url)
                         if let ui_img = image_cache.lookup_sync(key: pfp_key) {
                             self.img = Image(uiImage: ui_img)
@@ -123,7 +123,7 @@ func make_preview_profiles(_ pubkey: String) -> Profiles {
 
 struct ProfilePicView_Previews: PreviewProvider {
     static let pubkey = "ca48854ac6555fed8e439ebb4fa2d928410e0eef13fa41164ec45aaaa132d846"
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
     static var previews: some View {
         ProfilePicView(
             pubkey: pubkey,

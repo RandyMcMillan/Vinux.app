@@ -14,7 +14,7 @@ struct ArticlesListView: View {
     
     // MARK: - UI Elements
     var body: some View {
-        #if os(macOS)
+        #if os(macOS) || targetEnvironment(macCatalyst)
         return
             view
                 .frame(minWidth: 400, minHeight: 600)

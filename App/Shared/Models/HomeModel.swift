@@ -303,7 +303,7 @@ class HomeModel: ObservableObject {
         }
     }
 
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
     func handle_metadata_event(_ ev: NostrEvent) {
         process_metadata_event(image_cache: damus_state.image_cache, profiles: damus_state.profiles, ev: ev)
     }
@@ -499,7 +499,7 @@ func print_filters(relay_id: String?, filters groups: [[NostrFilter]]) {
     print("-----")
 }
 
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
 func process_metadata_event(image_cache: ImageCache, profiles: Profiles, ev: NostrEvent) {
     guard let profile: Profile = decode_data(Data(ev.content.utf8)) else {
         return

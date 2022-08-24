@@ -19,7 +19,7 @@ struct SearchHomeView: View {
                 TextField("", text: $search)
                     .padding(5)
                     .padding(.leading, 35)
-                #if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                     .textInputAutocapitalization(.never)
                 #else
                 //TODO: macOS

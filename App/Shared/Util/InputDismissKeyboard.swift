@@ -16,7 +16,7 @@ public extension View {
 
 public struct DismissKeyboardOnTap: ViewModifier {
     public func body(content: Content) -> some View {
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
         return content.gesture(tapGesture)
 #else
         return content
@@ -30,7 +30,7 @@ public struct DismissKeyboardOnTap: ViewModifier {
 }
 
 func end_editing() {
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
     UIApplication.shared.connectedScenes
       .filter {$0.activationState == .foregroundActive}
       .map {$0 as? UIWindowScene}

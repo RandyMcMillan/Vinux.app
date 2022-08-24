@@ -18,7 +18,7 @@ struct ProfilePictureSelector: View {
                 .foregroundColor(.white)
              */
 
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
             ProfilePicView(pubkey: pubkey, size: 80.0, highlight: highlight, image_cache: ImageCache(), profiles: Profiles())
 #else
             ProfilePicView(pubkey: pubkey, size: 80.0, highlight: highlight, profiles: Profiles())

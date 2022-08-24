@@ -7,7 +7,7 @@
 
 import Foundation
 
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
 struct DamusState {
     let pool: RelayPool
     let keypair: Keypair

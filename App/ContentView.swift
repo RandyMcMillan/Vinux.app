@@ -110,7 +110,7 @@ struct ContentView: View {
     }
     
     func MainContent(damus: DamusState) -> some View {
-        VStack {
+        VStack() {
             NavigationLink(destination: MaybeProfileView, isActive: $profile_open) {
                 EmptyView()
             }
@@ -149,7 +149,7 @@ struct ContentView: View {
     }
 
     var MaybeSearchView: some View {
-        Group {
+        Group() {
             if let search = self.active_search {
                 SearchView(appstate: damus_state!, search: SearchModel(pool: damus_state!.pool, search: search))
             } else {
@@ -191,7 +191,7 @@ struct ContentView: View {
                             LoadingContainer
                         }
                 }
-                #if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 .navigationViewStyle(.stack)
                 #else
                 .navigationViewStyle(.columns)
@@ -363,7 +363,7 @@ struct ContentView: View {
         }
         
         pool.register_handler(sub_id: sub_id, handler: home.handle_event)
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
         self.damus_state = DamusState(pool: pool, keypair: keypair,
                                 likes: EventCounter(our_pubkey: pubkey),
                                 boosts: EventCounter(our_pubkey: pubkey),
@@ -440,7 +440,7 @@ func is_notification(ev: NostrEvent, pubkey: String) -> Bool {
     return ev.references(id: pubkey, key: "p")
 }
 
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
 extension UINavigationController: UIGestureRecognizerDelegate {
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -521,7 +521,7 @@ func update_filters_with_since(last_of_kind: [Int: NostrEvent], filters: [NostrF
 
 func setup_notifications() {
 
-    #if !os(macOS)
+    #if !os(macOS) || targetEnvironment(macCatalyst)
     UIApplication.shared.registerForRemoteNotifications()
     let center = UNUserNotificationCenter.current()
     

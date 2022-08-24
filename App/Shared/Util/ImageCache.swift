@@ -15,7 +15,7 @@ import UIKit
 #endif
 import Combine
 
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
 extension UIImage {
     func decodedImage(_ size: Int) -> UIImage {
         guard let cgImage = cgImage else { return self }
@@ -64,7 +64,7 @@ enum ImageProcessingStatus {
     case done
 }
 
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
 class ImageCache {
     private let lock = NSLock()
     private var state: [String: ImageProcessingStatus] = [:]

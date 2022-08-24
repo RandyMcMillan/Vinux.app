@@ -75,7 +75,7 @@ struct SaveKeysView: View {
             }
             .padding(20)
         }
-        #if !os(macOS)
+        #if !os(macOS) || targetEnvironment(macCatalyst)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())
         #else
@@ -137,7 +137,7 @@ struct SaveKeyView: View {
     @Binding var is_copied: Bool
     
     func copy_text() {
-        #if !os(macOS)
+        #if !os(macOS) || targetEnvironment(macCatalyst)
         UIPasteboard.general.string = text
         #else
         NSPasteboard.general.declareTypes([.string], owner: nil)

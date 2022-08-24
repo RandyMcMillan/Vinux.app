@@ -27,7 +27,7 @@ struct CreateAccountView: View {
             DamusGradient()
             
             VStack {
-                #if !os(macOS)
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 Text("Create Account")
                     .font(.title.bold())
                     .foregroundColor(.white)
@@ -54,14 +54,14 @@ struct CreateAccountView: View {
                                     .padding(.leading, -25.0)
                                 
                                 FormTextInput("satoshi", text: $account.nick_name)
-                                #if !os(macOS)
+                                #if !os(macOS) || targetEnvironment(macCatalyst)
                                     .textInputAutocapitalization(.never)
                                 #endif
                             }
                             
                             FormLabel("Display Name", optional: true)
                             FormTextInput("Satoshi Nakamoto", text: $account.real_name)
-                            #if !os(macOS)
+                            #if !os(macOS) || targetEnvironment(macCatalyst)
                                 .textInputAutocapitalization(.words)
                             #endif
                             FormLabel("About", optional: true)
@@ -94,7 +94,7 @@ struct CreateAccountView: View {
             .padding(.trailing, 20.0)
             
         }
-#if !os(macOS)
+#if !os(macOS) || targetEnvironment(macCatalyst)
         .navigationBarTitleDisplayMode(.inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackNav())

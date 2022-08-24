@@ -77,7 +77,7 @@ struct SetupView: View {
             }
             .padding(.top, -80)
         }
-        #if !os(macOS)
+        #if !os(macOS) || targetEnvironment(macCatalyst)
         .navigationBarTitleDisplayMode(.inline)
         .navigationViewStyle(StackNavigationViewStyle())
         #else
