@@ -60,6 +60,7 @@ struct ConfigView: View {
             Section("Profile Header") {
             // Text("pre HStack")
                 HStack(alignment:.center) {
+                #if !os(macOS) || targetEnvironment(macCatalyst)
                 ProfilePicView(pubkey: state.pubkey, size: PFP_SIZE, highlight: self.highlight, image_cache: state.image_cache, profiles: state.profiles)
                     if let profile_name = Profile.displayName(profile: state.profiles.lookup(id: state.pubkey), pubkey: state.pubkey){
 
@@ -67,23 +68,33 @@ struct ConfigView: View {
 
                     }
                     Spacer()
+                #elseif os(macOS)
+                    ProfilePicView(pubkey: state.pubkey, size: PFP_SIZE, highlight: self.highlight, profiles: state.profiles)
+                    if let profile_name = Profile.displayName(profile: state.profiles.lookup(id: state.pubkey), pubkey: state.pubkey){
+
+                        Text(profile_name.description )
+
+                    }
+                    Spacer()
+
+                    #endif
                 } // End HStack
             } // End Section Profile Header
                 // Text("1st in Form")
                 //Text("pre Section")
                 Section("Keys"){
                 // Text("1st in Section")
-                    if let pubkey = state.pubkey {
+                    if let pubkey = state.keypair.pubkey {
                         Section("Public Key") {
-                            Text(state.keypair.pubkey_bech32)
+                            Text(pubkey)
                                 .textSelection(.enabled)
                                 .onTapGesture {
                                     #if !os(macOS) || targetEnvironment(macCatalyst)
-                                    UIPasteboard.general.string = state.keypair.pubkey_bech32
+                                    UIPasteboard.general.string = pubkey
                                     AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
                                     #else
                                     NSPasteboard.general.clearContents()
-                                    NSPasteboard.general.setString(state.keypair.pubkey_bech32, forType: .string)
+                                    NSPasteboard.general.setString(pubkey, forType: .string)
                                     #endif
                                 }
 
@@ -128,8 +139,10 @@ struct ConfigView: View {
             } //End Form
 
         .navigationTitle("Settings")
-        #if !os(macOS) || targetEnvironment(macCatalyst)
+        #if !os(macOS) //|| targetEnvironment(macCatalyst)
         .navigationBarTitleDisplayMode(.automatic)
+        #else
+        .navigationViewStyle(.automatic)
         #endif
         .alert("Logout", isPresented: $confirm_logout) {
             Button("Logout") {
