@@ -145,7 +145,7 @@ class ImageCache {
         guard let img_file = get_cache_url(key: key, suffix: suffix) else {
             return nil
         }
-        
+
         guard let img = UIImage(contentsOfFile: img_file.path) else {
             //print("failed to load \(key)\(suffix).png from file cache")
             return nil
@@ -238,7 +238,7 @@ func hashed_hexstring(_ str: String) -> String {
     
     return hex_encode(sha256(data))
 }
-    
+
 func pfp_cache_key(url: URL) -> String {
     return hashed_hexstring(url.absoluteString)
 }
