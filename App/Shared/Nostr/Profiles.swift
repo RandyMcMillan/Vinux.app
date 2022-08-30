@@ -8,6 +8,8 @@
 import Foundation
 #if !os(macOS) || targetEnvironment(macCatalyst)
 import UIKit
+#elseif os(macOS)
+import Cocoa
 #endif
 import Combine
 

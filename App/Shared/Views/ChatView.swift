@@ -74,14 +74,18 @@ struct ChatView: View {
     
     var body: some View {
         HStack {
+            #if DEBUG
             Text("ChatView HStack")
+            #endif
             VStack {
+            #if DEBUG
             Text("ChatView VStack")
+            #endif
                 if is_active || just_started {
-                    #if !os(macOS) || targetEnvironment(macCatalyst)
+                    #if !os(macOS) //|| targetEnvironment(macCatalyst)
                     ProfilePicView(pubkey: event.pubkey, size: 32, highlight: is_active ? .main : .none, image_cache: damus_state.image_cache, profiles: damus_state.profiles)
                     #else
-                    ProfilePicView(pubkey: event.pubkey, size: 32, highlight: is_active ? .main : .none, profiles: damus_state.profiles)
+                    ProfilePicView(pubkey: event.pubkey, size: 32, highlight: .none, profiles: damus_state.profiles)
                     #endif
                 }
 

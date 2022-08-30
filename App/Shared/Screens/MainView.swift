@@ -13,19 +13,24 @@ struct MainView: View {
     @State var keypair: Keypair? = nil;
 
         // MARK: - Properties
-        //#if os(iOS)
-        //@Environment(\.horizontalSizeClass) var horizontalSizeClass: //UserInterfaceSizeClass?
-        //@Environment(\.verticalSizeClass) var verticalSizeClass: //UserInterfaceSizeClass?
-        //#endif
+        #if os(iOS)
+        @Environment(\.horizontalSizeClass) var horizontalSizeClass: UserInterfaceSizeClass?
+        @Environment(\.verticalSizeClass) var verticalSizeClass: UserInterfaceSizeClass?
+        #endif
 
         // MARK: - UI Elements
         //@ViewBuilder
         var body: some View {
+        #if os(iOS)
+            if horizontalSizeClass == .compact //narrow screen
+                {}
+        #endif
 
         Group {
             if let kp = keypair, !needs_setup {
 
                 ContentView(keypair: kp)
+
             } else {
                 SetupView()
                     .onReceive(handle_notify(.login)) { notif in

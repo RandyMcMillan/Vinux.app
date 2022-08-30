@@ -139,8 +139,8 @@ struct ContentView: View {
                 EmptyView()
             }
         }
-        #if targetEnvironment(macCatalyst)
-        .navigationTitle("Vinux (macCatalyst)")
+        #if !os(macOS) || targetEnvironment(macCatalyst)
+        .navigationBarTitle("Vinux (macCatalyst)", displayMode: .inline)
         #elseif os(macOS)
         .navigationTitle("Vinux (macOS)")
         #else
@@ -182,7 +182,9 @@ struct ContentView: View {
     }
 
     var body: some View {
+        #if DEBUG
         Text("ContentView.swift @ViewBulder body")
+        #endif
         VStack(alignment: .leading, spacing: 0) {
             if let damus = self.damus_state {
                 NavigationView {
@@ -191,10 +193,10 @@ struct ContentView: View {
                             LoadingContainer
                         }
                 }
-                #if !os(macOS) || targetEnvironment(macCatalyst)
-                .navigationViewStyle(.stack)
+                #if !os(macOS) //|| targetEnvironment(macCatalyst)
+                .navigationViewStyle(.automatic)
                 #else
-                .navigationViewStyle(.columns)
+                .navigationViewStyle(.automatic)
                 #endif
             }
 

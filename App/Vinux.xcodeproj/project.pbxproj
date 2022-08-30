@@ -152,6 +152,8 @@
 		4B60B1EF28AE0C0300814125 /* Starscream in Frameworks */ = {isa = PBXBuildFile; productRef = 4B60B1EE28AE0C0300814125 /* Starscream */; };
 		4B75644A28AB2CF500B0EC23 /* AddHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75644928AB2CF500B0EC23 /* AddHelpView.swift */; };
 		4B75644B28AB2CF500B0EC23 /* AddHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75644928AB2CF500B0EC23 /* AddHelpView.swift */; };
+		4B85385928B69D7600556183 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4B85385828B69D7600556183 /* SDWebImage */; };
+		4B85385B28B69D7600556183 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B85385A28B69D7600556183 /* SDWebImageMapKit */; };
 		4BDBFF1328A19ED100DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BDBFF1428A19ED900DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BE04AD128985BC100E710CF /* VinuxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3322B2582A02900FBDB3E /* VinuxApp.swift */; };
@@ -322,7 +324,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B85385928B69D7600556183 /* SDWebImage in Frameworks */,
 				4B60B1E628AE0AF500814125 /* secp256k1 in Frameworks */,
+				4B85385B28B69D7600556183 /* SDWebImageMapKit in Frameworks */,
 				4B60B1E928AE0B6900814125 /* Starscream in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +370,7 @@
 		3A030B0925841B860012228D /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				4B4CC3A82893915B001F6FB4 /* ContentView.swift */,
 				3A030AD325840BDE0012228D /* MainView.swift */,
 				3AE332742582AE2700FBDB3E /* ArticlesListView.swift */,
 			);
@@ -377,7 +382,6 @@
 			children = (
 				4B48E256289937260061B785 /* Package.swift */,
 				3AE3322B2582A02900FBDB3E /* VinuxApp.swift */,
-				4B4CC3A82893915B001F6FB4 /* ContentView.swift */,
 				3AE3322A2582A02900FBDB3E /* Shared */,
 				3AE332342582A02B00FBDB3E /* iOS */,
 				3AE3323B2582A02B00FBDB3E /* macOS */,
@@ -436,6 +440,7 @@
 			children = (
 				4B4CC29628938437001F6FB4 /* AddRelayView.swift */,
 				4B75644928AB2CF500B0EC23 /* AddHelpView.swift */,
+				3A85D10F2582B9DC00636BA4 /* ArticleView.swift */,
 				4B4CC2A128938437001F6FB4 /* BlocksView.swift */,
 				4B4CC2A728938437001F6FB4 /* CarouselView.swift */,
 				4B4CC28528938437001F6FB4 /* ChatroomView.swift */,
@@ -471,7 +476,6 @@
 				4B4CC29828938437001F6FB4 /* SetupView.swift */,
 				4B4CC29B28938437001F6FB4 /* ThreadView.swift */,
 				4B4CC2A428938437001F6FB4 /* TimelineView.swift */,
-				3A85D10F2582B9DC00636BA4 /* ArticleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -566,6 +570,8 @@
 			packageProductDependencies = (
 				4B60B1E528AE0AF500814125 /* secp256k1 */,
 				4B60B1E828AE0B6900814125 /* Starscream */,
+				4B85385828B69D7600556183 /* SDWebImage */,
+				4B85385A28B69D7600556183 /* SDWebImageMapKit */,
 			);
 			productName = "Universal App (iOS)";
 			productReference = 3AE332322582A02B00FBDB3E /* Vinux.app */;
@@ -624,6 +630,7 @@
 				4B60B1E728AE0B6900814125 /* XCRemoteSwiftPackageReference "Starscream" */,
 				4B60B1EA28AE0BE800814125 /* XCRemoteSwiftPackageReference "secp256k1" */,
 				4B60B1ED28AE0C0300814125 /* XCRemoteSwiftPackageReference "Starscream" */,
+				4B85385728B69D7600556183 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 3AE332332582A02B00FBDB3E /* Products */;
 			projectDirPath = "";
@@ -1040,7 +1047,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1066,7 +1073,7 @@
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1186,6 +1193,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		4B85385728B69D7600556183 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/vinux-app/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1208,6 +1223,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B60B1E728AE0B6900814125 /* XCRemoteSwiftPackageReference "Starscream" */;
 			productName = Starscream;
+		};
+		4B85385828B69D7600556183 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B85385728B69D7600556183 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		4B85385A28B69D7600556183 /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4B85385728B69D7600556183 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

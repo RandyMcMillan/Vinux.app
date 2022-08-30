@@ -93,11 +93,11 @@ struct ProfileView: View {
             let data = damus_state.profiles.lookup(id: profile.pubkey)
             
             HStack(alignment: .center) {
-#if !os(macOS) || targetEnvironment(macCatalyst)
+            #if !os(macOS) || targetEnvironment(macCatalyst)
                 ProfilePicView(pubkey: profile.pubkey, size: PFP_SIZE, highlight: .custom(Color.black, 2), image_cache: damus_state.image_cache, profiles: damus_state.profiles)
-#else
-                ProfilePicView(pubkey: profile.pubkey, size: PFP_SIZE, highlight: .custom(Color.black, 2), profiles: damus_state.profiles)
-#endif
+            #else
+                ProfilePicView(pubkey: profile.pubkey, size: PFP_SIZE, highlight: .none, profiles: damus_state.profiles)
+            #endif
         
                 ProfileNameView(pubkey: profile.pubkey, profile: data, contacts: damus_state.contacts)
                 

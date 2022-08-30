@@ -18,9 +18,9 @@ struct AddRelayView: View {
             Form {
                 Section("Add Relay") {
                     TextField("wss://some.relay.com", text: $relay)
-#if !os(macOS) || targetEnvironment(macCatalyst)
+                    #if !os(macOS) || targetEnvironment(macCatalyst)
                         .textInputAutocapitalization(.never)
-#endif
+                    #endif
                 }
             }
             
