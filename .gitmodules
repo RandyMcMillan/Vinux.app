@@ -15,10 +15,13 @@
 	url = https://github.com/RandyMcMillan/nips.git
 [submodule "secp256k1.swift"]
 	path = secp256k1.swift
-	url = git@github.com:vinux-app/secp256k1.swift.git
+	url = https://github.com/vinux-app/secp256k1.swift.git
 [submodule "Twift"]
 	path = Twift
-	url = git@github.com:vinux-app/Twift.git
+	url = https://github.com/vinux-app/Twift.git
 [submodule "customTabBarSwift"]
 	path = customTabBarSwift
-	url = git@github.com:vinux-app/customTabBarSwift.git
+	url = https://github.com/vinux-app/customTabBarSwift.git
+[submodule "SDWebImage"]
+	path = SDWebImage
+	url = https://github.com/vinux-app/SDWebImage.git
