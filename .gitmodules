@@ -24,4 +24,4 @@
 	url = https://github.com/vinux-app/customTabBarSwift.git
 [submodule "SDWebImage"]
 	path = SDWebImage
-	url = https://github.com/vinux-app/SDWebImage.git
+	url = git@github.com:vinux-app/SDWebImage.git
