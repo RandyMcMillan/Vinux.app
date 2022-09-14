@@ -154,8 +154,6 @@
 		4B6AFE8228D299840027ED85 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4B6AFE8128D299840027ED85 /* Kingfisher */; };
 		4B75644A28AB2CF500B0EC23 /* AddHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75644928AB2CF500B0EC23 /* AddHelpView.swift */; };
 		4B75644B28AB2CF500B0EC23 /* AddHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B75644928AB2CF500B0EC23 /* AddHelpView.swift */; };
-		4B85385928B69D7600556183 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 4B85385828B69D7600556183 /* SDWebImage */; };
-		4B85385B28B69D7600556183 /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4B85385A28B69D7600556183 /* SDWebImageMapKit */; };
 		4BDBFF1328A19ED100DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BDBFF1428A19ED900DDA935 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BDBFF0D28A199D800DDA935 /* AppInfo.swift */; };
 		4BE04AD128985BC100E710CF /* VinuxApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3322B2582A02900FBDB3E /* VinuxApp.swift */; };
@@ -326,9 +324,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B85385928B69D7600556183 /* SDWebImage in Frameworks */,
 				4B60B1E628AE0AF500814125 /* secp256k1 in Frameworks */,
-				4B85385B28B69D7600556183 /* SDWebImageMapKit in Frameworks */,
 				4B60B1E928AE0B6900814125 /* Starscream in Frameworks */,
 				4B6AFE8228D299840027ED85 /* Kingfisher in Frameworks */,
 			);
@@ -574,8 +570,6 @@
 			packageProductDependencies = (
 				4B60B1E528AE0AF500814125 /* secp256k1 */,
 				4B60B1E828AE0B6900814125 /* Starscream */,
-				4B85385828B69D7600556183 /* SDWebImage */,
-				4B85385A28B69D7600556183 /* SDWebImageMapKit */,
 				4B6AFE8128D299840027ED85 /* Kingfisher */,
 			);
 			productName = "Universal App (iOS)";
@@ -636,7 +630,6 @@
 				4B60B1E728AE0B6900814125 /* XCRemoteSwiftPackageReference "Starscream" */,
 				4B60B1EA28AE0BE800814125 /* XCRemoteSwiftPackageReference "secp256k1" */,
 				4B60B1ED28AE0C0300814125 /* XCRemoteSwiftPackageReference "Starscream" */,
-				4B85385728B69D7600556183 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				4B6AFE7D28D282500027ED85 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				4B6AFE8028D299840027ED85 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
@@ -1217,14 +1210,6 @@
 				kind = branch;
 			};
 		};
-		4B85385728B69D7600556183 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/vinux-app/SDWebImage.git";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1257,16 +1242,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4B6AFE8028D299840027ED85 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		4B85385828B69D7600556183 /* SDWebImage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B85385728B69D7600556183 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImage;
-		};
-		4B85385A28B69D7600556183 /* SDWebImageMapKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 4B85385728B69D7600556183 /* XCRemoteSwiftPackageReference "SDWebImage" */;
-			productName = SDWebImageMapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
