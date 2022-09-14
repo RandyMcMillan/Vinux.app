@@ -14,6 +14,7 @@ import Cocoa
 import UIKit
 #endif
 import Combine
+import Kingfisher
 
 #if !os(macOS) || targetEnvironment(macCatalyst)
 extension UIImage {
@@ -231,15 +232,47 @@ func load_image(cache: ImageCache, from url: URL, key: String) async -> UIImage?
 }
 
 
+#else
+class ImageCache {
+
+    func load_image(){
+
+        let downloadedImage = NSImageView()
+        let url = URL(string: "https://example.com/high_resolution_image.png")
+        let processor = DownsamplingImageProcessor(size: downloadedImage.bounds.size)
+                 |> RoundCornerImageProcessor(cornerRadius: 20)
+        downloadedImage.kf.indicatorType = .activity
+        downloadedImage.kf.setImage(
+            with: url,
+            placeholder: NSImage(named: "placeholderImage"),
+            options: [
+                .processor(processor),
+                //.scaleFactor(NSScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
+            ])
+        {
+        result in
+        switch result {
+            case .success(let value):
+                print("Task done for: \(value.source.url?.absoluteString ?? "")")
+            case .failure(let error):
+                print("Job failed: \(error.localizedDescription)")
+        }
+        }
+
+    }
+
+}
+
+#endif
 func hashed_hexstring(_ str: String) -> String {
     guard let data = str.data(using: .utf8) else {
         return str
     }
-    
+
     return hex_encode(sha256(data))
 }
-
 func pfp_cache_key(url: URL) -> String {
     return hashed_hexstring(url.absoluteString)
 }
-#endif

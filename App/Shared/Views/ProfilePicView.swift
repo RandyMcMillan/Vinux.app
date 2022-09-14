@@ -6,6 +6,12 @@
 //
 
 import SwiftUI
+#if !os(macOS) || targetEnvironment(macCatalyst)
+import Kingfisher
+#else
+import Kingfisher
+#endif
+
 
 let PFP_SIZE: CGFloat = 52.0
 
@@ -38,13 +44,18 @@ struct ProfilePicView: View {
     #if !os(macOS) || targetEnvironment(macCatalyst)
     let image_cache: ImageCache?
     #elseif os(macOS)
-    //let image_cache: ImageCache?
+    let image_cache: ImageCache? = nil
     #endif
     let profiles: Profiles
     
+    #if !os(macOS) || targetEnvironment(macCatalyst)
     @State var picture: String? = nil
     @State var img: Image? = nil
-    
+    #elseif os(macOS)
+    @State var picture: String? = nil
+    @State var img: KFImage? = nil
+    #endif
+
     var PlaceholderColor: Color {
         return id_to_color(pubkey)
     }
@@ -82,7 +93,6 @@ struct ProfilePicView: View {
                 }
 
                 let pfp_key = pfp_cache_key(url: url)
-
                 #if !os(macOS) || targetEnvironment(macCatalyst)
                 let ui_img = await image_cache!.lookup_or_load_image(key: pfp_key, url: url)
                 
@@ -91,7 +101,11 @@ struct ProfilePicView: View {
                     return
                 }
                 #else
+                print("macOS")
+                print(url)
+                let ui_img = KFImage.url(url)
 
+                self.img = ui_img
                 #endif
             }
             .onReceive(handle_notify(.profile_updated)) { notif in
