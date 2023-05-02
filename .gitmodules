@@ -1,27 +1,36 @@
 [submodule "nostr-rs-relay"]
 	path = nostr-rs-relay
 	url = https://github.com/RandyMcMillan/nostr-rs-relay.git
+	ignore = dirty
 [submodule "damus.swift"]
 	path = damus.swift
 	url = https://github.com/RandyMcMillan/damus.swift.git
+	ignore = dirty
 [submodule "damus"]
 	path = damus
 	url = https://github.com/vimux-app/damus.git
+	ignore = dirty
 [submodule "nostril"]
 	path = nostril
 	url = https://github.com/RandyMcMillan/nostril.git
+	ignore = dirty
 [submodule "nips"]
 	path = nips
 	url = https://github.com/RandyMcMillan/nips.git
+	ignore = dirty
 [submodule "secp256k1.swift"]
 	path = secp256k1.swift
 	url = https://github.com/vinux-app/secp256k1.swift.git
+	ignore = dirty
 [submodule "Twift"]
 	path = Twift
 	url = https://github.com/vinux-app/Twift.git
+	ignore = dirty
 [submodule "customTabBarSwift"]
 	path = customTabBarSwift
 	url = https://github.com/vinux-app/customTabBarSwift.git
+	ignore = dirty
 [submodule "SDWebImage"]
 	path = SDWebImage
 	url = git@github.com:vinux-app/SDWebImage.git
+	ignore = dirty
