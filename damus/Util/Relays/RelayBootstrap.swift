@@ -12,6 +12,10 @@ let BOOTSTRAP_RELAYS = [
     "wss://eden.nostr.land",
     "wss://nostr.wine",
     "wss://nos.lol",
+    "wss://e.nos.lol",
+    "wss://relay.gnostr.org",
+    "ws://127.0.0.1:6102",
+    "ws://127.0.0.1:0",
 ]
 
 func bootstrap_relays_setting_key(pubkey: String) -> String {
